@@ -26,6 +26,22 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Category> Categories { get; set; }
+
+        public DbSet<Song> Songs { get; set; }
+
+        public DbSet<Commentar> Commentars { get; set; }
+
+        public DbSet<Plan> Plans { get; set; }
+
+        public DbSet<Order> Orders { get; set; }
+
+        public DbSet<Vaucher> Vauchers { get; set; }
+
+        public DbSet<Playlist> Playlists{ get; set; }
+
+        public DbSet<PlaylistSong> PlaylistSongs { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
