@@ -22,35 +22,7 @@
                 <div class="row">
                     <div class="col">
                         <div class="header_content d-flex flex-row align-items-center justify-content-center">
-                            <!-- Logo -->
-                            <div class="logo">
-                                <a href="#" class="d-flex flex-row align-items-end justify-content-start">
-                                    <span class="logo_bars d-flex flex-row align-items-end justify-content-between"><span></span><span></span><span></span><span></span><span></span></span>
-                                    <span class="logo_text">music</span>
-                                </a>
-                            </div>
-
-                            <!-- Main Navigation -->
-                            <nav class="main_nav">
-                                <ul class="d-flex flex-row align-items-center justify-content-start">
-                                    <li class="active"><a href="index.html">Home</a></li>
-                                    <li><a href="artists.html">Artists</a></li>
-                                    <li><a href="#">Download Music</a></li>
-                                    <li><a href="blog.html">News</a></li>
-                                    <li><a href="contact.html">Contact</a></li>
-                                </ul>
-                            </nav>
-
-                            <!-- User area -->
-                            <div class="log_reg d-flex flex-row align-items-center justify-content-start">
-                                <ul class="d-flex flex-row align-items-start justify-content-start">
-                                    <li><a href="#">Login</a></li>
-                                    <li><a href="#">Register</a></li>
-                                </ul>
-
-                                <!-- Hamburger -->
-                                <div class="hamburger d-flex flex-column align-items-end justify-content-between"><div></div><div></div><div></div></div>
-                            </div>
+                            <partial name="_MenuPartial" />
                         </div>
                     </div>
                 </div>
@@ -78,10 +50,17 @@
             </div>
         </div>
 
-
-
-        @this.RenderBody()
+        @if(ViewData["Title"] != "Home Page")
+        {
+    <br><br><br><br><br><br><br><br>
+        }
+        
+    <div class="container">
         <partial name="_CookieConsentPartial" />
+        @this.RenderBody()
+
+    </div>
+
 
         <!-- Footer -->
 
@@ -134,5 +113,6 @@
     <script src="~/plugins/parallax-js-master/parallax.min.js"></script>
     <script src="~/plugins/scrollTo/jquery.scrollTo.min.js"></script>
     <script src="~/js/custom.js"></script>
+    @RenderSection("Scripts", required: false)
 </body>
 </html>
