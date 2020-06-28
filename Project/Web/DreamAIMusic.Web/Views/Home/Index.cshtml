@@ -3,7 +3,320 @@
     this.ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome to @GlobalConstants.SystemName!</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="home">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/index.jpg" data-speed="0.8"></div>
+    <div class="home_container">
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="home_content text-center">
+                        <div class="home_title">
+                            <h1>Create your owe <br /> dream AI Music</h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Song -->
+
+<div class="song">
+    <div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/song.jpg" data-speed="0.8"></div>
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="song_content">
+
+                    <!-- Player -->
+                    <div class="single_player_container">
+                        <div class="single_player d-flex flex-row align-items-center justify-content-start">
+                            <div id="jplayer_1" class="jp-jplayer"></div>
+                            <div id="jp_container_1" class="jp-audio" role="application" aria-label="media player">
+                                <div class="jp-gui jp-interface d-flex flex-lg-row flex-column align-items-start justify-content-start">
+
+                                    <!-- Player Controls -->
+                                    <div class="player_controls_box d-flex flex-row align-items-start justify-content-start">
+                                        <div class="order-lg-1 order-2">
+                                            <div class="player_title">song of the week</div>
+                                            <div class="jp-controls-holder player_controls ml-auto d-flex flex-row align-items-start justify-content-start">
+                                                <button class="jp-play player_button" tabindex="0"></button>
+                                                <button class="jp-stop player_button" tabindex="0"></button>
+                                            </div>
+                                        </div>
+                                        <div class="song_image ml-lg-auto order-lg-2 order-1"><img src="images/song_1.jpg" alt=""></div>
+                                    </div>
+
+                                    <!-- Progress Bar -->
+                                    <div class="player_bars d-flex flex-row align-items-start justify-content-start">
+                                        <div class="player_progress_box">
+                                            <div class="jp-current-time" role="timer" aria-label="time">00:00</div>
+                                            <div class="song_info">
+                                                <div class="jp-artist" aria-label="title">Michael Smith</div>
+                                                <div class="jp-title" aria-label="title"></div>
+                                            </div>
+                                            <div class="jp-progress">
+                                                <div class="jp-seek-bar">
+                                                    <div>
+                                                        <div class="jp-play-bar"><span></span></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="jp-duration ml-auto" role="timer" aria-label="duration">02:33</div>
+                                        </div>
+
+                                        <!-- Volume Controls -->
+                                        <div class="jp-volume-controls ml-lg-auto">
+                                            <div class="mute_button">
+                                                <button class="jp-mute" tabindex="0"></button>
+                                            </div>
+                                            <div class="d-flex flex-row align-items-center justify-content-start">
+                                                <div class="jp-volume-bar">
+                                                    <div>
+                                                        <div class="jp-volume-bar-value"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <div class="jp-no-solution">
+                                    <span>Update Required</span>
+                                    To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Tours -->
+
+<div class="tours">
+    <div class="container">
+        <div class="row row-lg-eq-height">
+
+            <!-- Add -->
+            <div class="col-lg-4 order-lg-1 order-2 tours_col">
+                <div class="extra d-flex flex-column align-items-center justify-content-between">
+                    <div class="background_image" style="background-image:url(images/extra_1.jpg)"></div>
+                    <div class="extra_frame"></div>
+                    <div class="extra_text">it's awesome</div>
+                    <div class="extra_title_container">
+                        <div class="extra_year">2019</div>
+                        <div class="extra_title">world tour</div>
+                        <div class="extra_subtitle">november 2018</div>
+                    </div>
+                    <div class="button extra_button"><a href="#">get your tickets</a></div>
+                </div>
+            </div>
+
+            <!-- Tours Content -->
+            <div class="col-lg-8 order-lg-2 order-1">
+                <div class="tours_content">
+                    <div class="section_title"><h1>Tour Dates</h1></div>
+                    <div class="tours_list_container">
+                        <ul class="tours_list">
+
+                            <!-- Tour -->
+                            <li class="d-flex flex-row align-items-start justify-content-start">
+                                <div class="tour_info">
+                                    <div class="tour_date">Sun, 21 Oct 2018</div>
+                                    <div class="tour_name"><a href="#">The O2</a></div>
+                                    <div class="tour_location">London, United Kingdom</div>
+                                </div>
+                                <div class="button tour_button ml-auto"><a href="#">get your tickets</a></div>
+                            </li>
+
+                            <!-- Tour -->
+                            <li class="d-flex flex-row align-items-start justify-content-start">
+                                <div class="tour_info">
+                                    <div class="tour_date">Mon, 22 Oct 2018</div>
+                                    <div class="tour_name"><a href="#">The O2</a></div>
+                                    <div class="tour_location">London, United Kingdom</div>
+                                </div>
+                                <div class="button tour_button ml-auto"><a href="#">get your tickets</a></div>
+                            </li>
+
+                            <!-- Tour -->
+                            <li class="d-flex flex-row align-items-start justify-content-start">
+                                <div class="tour_info">
+                                    <div class="tour_date">Tue, 23 Oct 2018</div>
+                                    <div class="tour_name"><a href="#">The O2</a></div>
+                                    <div class="tour_location">London, United Kingdom</div>
+                                </div>
+                                <div class="button tour_button ml-auto"><a href="#">get your tickets</a></div>
+                            </li>
+
+                            <!-- Tour -->
+                            <li class="d-flex flex-row align-items-start justify-content-start">
+                                <div class="tour_info">
+                                    <div class="tour_date">Wed, 24 Oct 2018</div>
+                                    <div class="tour_name"><a href="#">The O2</a></div>
+                                    <div class="tour_location">London, United Kingdom</div>
+                                </div>
+                                <div class="button tour_button ml-auto"><a href="#">get your tickets</a></div>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="tours_link"><a href="#">See All Tour Dates</a></div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- App -->
+
+<div class="app">
+    <div class="container">
+        <div class="row row-lg-eq-height">
+
+            <!-- App Image -->
+            <div class="col-lg-6 order-lg-1 order-2 app_col">
+                <div class="app_image">
+                    <img src="images/app.jpg" alt="">
+                </div>
+            </div>
+
+            <!-- App Content -->
+            <div class="col-lg-6 order-lg-2 order-1">
+                <div class="app_content d-flex flex-column align-items-start justify-content-center">
+                    <div class="section_title"><h1>Get Your Music Right Now!</h1></div>
+                    <div class="app_text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum, neque ac porttitor scelerisque, nisi nisl tincidunt enim, non aliquet diam neque sed urna. Interdum et malesuada fames ac ante ipsum primis in faucibus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Suspendisse nec faucibus velit. Quisque eleifend orci ipsum, a bibendum lacus suscipit sit amet</p>
+                    </div>
+                    <div class="stores d-flex flex-row align-items-start justify-content-start flex-wrap">
+                        <div class="store"><a href="#"><img src="images/appstore.png" alt=""></a></div>
+                        <div class="store"><a href="#"><img src="images/googleplay.png" alt=""></a></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Featured -->
+
+<div class="featured">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title text-center"><h1>Featured Albums</h1></div>
+                <div class="featured_list">
+                    <div id="jplayer_2" class="jp-jplayer"></div>
+                    <div id="jp_container_2" class="jp-audio" role="application" aria-label="media player">
+                        <div class="jp-type-playlist">
+                            <div class="jp-playlist">
+                                <ul class="d-flex flex-row align-items-start justify-content-start flex-wrap">
+                                    <li></li>
+                                </ul>
+                            </div>
+                            <div class="jp-no-solution">
+                                <span>Update Required</span>
+                                To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- News -->
+
+<div class="news">
+    <div class="container">
+        <div class="row">
+            <div class="col">
+                <div class="section_title"><h1>Latest News</h1></div>
+            </div>
+        </div>
+        <div class="row news_row">
+
+            <!-- News Post -->
+            <div class="col-xl-4 col-md-6">
+                <div class="news_post image_top">
+                    <div class="news_post_image"><img src="images/news_1.jpg" alt=""></div>
+                    <div class="news_post_content">
+                        <div class="news_post_date"><a href="#">Oct 19, 2018</a></div>
+                        <div class="news_post_title"><a href="#">Music Seminary at Festival</a></div>
+                        <div class="news_post_text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum, neque ac porttitor scelerisque, nisi nisl tincidunt enim, non aliquet diam neque sed urna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- News Post -->
+            <div class="col-xl-4 col-md-6">
+                <div class="news_post image_bottom d-flex flex-column align-items-start justify-content-start">
+                    <div class="news_post_content order-md-1 order-2">
+                        <div class="news_post_date"><a href="#">Oct 19, 2018</a></div>
+                        <div class="news_post_title"><a href="#">Festival list for 2019</a></div>
+                        <div class="news_post_text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum, neque ac porttitor scelerisque, nisi nisl tincidunt enim, non aliquet diam neque sed urna.</p>
+                        </div>
+                    </div>
+                    <div class="news_post_image order-md-2 order-1"><img src="images/news_2.jpg" alt=""></div>
+                </div>
+            </div>
+
+            <!-- News Post -->
+            <div class="col-xl-4 col-md-6">
+                <div class="news_post image_top">
+                    <div class="news_post_image"><img src="images/news_3.jpg" alt=""></div>
+                    <div class="news_post_content">
+                        <div class="news_post_date"><a href="#">Oct 19, 2018</a></div>
+                        <div class="news_post_title"><a href="#">New album release in 2019</a></div>
+                        <div class="news_post_text">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum, neque ac porttitor scelerisque, nisi nisl tincidunt enim, non aliquet diam neque sed urna.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<!-- Newsletter -->
+
+<div class="newsletter">
+    <div class="container">
+        <div class="row">
+
+            <!-- Newsletter Content -->
+            <div class="col-xl-6">
+                <div class="newsletter_content">
+                    <div class="section_title"><h1>Subscribe & Follow</h1></div>
+                    <div class="newsletter_text">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi condimentum, neque ac porttitor scelerisque.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Form -->
+            <div class="col-xl-6 nl_col">
+                <div class="newsletter_form_container d-flex flex-column align-items-start justify-content-end">
+                    <form action="#" class="newsletter_form" id="newsletter_form">
+                        <div class="d-flex flex-row align-items-start justify-content-between">
+                            <input type="email" class="newsletter_input" placeholder="Your E-mail" required="required">
+                            <button class="button newsletter_button"><span>subscribe</span></button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
 </div>
