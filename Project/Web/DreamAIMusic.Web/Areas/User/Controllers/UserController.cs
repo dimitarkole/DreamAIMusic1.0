@@ -6,10 +6,10 @@
     using System.Security.Claims;
     using System.Threading.Tasks;
     using DreamAIMusic.Data.Models;
+    using DreamAIMusic.Web.Areas.Identity.Pages.Account;
     using DreamAIMusic.Web.Controllers;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
-    using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
 
@@ -30,7 +30,7 @@
             this.signInManager = signInManager;
             this.logger = logger;
             this.hostingEnvironment = hostingEnvironment;
-            this.userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            //this.userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
         }
     }
 }

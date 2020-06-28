@@ -1,5 +1,5 @@
 ﻿using System;
-
+using AutoMapper;
 namespace DreamAIMusic.Services.Mapping
 {
     public static class ObjectMappingExtensions
@@ -11,7 +11,13 @@ namespace DreamAIMusic.Services.Mapping
                 throw new ArgumentNullException(nameof(origin));
             }
 
-            return AutoMapper.Mapper.Map<T>(origin);
+            return Mapper.Map<T>(origin);
         }
+
+        public static Destination To<Destination>(this object source, object destination) =>
+        (Destination) Mapper.Map(source, destination, source.GetType(), destination.GetType());
+
+        public static Destination To<Source, Destination>(this Source source, Destination destination, Action<IMappingOperationOptions<Source, Destination>> options) =>
+           Mapper.Map(source, destination, options);
     }
 }
