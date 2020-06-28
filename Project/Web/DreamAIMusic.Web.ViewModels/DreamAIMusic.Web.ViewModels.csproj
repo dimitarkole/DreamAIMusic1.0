@@ -23,4 +23,8 @@
     <ProjectReference Include="..\..\Services\DreamAIMusic.Services.Mapping\DreamAIMusic.Services.Mapping.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="User\MusicModels\" />
+  </ItemGroup>
+
 </Project>
