@@ -21,6 +21,12 @@ namespace DreamAIMusic.Data.Models
             this.Playlists = new HashSet<Playlist>();
         }
 
+        public virtual string Avatar { get; set; }
+
+        public virtual string Name { get; set; }
+
+        public virtual string Family { get; set; }
+
         // Audit info
         public DateTime CreatedOn { get; set; }
 
