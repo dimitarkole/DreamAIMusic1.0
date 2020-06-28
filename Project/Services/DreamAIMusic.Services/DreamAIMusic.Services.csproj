@@ -25,9 +25,4 @@
     <ProjectReference Include="..\DreamAIMusic.Services.Mapping\DreamAIMusic.Services.Mapping.csproj" />
     <ProjectReference Include="..\DreamAIMusic.Services.Messaging\DreamAIMusic.Services.Messaging.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Administration\" />
-    <Folder Include="Contracts\Administration\" />
-  </ItemGroup>
 </Project>

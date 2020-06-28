@@ -8,6 +8,8 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Data.Repositories;
     using DreamAIMusic.Data.Seeding;
+    using DreamAIMusic.Services.Administration;
+    using DreamAIMusic.Services.Contracts.Administration;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Services.Data;
     using DreamAIMusic.Services.Mapping;
@@ -66,7 +68,9 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<ICategoryService, CategoryService>();
 
+            // User services
             services.AddTransient<ISongService, SongService>();
         }
 
