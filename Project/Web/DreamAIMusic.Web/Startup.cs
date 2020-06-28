@@ -8,9 +8,11 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Data.Repositories;
     using DreamAIMusic.Data.Seeding;
+    using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Services.Data;
     using DreamAIMusic.Services.Mapping;
     using DreamAIMusic.Services.Messaging;
+    using DreamAIMusic.Services.User;
     using DreamAIMusic.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
@@ -64,6 +66,8 @@
             // Application services
             services.AddTransient<IEmailSender, NullMessageSender>();
             services.AddTransient<ISettingsService, SettingsService>();
+
+            services.AddTransient<ISongService, SongService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
