@@ -1,0 +1,38 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <UserSecretsId>aspnet-DreamAIMusic-BBB373B5-EF3F-4DBB-B8AA-7152CEC275BF</UserSecretsId>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.3" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Razor.RuntimeCompilation" Version="3.1.3" />
+    <PackageReference Include="BuildBundlerMinifier" Version="3.2.447" />
+    <PackageReference Include="Microsoft.Web.LibraryManager.Build" Version="2.1.76" />
+    <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="3.1.5" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\DreamAIMusic.Data.Models\DreamAIMusic.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Data\DreamAIMusic.Data\DreamAIMusic.Data.csproj" />
+    <ProjectReference Include="..\..\Services\DreamAIMusic.Services.Data\DreamAIMusic.Services.Data.csproj" />
+    <ProjectReference Include="..\..\Services\DreamAIMusic.Services.Mapping\DreamAIMusic.Services.Mapping.csproj" />
+    <ProjectReference Include="..\..\Services\DreamAIMusic.Services.Messaging\DreamAIMusic.Services.Messaging.csproj" />
+    <ProjectReference Include="..\..\Services\DreamAIMusic.Services\DreamAIMusic.Services.csproj" />
+    <ProjectReference Include="..\DreamAIMusic.Web.Infrastructure\DreamAIMusic.Web.Infrastructure.csproj" />
+    <ProjectReference Include="..\DreamAIMusic.Web.ViewModels\DreamAIMusic.Web.ViewModels.csproj" />
+  </ItemGroup>
+</Project>
