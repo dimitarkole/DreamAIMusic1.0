@@ -20,7 +20,14 @@
             this.context = context;
         }
 
-        public IList<T> All<T>() => this.context.Songs.To<T>().ToList();
+        public IList<T> All<T>() => this.context.Songs
+             .Where(s => s.DeletedOn == null)
+            .To<T>().ToList();
+
+        public IList<T> AllOwenMusic<T>(string userId) => this.context.Songs
+            .Where(s => s.UserId == userId
+                && s.DeletedOn == null)
+            .To<T>().ToList();
 
         public async Task<string> Create(SongInputModel model, string userId)
         {

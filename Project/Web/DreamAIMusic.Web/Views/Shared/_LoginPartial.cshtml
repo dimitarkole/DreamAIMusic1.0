@@ -24,6 +24,9 @@
         <li class="nav-item">
             <a class="nav-link" asp-area="User" asp-controller="Song" asp-action="Create" title="+Song">+Song</a>
         </li>
+        <li class="nav-item">
+            <a class="nav-link" asp-area="User" asp-controller="Song" asp-action="Index" title="All Song">All song</a>
+        </li>
     }
     <li class="nav-item">
         <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">

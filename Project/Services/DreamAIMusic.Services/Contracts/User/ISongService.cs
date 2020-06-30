@@ -11,6 +11,8 @@
     {
         IList<T> All<T>();
 
+        IList<T> AllOwenMusic<T>(string userId);
+
         Task<string> Create(SongInputModel model, string userId);
 
         Task Update(string id, SongEditModel model);
