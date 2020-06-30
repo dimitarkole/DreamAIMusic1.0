@@ -34,19 +34,31 @@
             this.musicService = musicService;
         }
 
+        // GET: Song/Create
         [HttpGet]
-        // [Route("/Music/Create")]
+        [Route("/Song/Create")]
         public IActionResult Create()
         {
             return this.View();
         }
 
+        // POST: Song/Create
         [HttpPost]
+        [Route("/Song/Create")]
         public async Task<IActionResult> Create(SongInputModel model)
         {
             var userId = this.userManager.GetUserId(this.User);
             this.ViewData["message"] = await this.musicService.Create(model, userId);
             return this.View(model);
         }
+
+        // GET: TransactionModels
+        public IActionResult Index()
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var model = this.musicService.AllOwenMusic<OwnSongViewModel>(userId);
+            return this.View(model);
+        }
+
     }
 }

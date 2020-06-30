@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DreamAIMusic.Web.ViewModels.UserModels.MusicModels.OwnSongViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center"><i class="fas fa-comment-dollar text-success"></i>TransactionHistory</h1>
+
+@foreach (var item in Model)
+{
+    <div>
+        @item.Name
+    </div>
+}
