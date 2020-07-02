@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <LangVersion>latest</LangVersion>
   </PropertyGroup>
 
@@ -18,4 +18,11 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\DreamAIMusic.Data\DreamAIMusic.Data.csproj" />
+    <ProjectReference Include="..\..\Web\DreamAIMusic.Web.ViewModels\DreamAIMusic.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\DreamAIMusic.Services.Data\DreamAIMusic.Services.Data.csproj" />
+    <ProjectReference Include="..\DreamAIMusic.Services.Mapping\DreamAIMusic.Services.Mapping.csproj" />
+    <ProjectReference Include="..\DreamAIMusic.Services.Messaging\DreamAIMusic.Services.Messaging.csproj" />
+  </ItemGroup>
 </Project>

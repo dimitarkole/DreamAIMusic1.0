@@ -1,0 +1,48 @@
+﻿@using DreamAIMusic.Common
+@using DreamAIMusic.Data.Models
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<div class="container">
+    <div class="row">
+        <div class="col-2 col-md-2">
+            <!-- Logo -->
+            <div class="logo">
+                <a asp-controller="Home" asp-action="Index" asp-area="" class="d-flex flex-row align-items-end justify-content-start">
+                    <span class="logo_bars d-flex flex-row align-items-end justify-content-between"><span></span><span></span><span></span><span></span><span></span></span>
+                    <span class="logo_text">music</span>
+                </a>
+            </div>
+        </div>
+        <div class="col-6 col-md-6">
+            <!-- Main Navigation -->
+            <nav class="main_nav">
+                <ul class="d-flex flex-row align-items-center justify-content-start">
+                    <!-- <li>
+                        <div class="input-group">
+                            <div class="custom-file">
+                            </div>
+                            <div class="input-group-append">
+                                <button class="btn btn-outline-secondary" type="button">Button</button>
+                            </div>
+                        </div>
+                    </li>-->
+                    <li><a asp-action="Index" asp-controller="Home">Home</a></li>
+                    <li><a href="artists.html">Artists</a></li>
+                    <li><a href="#">Download Music</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="col-4 col-md-4">
+            <!-- Main Navigation -->
+            <nav class="main_nav">
+                <ul class="d-flex flex-row align-items-center justify-content-start">
+                    <partial name="_LoginPartial" />
+
+                </ul>
+            </nav>
+
+        </div>
+    </div>
+</div>
