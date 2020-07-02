@@ -25,9 +25,9 @@
 
         public string Path { get; set; }
 
-        public string MusicTypeId { get; set; }
+        public string MusicCategoryId { get; set; }
 
-        public virtual Category MusicType { get; set; }
+        public virtual Category MusicCategory { get; set; }
 
         public string Text { get; set; }
 

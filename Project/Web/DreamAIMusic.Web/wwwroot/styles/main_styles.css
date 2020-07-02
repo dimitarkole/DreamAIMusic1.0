@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -157,10 +157,7 @@ button:active
 {
 	outline: none;
 }
-.form-control
-{
-	color: #db5246;
-}
+
 section
 {
 	display: block;

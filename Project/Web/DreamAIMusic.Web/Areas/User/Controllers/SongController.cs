@@ -39,7 +39,8 @@
         [Route("/Song/Create")]
         public IActionResult Create()
         {
-            return this.View();
+            var model = this.musicService.CreateSongModel();
+            return this.View(model);
         }
 
         // POST: Song/Create
@@ -49,7 +50,9 @@
         {
             var userId = this.userManager.GetUserId(this.User);
             this.ViewData["message"] = await this.musicService.Create(model, userId);
-            return this.View(model);
+            var returnModel = this.musicService.CreateSongModel();
+
+            return this.View(returnModel);
         }
 
         // GET: TransactionModels
