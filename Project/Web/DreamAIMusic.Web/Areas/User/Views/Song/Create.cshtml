@@ -6,8 +6,9 @@
 
 @model SongInputModel
 
-    <h1>Create</h1>
+<h1>Create</h1>
 <hr />
+
 @this.ViewData["message"]
 <div class="row">
     <div class="col-md-4">
@@ -24,10 +25,19 @@
                 <span asp-validation-for="Path" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="MusicTypeId" class="control-label"></label>
-                <input asp-for="MusicTypeId" class="form-control" />
-                <span asp-validation-for="MusicTypeId" class="text-danger"></span>
+                <label asp-for="MusicCategoryId" class="control-label"></label>
+                <!-- <input asp-for="MusicCategoryId" class="form-control" />
+        -->
+                <select asp-for="MusicCategoryId" class="selectpicker form-control" data-live-search="true">
+                    @foreach (var category in Model.Categories)
+                    {
+                    <option value="@category.Id">@category.Name</option>
+                    }
+                </select>
+
+                <span asp-validation-for="MusicCategoryId" class="text-danger"></span>
             </div>
+
             <div class="form-group">
                 <label asp-for="Text" class="control-label"></label>
                 <input asp-for="Text" class="form-control" />
@@ -39,3 +49,8 @@
         </form>
     </div>
 </div>
+<select class="selectpicker">
+    <option>Mustard</option>
+    <option>Ketchup</option>
+    <option>Relish</option>
+</select>

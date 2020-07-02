@@ -10,14 +10,19 @@
     using System.Threading.Tasks;
     using DreamAIMusic.Services.Mapping;
     using System.Linq;
+    using DreamAIMusic.Services.Contracts.Administration;
+    using DreamAIMusic.Web.ViewModels.CommonResurces.CategoryModels;
 
     public class SongService : ISongService
     {
         private readonly ApplicationDbContext context;
+        private readonly ICategoryService categoryService;
+        
 
-        public SongService(ApplicationDbContext context)
+        public SongService(ApplicationDbContext context, ICategoryService categoryService)
         {
             this.context = context;
+            this.categoryService = categoryService;
         }
 
         public IList<T> All<T>() => this.context.Songs
@@ -37,6 +42,14 @@
             await this.context.SaveChangesAsync();
 
             return song.Id;
+        }
+
+        public SongInputModel CreateSongModel()
+        {
+            var model = new SongInputModel() {
+                Categories = this.categoryService.All<CategoryViewModel>().ToList(),
+            };
+            return model;
         }
 
         public async Task Delete(string id)

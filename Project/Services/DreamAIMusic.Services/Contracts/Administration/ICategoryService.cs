@@ -1,11 +1,12 @@
-﻿using DreamAIMusic.Web.ViewModels.Administration.CategoriesModels;
-using System;
-using System.Collections.Generic;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DreamAIMusic.Services.Contracts.Administration
+﻿namespace DreamAIMusic.Services.Contracts.Administration
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+    using System.Threading.Tasks;
+
+    using DreamAIMusic.Web.ViewModels.Administration.CategoriesModels;
+
     public interface ICategoryService
     {
         IList<T> All<T>();

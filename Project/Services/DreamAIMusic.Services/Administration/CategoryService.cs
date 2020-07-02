@@ -21,7 +21,9 @@
             this.context = context;
         }
 
-        public IList<T> All<T>() => this.context.Songs.To<T>().ToList();
+        public IList<T> All<T>() => this.context.Categories
+            .Where(c => c.DeletedOn == null)
+            .To<T>().ToList();
 
         public async Task<string> Create(CategoryInputModel model, string userId)
         {

@@ -15,6 +15,8 @@
 
         Task<string> Create(SongInputModel model, string userId);
 
+        SongInputModel CreateSongModel();
+
         Task Update(string id, SongEditModel model);
 
         T GetById<T>(string id);
