@@ -7,5 +7,12 @@
         public const string AdministratorRoleName = "Administrator";
 
         public const string UserRoleName = "User";
+
+        public const string SongFolderPath = "Songs";
+
+        public static class Folder
+        {
+            public const string SongFolderPath = "/Songs/";
+        }
     }
 }

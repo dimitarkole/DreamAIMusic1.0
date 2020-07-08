@@ -2,6 +2,7 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Linq;
     using System.Threading.Tasks;
 
@@ -13,9 +14,11 @@
     using DreamAIMusic.Web.ViewModels.UserModels.MusicModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using static DreamAIMusic.Common.GlobalConstants;
 
     [Authorize(Roles = GlobalConstants.UserRoleName)]
     [Area("User")]
@@ -46,10 +49,22 @@
         // POST: Song/Create
         [HttpPost]
         [Route("/Song/Create")]
-        public async Task<IActionResult> Create(SongInputModel model)
+        public async Task<IActionResult> Create(SongInputModel input)
         {
             var userId = this.userManager.GetUserId(this.User);
-            this.ViewData["message"] = await this.musicService.Create(model, userId);
+            var folder = Folder.SongFolderPath;
+            string extension = Path.GetExtension(input.File.FileName);
+            var filePath = Path.Combine(
+                    this.hostingEnvironment.WebRootPath + folder,
+                    Path.GetFileName( input.Name + extension));
+            using (var stream = new FileStream(filePath, FileMode.Create))
+            {
+                await input.File.CopyToAsync(stream);
+            }
+
+            input.Path = filePath;
+
+            this.ViewData["message"] = await this.musicService.Create(input, userId);
             var returnModel = this.musicService.CreateSongModel();
 
             return this.View(returnModel);
@@ -63,5 +78,30 @@
             return this.View(model);
         }
 
+        public IActionResult UploadFile()
+        {
+            return this.View();
+        }
+
+        [HttpPost("Upload")]
+        public async Task<IActionResult> Upload(IFormFile file)
+        {
+            var folder = "Avatars";
+
+            var filePath = Path.Combine(
+                    this.hostingEnvironment.WebRootPath + "\\images\\" + folder,
+                    Path.GetFileName(this.userId + "_" + file.FileName)); // Full path to file in temp location
+
+            // foreach (var formFile in files.Where(f => f.Length > 0))
+            {
+                using (var stream = new FileStream(filePath, FileMode.Create))
+                {
+                    await file.CopyToAsync(stream);
+                }
+                //} // Copy files to FileSystem using Streams
+
+                return Ok(new { count = 0, file.Length, filePath });
+            }
+        }
     }
 }
