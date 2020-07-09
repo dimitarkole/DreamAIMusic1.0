@@ -8,11 +8,10 @@
 
         public const string UserRoleName = "User";
 
-        public const string SongFolderPath = "Songs";
-
         public static class Folder
         {
             public const string SongFolderPath = "/Songs/";
+            public const string MusicPosterPath = "/images/DreamAIMusic.jpg";
         }
     }
 }

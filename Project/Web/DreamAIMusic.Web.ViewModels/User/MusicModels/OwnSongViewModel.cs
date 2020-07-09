@@ -9,13 +9,15 @@ namespace DreamAIMusic.Web.ViewModels.UserModels.MusicModels
 {
     public class OwnSongViewModel : IMapFrom<Song>, IHaveCustomMappings
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string Path { get; set; }
 
-        public string MusicTypeId { get; set; }
+        public string MusicCategoryId { get; set; }
 
-        public string MusicTypeName { get; set; }
+        public string MusicCategoryName { get; set; }
 
         public string Text { get; set; }
 
