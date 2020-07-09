@@ -54,15 +54,16 @@
             var userId = this.userManager.GetUserId(this.User);
             var folder = Folder.SongFolderPath;
             string extension = Path.GetExtension(input.File.FileName);
+            var fileName = input.Name + extension;
             var filePath = Path.Combine(
                     this.hostingEnvironment.WebRootPath + folder,
-                    Path.GetFileName( input.Name + extension));
+                    Path.GetFileName(fileName));
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await input.File.CopyToAsync(stream);
             }
 
-            input.Path = filePath;
+            input.Path = fileName;
 
             this.ViewData["message"] = await this.musicService.Create(input, userId);
             var returnModel = this.musicService.CreateSongModel();
@@ -75,6 +76,13 @@
         {
             var userId = this.userManager.GetUserId(this.User);
             var model = this.musicService.AllOwenMusic<OwnSongViewModel>(userId);
+            return this.View(model);
+        }
+
+        // GET: TransactionModels
+        public IActionResult Details(string id)
+        {
+            var model = this.musicService.GetById<SongViewModel>(id);
             return this.View(model);
         }
 

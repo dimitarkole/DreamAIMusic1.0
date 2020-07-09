@@ -1,0 +1,27 @@
+﻿@using DreamAIMusic.Common
+@model DreamAIMusic.Web.ViewModels.UserModels.MusicModels.SongViewModel
+
+<div class="row">
+    <div class="col-md-9">
+        <div class="row">
+            <div class="col-md-12">
+                <video style="width:100%" controls poster="@GlobalConstants.Folder.MusicPosterPath">
+                    <source src="@(GlobalConstants.Folder.SongFolderPath+Model.Path)" type="audio/mpeg">
+                    Your browser does not support audio in video tag.
+                </video>
+            </div>
+
+            <div class="col-md-12">
+                <h3>@Model.Name</h3>
+                <hr />
+            </div>
+            <div class="col-md-6">
+                @Model.CountViews views • @Model.CreatedOn.ToShortDateString() • @Model.MusicCategoryName Category
+
+            </div>
+            <div class="col-md-6">
+                @Model.CountLikes Likes• @Model.CountDisLikes Dislikes
+            </div>
+        </div>
+    </div>
+</div>
