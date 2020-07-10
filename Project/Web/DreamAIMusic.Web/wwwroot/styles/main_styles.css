@@ -355,6 +355,7 @@ section
 	z-index: 100;
 }
 /*Header gradient bottom border*/
+/* 
 .header::after
 {
 	position: absolute;
@@ -367,7 +368,7 @@ section
 	background-image: linear-gradient(to right, #eeff2d, #2ac275);
 	background: #2ac275;
 	background: linear-gradient(to right, #eeff2d, #2ac275);
-}
+}*/
 .header_content
 {
 	width: calc(100% + 30px);

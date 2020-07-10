@@ -1,4 +1,4 @@
-@charset "utf-8";
+﻿@charset "utf-8";
 /* CSS Document */
 
 /******************************
@@ -358,7 +358,7 @@ section
 	z-index: 100;
 }
 /*Header gradient bottom border*/
-.header::after
+/* .header::after
 {
 	position: absolute;
 	left: 0;
@@ -370,7 +370,8 @@ section
 	background-image: linear-gradient(to right, #eeff2d, #2ac275);
 	background: #2ac275;
 	background: linear-gradient(to right, #eeff2d, #2ac275);
-}
+}*/
+
 .header_content
 {
 	width: calc(100% + 30px);
@@ -407,11 +408,11 @@ section
 	width: 6px;
 }
 .logo_bars > span:first-of-type,
-.logo_bars > span:last-of-type
+/*.logo_bars > span:last-of-type
 {
 	height: 17px;
 	background: #eeff2d;
-}
+}*/
 .logo_bars > span:nth-child(2),
 .logo_bars > span:nth-child(4)
 {

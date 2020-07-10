@@ -1,0 +1,15 @@
+﻿@using DreamAIMusic.Common
+@using DreamAIMusic.Web.ViewModels.UserModels.MusicModels
+@{
+    this.ViewData["Title"] = "Create";
+}
+
+
+<h1>Uploade</h1>
+<hr />
+<form method="post" enctype="multipart/form-data" asp-controller="Song" asp-action="Upload">
+
+    <input type="file" name="file">
+    <button type="submit" value="Upload" />
+</form>
+

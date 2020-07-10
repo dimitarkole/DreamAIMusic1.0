@@ -3,43 +3,89 @@
 @using Microsoft.AspNetCore.Identity
 @inject SignInManager<ApplicationUser> SignInManager
 @inject UserManager<ApplicationUser> UserManager
-
 @if (this.SignInManager.IsSignedIn(this.User))
 {
-    <li class="nav-item">
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @(this.User.Identity.Name)!</a>
-    </li>
 
-    if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
-    {
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="Administration" asp-controller="Category" asp-action="Create" title="+Song">+Song</a>
-        </li>
-    }
-    if (this.User.IsInRole(GlobalConstants.UserRoleName))
-    {
-        <li class="nav-item">
-            <a class="nav-link" asp-area="User" asp-controller="Song" asp-action="Create" title="+Song">+Song</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" asp-area="User" asp-controller="Song" asp-action="Index" title="All Song">All song</a>
-        </li>
-    }
-    <li class="nav-item">
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
-            <button type="submit" class="nav-link btn btn-link">Logout</button>
-        </form>
+    
+    <li class="nav-item" style="margin-left:0">
+        @if (this.User.IsInRole(GlobalConstants.UserRoleName))
+        {
+            <a class="nav-link" asp-area="User" asp-controller="Song" asp-action="Create" title="+Song">
+                <img src="~/images/addSongLogo2.png" alt="Alternate Text" style="width:50px;" />
+            </a>
+        }
+
+    </li>
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <img src="~/images/profile.png" alt="Alternate Text" style="width:50px;" />
+        </a>
+        <div class="dropdown-menu text-dark" aria-labelledby="navbarDropdown" style="width:220px;">
+            <div class="text-center">
+                <small>
+                    @(this.User.Identity.Name)
+                </small>
+                <hr />
+            </div>
+            <div class="row">
+
+            </div>
+
+            @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+            {
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="Dashboard" asp-action="Index" title="Admin">Admin</a>
+                </div>
+                <div class="nav-item">
+                    <a class="nav-link text-dark" asp-area="Administration" asp-controller="Category" asp-action="Create" title="+Song">Add new song</a>
+                </div>
+            }
+            else if (this.User.IsInRole(GlobalConstants.UserRoleName))
+            {
+
+                <a class="nav-link text-dark" asp-area="User" asp-controller="Song" asp-action="Index" title="All added Song">
+                    <div class="row">
+                        <div class="col-md-4">
+                            <img src="~/images/mySong2.png" alt="Alternate Text" />
+                        </div>
+
+                        <div class="col-md-8">
+                            <p>My Song</p>
+
+                        </div>
+                    </div>
+
+                </a>
+            }
+            <div class="dropdown-divider"></div>
+            <div class="nav-item text-dark">
+                <form class="form-inline row" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@(this.Url.Action("Index", "Home", new { area = string.Empty }))">
+                    <div class="col-md-6">
+
+                    </div>
+                    <button type="submit" class="nav-link btn btn-link col-md-6">
+                        <div class="row">
+                            <div class="col-md-6">
+                                Logout
+                            </div>
+                            <div class="col-md-6">
+                                <img src="~/images/loguot.png" alt="Alternate Text" />
+
+                            </div>
+                        </div>
+                    </button>
+                </form>
+            </div>
+        </div>
     </li>
 }
 else
 {
-    <li>
-        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Sign up</a>
-    </li>
+
     <li>
         <a class="nav-link" asp-area="Identity" asp-page="/Account/Login">Sign in</a>
+    </li>
+    <li>
+        <a class="nav-link" asp-area="Identity" asp-page="/Account/Register">Sign up</a>
     </li>
 }
