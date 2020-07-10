@@ -65,7 +65,7 @@
 
             input.Path = fileName;
 
-            this.ViewData["message"] = await this.musicService.Create(input, userId);
+            this.ViewData["message"] = await this.musicService.Create(input, userId) + " catId: " + input.MusicCategoryId;
             var returnModel = this.musicService.CreateSongModel();
 
             return this.View(returnModel);
