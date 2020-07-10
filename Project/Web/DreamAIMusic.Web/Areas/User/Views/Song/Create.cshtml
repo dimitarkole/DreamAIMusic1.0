@@ -29,14 +29,9 @@
             <div class="form-group">
                 <label asp-for="MusicCategoryId" class="control-label"></label>
                 <!-- <input asp-for="MusicCategoryId" class="form-control" />
-        -->
-                <select asp-for="MusicCategoryId" class="selectpicker form-control" data-live-search="true">
-                    @foreach (var category in Model.Categories)
-                    {
-                        <option value="@category.Id">@category.Name</option>
-                    }
+    -->
+                <select asp-for="MusicCategoryId" class="form-control" asp-items="@(new SelectList(Model.Categories,"Id","Name"))">
                 </select>
-
                 <span asp-validation-for="MusicCategoryId" class="text-danger"></span>
             </div>
 
