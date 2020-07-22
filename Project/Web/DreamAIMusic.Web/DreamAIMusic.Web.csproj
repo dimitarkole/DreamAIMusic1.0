@@ -14,6 +14,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="3.1.6" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.5">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
@@ -31,6 +32,7 @@
     <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.164" PrivateAssets="all">
       <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
   </ItemGroup>
 
   <ItemGroup>
@@ -42,9 +44,5 @@
     <ProjectReference Include="..\..\Services\DreamAIMusic.Services\DreamAIMusic.Services.csproj" />
     <ProjectReference Include="..\DreamAIMusic.Web.Infrastructure\DreamAIMusic.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\DreamAIMusic.Web.ViewModels\DreamAIMusic.Web.ViewModels.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\Songs\" />
   </ItemGroup>
 </Project>
