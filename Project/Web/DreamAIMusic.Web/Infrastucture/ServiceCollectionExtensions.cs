@@ -12,7 +12,9 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Data.Repositories;
     using DreamAIMusic.Services.Administration;
+    using DreamAIMusic.Services.Common;
     using DreamAIMusic.Services.Contracts.Administration;
+    using DreamAIMusic.Services.Contracts.Common;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Services.Data;
     using DreamAIMusic.Services.Messaging;
@@ -86,7 +88,8 @@
                 .AddTransient<IEmailSender, NullMessageSender>()
                 .AddTransient<ISettingsService, SettingsService>()
                 .AddTransient<ICategoryService, CategoryService>()
-                .AddTransient<ISongService, SongService>();
+                .AddTransient<ISongService, SongService>()
+                .AddTransient<IIdentityService, IdentityService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
            => services.AddSwaggerGen(c =>

@@ -1,9 +1,11 @@
 ﻿namespace DreamAIMusic.Web.Controllers
 {
+    using System;
     using System.Diagnostics;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Web.ViewModels;
     using DreamAIMusic.Web.ViewModels.UserModels.MusicModels;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
 
     public class HomeController : ApiController
@@ -15,6 +17,7 @@
             this.songService = songService;
         }
 
+        [Authorize]
         [Route(nameof(Index))]
         [HttpGet]
         public IActionResult Index()
