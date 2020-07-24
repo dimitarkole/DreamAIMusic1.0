@@ -25,9 +25,19 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
-              "src/styles.css"
+              "src/styles.css",
+              "src/assets/styles/bootstrap-4.1.2/bootstrap.min.css",
+              "src/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css",
+              "src/assets/plugins/OwlCarousel2-2.3.4/owl.carousel.css",
+              "src/assets/plugins/OwlCarousel2-2.3.4/owl.theme.default.css",
+              "src/assets/plugins/OwlCarousel2-2.3.4/animate.css",
+              "src/assets/styles/main_styles.css",
+              "src/assets/styles/responsive.css"
             ],
-            "scripts": []
+            "scripts": [
+              //"src/styles/"
+
+            ]
           },
           "configurations": {
             "production": {

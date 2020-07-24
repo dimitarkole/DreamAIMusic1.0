@@ -49,7 +49,7 @@
                     .WithOrigins("http://localhost:4200")))
                 .AddControllers();
 
-            var jwtSettingsSection = Configuration.GetSection("JwtSettings");
+            var jwtSettingsSection = this.Configuration.GetSection("ApplicationSettings");
             services.Configure<JwtSettings>(jwtSettingsSection);
 
             var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
