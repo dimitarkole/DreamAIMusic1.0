@@ -1,0 +1,22 @@
+<div class="d-flex justify-content-center">
+  <form class="w-50" (ngSubmit)="login()" [formGroup]="loginForm">
+    <div class="form-group">
+      <label>Потребителско име</label>
+      <input class="form-control" formControlName="username" type="text"
+             placeholder="Въведете Вашето потребителско име">
+      <span class="text-danger"
+            *ngIf="loginForm.get('username').touched && loginForm.get('username').hasError('required')">
+        Потребителското име е задължително!
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Парола</label>
+      <input class="form-control" formControlName="password" type="password" placeholder="Въведете Вашата парола">
+      <span class="text-danger"
+            *ngIf="loginForm.get('password').touched && loginForm.get('password').hasError('required')">
+        Паролата е задължителена!
+      </span>
+    </div>
+    <button [disabled]="loginForm.invalid" type="submit" class="btn btn-primary">Вход</button>
+  </form>
+</div>

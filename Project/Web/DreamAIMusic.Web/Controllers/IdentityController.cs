@@ -8,68 +8,58 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.Common;
     using DreamAIMusic.Services.Contracts.User;
+    using DreamAIMusic.Web.Configuration;
+    using DreamAIMusic.Web.Extensions;
     using DreamAIMusic.Web.ViewModels.CommonResurces.IdentityModels;
+    using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Options;
 
     public class IdentityController : ApiController
     {
-        private readonly UserManager<ApplicationUser> userManager;
-        private readonly IIdentityService identityService;
-        private readonly ApplicationSettings appSettings;
+		private readonly UserManager<ApplicationUser> userManager;
 
-        public IdentityController(
-            UserManager<ApplicationUser> userManager,
-            IIdentityService identityService,
-            IOptions<ApplicationSettings> appSettings)
-        {
-            this.userManager = userManager;
-            this.identityService = identityService;
-            this.appSettings = appSettings.Value;
-        }
+		public IdentityController(UserManager<ApplicationUser> userManager)
+		{
+			this.userManager = userManager;
+		}
 
-        [HttpPost]
-        [Route(nameof(Regester))]
-        public async Task<ActionResult<ApplicationUser>> Regester(RegesterUserRequestModel model)
-        {
-            var user = new ApplicationUser
-            {
-                Email = model.Email,
-                UserName = model.Username,
-            };
+		[HttpPost("[action]")]
+		public async Task<ActionResult<ApplicationUser>> Register(RegisterInputModel model)
+		{
+			var user = new ApplicationUser
+			{
+				Email = model.Email,
+				UserName = model.Username,
+			};
 
-            IdentityResult result = await this.userManager.CreateAsync(user, model.Password);
-            if (!result.Succeeded)
-            {
-                return this.BadRequest(result.Errors.Select(e => e.Description).ToList());
-            }
+			IdentityResult result = await userManager.CreateAsync(user, model.Password);
+			if (!result.Succeeded)
+			{
+				return BadRequest(result.Errors.Select(e => e.Description).ToList());
+			}
+			return user;
+		}
 
-            return user;
-        }
+		[HttpPost("[action]")]
+		public async Task<ActionResult<ApplicationUser>> Login(LoginInputModel model, [FromServices] IOptions<JwtSettings> settings)
+		{
+			var jwtToken = await userManager.Authenticate(model.Username, model.Password, settings.Value);
 
-        [HttpPost]
-        [Route(nameof(Login))]
-        public async Task<ActionResult<LoginResponseModel>> Login(LoginUserRequestModel model)
-        {
-            var user = await this.userManager.FindByNameAsync(model.Username);
-            if (user == null)
-            {
-                return this.Unauthorized();
-            }
+			if (jwtToken == null)
+			{
+				return BadRequest("Username or password is incorrect.");
+			}
 
-            var passwordValidator = await this.userManager.CheckPasswordAsync(user, model.Password);
+			return new JsonResult(jwtToken);
+		}
 
-            if (!passwordValidator)
-            {
-                return this.Unauthorized();
-            }
-
-            var encryptToken = this.identityService.GenerateJwtToken(user.Id, user.UserName, this.appSettings.Secret);
-            return new LoginResponseModel
-            {
-                Token = encryptToken,
-            };
-        }
-    }
+		[Authorize]
+		[HttpGet("username")]
+		public ActionResult<string> GetUsername()
+		{
+			return this.User.Identity.Name;
+		}
+	}
 }

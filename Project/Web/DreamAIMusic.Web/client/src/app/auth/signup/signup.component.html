@@ -1,0 +1,36 @@
+<div class="d-flex justify-content-center">
+  <form class="w-50" (ngSubmit)="signup()" [formGroup]="signupForm">
+    <div class="form-group">
+      <label>Потребителско име</label>
+      <input class="form-control" formControlName="username" type="text"
+        placeholder="Въведете Вашето потребителско име">
+      <span class="text-danger"
+        *ngIf="signupForm.get('username').touched && signupForm.get('username').hasError('required')">
+        Потребителското име е задължително!
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Email адрес</label>
+      <input class="form-control" formControlName="email" type="email" placeholder="Въведете Вашият email адрес">
+      <span class="text-danger" *ngIf="signupForm.get('email').touched && signupForm.get('email').hasError('required')">
+        Email адреса е задължителен!
+      </span>
+      <span class="text-danger" *ngIf="signupForm.get('email').touched && signupForm.get('email').hasError('email')">
+        Email адреса e невалиден!
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Парола</label>
+      <input class="form-control" formControlName="password" type="password" placeholder="Въведете Вашата парола">
+      <span class="text-danger"
+        *ngIf="signupForm.get('password').touched && signupForm.get('password').hasError('required')">
+        Паролата е задължителена!
+      </span>
+      <span class="text-danger"
+        *ngIf="signupForm.get('password').touched && signupForm.get('password').hasError('minlength')">
+        Паролата трябва да е дълга поне 6 символа!
+      </span>
+    </div>
+    <button [disabled]="signupForm.invalid" type="submit" class="btn btn-primary">Регистрация</button>
+  </form>
+</div>
