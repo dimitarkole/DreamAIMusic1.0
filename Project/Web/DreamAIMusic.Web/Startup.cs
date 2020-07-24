@@ -1,7 +1,7 @@
 ﻿namespace DreamAIMusic.Web
 {
     using System.Reflection;
-
+    using System.Text;
     using DreamAIMusic.Data;
     using DreamAIMusic.Data.Common;
     using DreamAIMusic.Data.Common.Repositories;
@@ -15,6 +15,7 @@
     using DreamAIMusic.Services.Mapping;
     using DreamAIMusic.Services.Messaging;
     using DreamAIMusic.Services.User;
+    using DreamAIMusic.Web.Configuration;
     using DreamAIMusic.Web.Infrastucture;
     using DreamAIMusic.Web.ViewModels;
 
@@ -47,6 +48,12 @@
                     .AllowAnyHeader()
                     .WithOrigins("http://localhost:4200")))
                 .AddControllers();
+
+            var jwtSettingsSection = Configuration.GetSection("JwtSettings");
+            services.Configure<JwtSettings>(jwtSettingsSection);
+
+            var jwtSettings = jwtSettingsSection.Get<JwtSettings>();
+            var key = Encoding.ASCII.GetBytes(jwtSettings.Secret);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
