@@ -13,10 +13,54 @@
   <li><a *ngIf="isAuth" (click)="logout()" class="logout-link">Изход</a></li>
 </ul> -->
 
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="header_content d-flex flex-row align-items-center justify-content-center">
+
+          <!-- Logo -->
+          <div class="logo">
+            <a href="#" class="d-flex flex-row align-items-end justify-content-start">
+              <span class="logo_bars d-flex flex-row align-items-end justify-content-between"><span></span><span></span><span></span><span></span><span></span></span>
+              <span class="logo_text">music</span>
+            </a>
+          </div>
+
+          <!-- Main Navigation -->
+          <nav class="main_nav">
+            <ul class="d-flex flex-row align-items-center justify-content-start">
+              <li><a href="index.html">Home</a></li>
+              <li><a href="artists.html">Artists</a></li>
+              <li><a href="#">Download Music</a></li>
+              <li><a href="blog.html">News</a></li>
+              <li><a href="contact.html">Contact</a></li>
+            </ul>
+          </nav>
+
+          <!-- User area -->
+          <div class="log_reg d-flex flex-row align-items-center justify-content-start">
+            <ul class="d-flex flex-row align-items-start justify-content-start">
+              <li *ngIf="!isAuth"><a  routerLink="/login">Login</a></li>
+              <li *ngIf="!isAuth"><a  routerLink="/signup">Register</a></li>
+              <li *ngIf="isAuth" ><a (click)="logout()">Logout</a></li>
+
+            </ul>
+
+            <!-- Hamburger -->
+            <div class="hamburger d-flex flex-column align-items-end justify-content-between"><div></div><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!--
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
   <a class="navbar-brand" href="#">Онлай магазин</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-    aria-expanded="false" aria-label="Toggle navigation">
+          aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse" id="navbarNav">
@@ -28,9 +72,10 @@
         <a class="nav-link" *ngIf="!isAuth" routerLink="/signup">Регистрация</a>
       </li>
 
-        <li class="nav-item active">
-    <a class="nav-link" *ngIf="isAuth" (click)="logout()">Изход</a>
-  </li>
+      <li class="nav-item active">
+        <a class="nav-link" *ngIf="isAuth" (click)="logout()">Изход</a>
+      </li>
     </ul>
   </div>
 </nav>
+  -->

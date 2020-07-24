@@ -14,6 +14,7 @@ import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { BaseUrlInterceptor } from './core/interceptors/base-url.interceptor';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
 
 
 @NgModule({
@@ -23,6 +24,7 @@ import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
     LoginComponent,
     SignupComponent,
     NavBarComponent,
+    FooterComponent,
   ],
   imports: [
     BrowserModule,
