@@ -1,52 +1,32 @@
-<!-- <div><a routerLink="/">Онлайн магазин</a></div>
-<ul class="navigation-links">
-  <li><a *ngIf="!isAuth" routerLink="/login">Вход</a></li>
-  <li><a *ngIf="!isAuth" routerLink="/signup">Регистрация</a></li>
-  <li><a routerLink="/product/all">Продукти</a></li>
-  <li><a routerLink="/category/all">Категории</a></li>
-   <li><a *ngIf="isAuth" routerLink="/product">Products</a></li> -->
-<!-- <li>
-    <a>Админ панел</a>
-    <button routerLink="/product/create">Добавяне на продукт</button>
-    <button routerLink="/category/create">Добавяне на категория</button>
-  </li>
-  <li><a *ngIf="isAuth" (click)="logout()" class="logout-link">Изход</a></li>
-</ul> -->
-
 <header class="header">
   <div class="container">
     <div class="row">
       <div class="col">
         <div class="header_content d-flex flex-row align-items-center justify-content-center">
-
           <!-- Logo -->
           <div class="logo">
             <a href="#" class="d-flex flex-row align-items-end justify-content-start">
-              <span class="logo_bars d-flex flex-row align-items-end justify-content-between"><span></span><span></span><span></span><span></span><span></span></span>
-              <span class="logo_text">music</span>
+              <img src="../../../../assets/images/icon_2.png" alt="Alternate Text" class="logo_bars" />
+              <!--<span class="logo_bars d-flex flex-row align-items-end justify-content-between">
+              <span></span><span></span><span></span><span></span><span></span></span> -->
+              <span class="logo_text">AI Music</span>
             </a>
           </div>
 
           <!-- Main Navigation -->
           <nav class="main_nav">
             <ul class="d-flex flex-row align-items-center justify-content-start">
-              <li><a href="index.html">Home</a></li>
-              <li><a href="artists.html">Artists</a></li>
-              <li><a href="#">Download Music</a></li>
-              <li><a href="blog.html">News</a></li>
-              <li><a href="contact.html">Contact</a></li>
+              <li><a routerLink="/">Home</a></li>
             </ul>
           </nav>
 
           <!-- User area -->
           <div class="log_reg d-flex flex-row align-items-center justify-content-start">
             <ul class="d-flex flex-row align-items-start justify-content-start">
-              <li *ngIf="!isAuth"><a  routerLink="/login">Login</a></li>
-              <li *ngIf="!isAuth"><a  routerLink="/signup">Register</a></li>
-              <li *ngIf="isAuth" ><a (click)="logout()">Logout</a></li>
-
+              <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
+              <li *ngIf="!isAuth"><a routerLink="/signup">Register</a></li>
+              <li *ngIf="isAuth"><a (click)="logout()">Logout</a></li>
             </ul>
-
             <!-- Hamburger -->
             <div class="hamburger d-flex flex-column align-items-end justify-content-between"><div></div><div></div><div></div></div>
           </div>
@@ -56,26 +36,10 @@
   </div>
 </header>
 
-<!--
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Онлай магазин</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" *ngIf="!isAuth" routerLink="/login">Вход</a>
-      </li>
-      <li class="nav-item active">
-        <a class="nav-link" *ngIf="!isAuth" routerLink="/signup">Регистрация</a>
-      </li>
-
-      <li class="nav-item active">
-        <a class="nav-link" *ngIf="isAuth" (click)="logout()">Изход</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-  -->
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />

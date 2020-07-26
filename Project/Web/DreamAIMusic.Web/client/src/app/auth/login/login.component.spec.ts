@@ -26,13 +26,11 @@ export class LoginComponent implements OnInit {
 
   login() {
     const { username, password } = this.loginForm.value;
-    console.log("username" + username);
-    /*
     this.authService.login(username, password)
       .subscribe((token: string) => {
         this.authService.setToken(token);
         this.authService.initializeAuthenticationState();
         this.router.navigate(['/']);
-      });*/
+      });
   }
 }

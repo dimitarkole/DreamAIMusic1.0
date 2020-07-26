@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
   templateUrl: './signup.component.html',
   styleUrls: ['./signup.component.css']
 })
+
 export class SignupComponent implements OnInit {
-  signupForm: FormGroup;
+  signUpForm: FormGroup;
 
   constructor(
     private fb: FormBuilder,
@@ -18,15 +19,15 @@ export class SignupComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.signupForm = this.fb.group({
+    this.signUpForm = this.fb.group({
       email: [null, [Validators.required, Validators.email]],
       username: [null, [Validators.required]],
       password: [null, [ Validators.required, Validators.minLength(6)]],
     });
   }
 
-  signup() {
-    const { email, password, username } = this.signupForm.value;
+  signUp() {
+    const { email, password, username } = this.signUpForm.value;
       this.authService.register(email, password, username)
       .subscribe(_ => {
         this.router.navigate([ '/login' ]);
