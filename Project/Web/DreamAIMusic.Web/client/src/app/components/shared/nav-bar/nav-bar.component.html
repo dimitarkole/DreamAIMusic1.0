@@ -1,0 +1,45 @@
+<header class="header">
+  <div class="container">
+    <div class="row">
+      <div class="col">
+        <div class="header_content d-flex flex-row align-items-center justify-content-center">
+          <!-- Logo -->
+          <div class="logo">
+            <a href="#" class="d-flex flex-row align-items-end justify-content-start">
+              <img src="../../../../assets/images/icon_2.png" alt="Alternate Text" class="logo_bars" />
+              <!--<span class="logo_bars d-flex flex-row align-items-end justify-content-between">
+              <span></span><span></span><span></span><span></span><span></span></span> -->
+              <span class="logo_text">AI Music</span>
+            </a>
+          </div>
+
+          <!-- Main Navigation -->
+          <nav class="main_nav">
+            <ul class="d-flex flex-row align-items-center justify-content-start">
+              <li><a routerLink="/">Home</a></li>
+            </ul>
+          </nav>
+
+          <!-- User area -->
+          <div class="log_reg d-flex flex-row align-items-center justify-content-start">
+            <ul class="d-flex flex-row align-items-start justify-content-start">
+              <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
+              <li *ngIf="!isAuth"><a routerLink="/signup">Register</a></li>
+              <li *ngIf="isAuth"><a (click)="logout()">Logout</a></li>
+            </ul>
+            <!-- Hamburger -->
+            <div class="hamburger d-flex flex-column align-items-end justify-content-between"><div></div><div></div><div></div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
+<br />
