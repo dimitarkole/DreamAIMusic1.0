@@ -48,6 +48,7 @@
                     options.Password.RequireUppercase = false;
                     options.Password.RequiredUniqueChars = 0;
                 })
+                .AddDefaultTokenProviders()
                 .AddEntityFrameworkStores<ApplicationDbContext>();
             return services;
         }

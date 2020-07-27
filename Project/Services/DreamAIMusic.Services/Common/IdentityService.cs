@@ -3,14 +3,27 @@
     using System;
     using System.Collections.Generic;
     using System.IdentityModel.Tokens.Jwt;
+    using System.Linq;
     using System.Security.Claims;
     using System.Text;
 
+    using DreamAIMusic.Common;
+    using DreamAIMusic.Data;
+    using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.Common;
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.IdentityModel.Tokens;
+    using NHibernate.Criterion;
 
     public class IdentityService : IIdentityService
     {
+        private readonly ApplicationDbContext context;
+
+        public IdentityService(ApplicationDbContext context)
+        {
+            this.context = context;
+        }
+
         public string GenerateJwtToken(string userId, string userName, string sicret)
         {
             // generate token that is valid for 7 days
@@ -30,6 +43,40 @@
             var token = tokenHandler.CreateToken(tokenDescriptor);
             var encryptToken = tokenHandler.WriteToken(token);
             return encryptToken;
+        }
+
+        public IdentityUserRole<string> SetUserRole(ApplicationUser user)
+        {
+            this.GenerateRoles();
+            var roleName = this.context.Users.Count() == 0 ?
+                GlobalConstants.AdministratorRoleName : GlobalConstants.UserRoleName;
+            var currectRole = this.context.Roles
+                .Where(r => r.Name == roleName)
+                .FirstOrDefault();
+
+            var userRole = new IdentityUserRole<string>()
+            {
+                RoleId = currectRole.Id,
+                UserId = user.Id,
+            };
+            return userRole;
+        }
+
+        private void GenerateRoles()
+        {
+            this.GenerateRole(GlobalConstants.AdministratorRoleName);
+            this.GenerateRole(GlobalConstants.UserRoleName);
+        }
+
+        private async void GenerateRole(string roleName)
+        {
+            if (this.context.Roles
+                .FirstOrDefault(r => r.Name == roleName) == null)
+            {
+                var role = new ApplicationRole(roleName);
+                await this.context.Roles.AddAsync(role);
+                this.context.SaveChanges();
+            }
         }
     }
 }
