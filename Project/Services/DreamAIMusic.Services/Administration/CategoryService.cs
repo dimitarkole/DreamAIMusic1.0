@@ -23,9 +23,10 @@
 
         public IList<T> All<T>() => this.context.Categories
             .Where(c => c.DeletedOn == null)
-            .To<T>().ToList();
+            .To<T>()
+            .ToList();
 
-        public async Task<string> Create(CategoryInputModel model, string userId)
+        public async Task<string> Create(CategoryInputModel model)
         {
             Category category = model.To<Category>();
             await this.context.Categories.AddAsync(category);

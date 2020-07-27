@@ -12,20 +12,25 @@
     using DreamAIMusic.Web.Extensions;
     using DreamAIMusic.Web.ViewModels.CommonResurces.IdentityModels;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
     using Microsoft.Extensions.Options;
 
     public class IdentityController : ApiController
     {
-		private readonly UserManager<ApplicationUser> userManager;
+        public IdentityController(
+			UserManager<ApplicationUser> userManager,
+			SignInManager<ApplicationUser> signInManager,
+			ILogger<LogoutModel> logger,
+			IHostingEnvironment hostingEnvironment)
+			: base(userManager, signInManager, logger, hostingEnvironment)
+        {
+        }
 
-		public IdentityController(UserManager<ApplicationUser> userManager)
-		{
-			this.userManager = userManager;
-		}
-
-		[HttpPost("[action]")]
+        [HttpPost("[action]")]
 		public async Task<ActionResult<ApplicationUser>> Register(RegisterInputModel model)
 		{
 			var user = new ApplicationUser
