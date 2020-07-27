@@ -2,17 +2,28 @@
 {
     using System;
     using System.Diagnostics;
+    using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Web.ViewModels;
     using DreamAIMusic.Web.ViewModels.UserModels.MusicModels;
     using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
 
     public class HomeController : ApiController
     {
         private readonly ISongService songService;
 
-        public HomeController(ISongService songService)
+        public HomeController(
+            ISongService songService,
+            UserManager<ApplicationUser> userManager, 
+            SignInManager<ApplicationUser> signInManager,
+            ILogger<LogoutModel> logger, 
+            IHostingEnvironment hostingEnvironment) 
+            : base(userManager, signInManager, logger, hostingEnvironment)
         {
             this.songService = songService;
         }
