@@ -21,13 +21,17 @@
 
     public class IdentityController : ApiController
     {
+        private readonly IIdentityService identityService;
+
         public IdentityController(
+			IIdentityService identityService,
 			UserManager<ApplicationUser> userManager,
 			SignInManager<ApplicationUser> signInManager,
 			ILogger<LogoutModel> logger,
 			IHostingEnvironment hostingEnvironment)
 			: base(userManager, signInManager, logger, hostingEnvironment)
         {
+            this.identityService = identityService;
         }
 
         [HttpPost("[action]")]
@@ -38,6 +42,8 @@
 				Email = model.Email,
 				UserName = model.Username,
 			};
+
+			user.Roles.Add(this.identityService.SetUserRole(user));
 
 			IdentityResult result = await userManager.CreateAsync(user, model.Password);
 			if (!result.Succeeded)
