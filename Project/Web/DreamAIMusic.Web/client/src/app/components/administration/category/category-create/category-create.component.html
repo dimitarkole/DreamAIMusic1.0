@@ -1,0 +1,18 @@
+<div class="d-flex justify-content-center">
+  <form class="w-50" (ngSubmit)="formHandler()" [formGroup]="categoryForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" formControlName="name" type="text" placeholder="Име на категорията">
+      <span class="text-danger" *ngIf="name.touched && name.hasError('required')">Името е задаължително!</span>
+      <span class="text-danger" *ngIf="name.hasError('minlength')">
+        Category name must contain {{nameMinLength}} символа
+        дълго
+      </span>
+      <span class="text-danger" *ngIf="name.hasError('maxlength')">
+        Името трябва да бъде най-много {{nameMaxLength}}
+        символа
+      </span>
+    </div>
+    <button [disabled]="categoryForm.invalid" type="submit" class="btn btn-primary">Добави</button>
+  </form>
+</div>

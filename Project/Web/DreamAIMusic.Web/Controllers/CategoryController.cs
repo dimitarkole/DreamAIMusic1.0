@@ -5,6 +5,7 @@ using DreamAIMusic.Web.ViewModels.Administration.CategoriesModels;
 using DreamAIMusic.Web.ViewModels.CommonResurces.CategoryModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
 using Microsoft.AspNetCore.Mvc;
@@ -26,20 +27,40 @@ namespace DreamAIMusic.Web.Controllers
         }
 
         [HttpGet]
-        [Route("/Categoty/[action]")]
-        public IActionResult All()
-        {
-            var all = this.categoryService.All<CategoryViewModel>().ToList();
-            return this.Ok(all);
-        }
+        public ActionResult<IEnumerable<CategoryViewModel>> Get() => this.Ok(this.categoryService.All<CategoryViewModel>());
+
+        [HttpGet("{id}")]
+        public ActionResult<CategoryViewModel> Get(string id) => this.Ok(this.categoryService.GetById<CategoryViewModel>(id));
 
         [HttpPost]
-        [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
-        [Route("/Categoty/[action]")]
-        public async Task<IActionResult> Create(CategoryInputModel model)
+        public async Task<IActionResult> Post(CategoryInputModel model)
         {
-            var id = await this.categoryService.Create(model);
-            return this.Ok(id);
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            await this.categoryService.Create(model);
+            return this.StatusCode(StatusCodes.Status201Created);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> Put(string id, CategoryEditModel model)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            await this.categoryService.Update(id, model);
+            return this.Ok();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await this.categoryService.Delete(id);
+            return this.Ok();
         }
     }
 }

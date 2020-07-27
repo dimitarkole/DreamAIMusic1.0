@@ -17,6 +17,8 @@
           <nav class="main_nav">
             <ul class="d-flex flex-row align-items-center justify-content-start">
               <li><a routerLink="/">Home</a></li>
+              <li *ngIf="isAdmin"><a routerLink="/category/create">Add categoty</a></li>
+
             </ul>
           </nav>
 

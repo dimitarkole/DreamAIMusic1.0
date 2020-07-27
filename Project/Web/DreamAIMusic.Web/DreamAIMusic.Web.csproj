@@ -45,4 +45,8 @@
     <ProjectReference Include="..\DreamAIMusic.Web.Infrastructure\DreamAIMusic.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\DreamAIMusic.Web.ViewModels\DreamAIMusic.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="client\src\app\components\administration\category\" />
+  </ItemGroup>
 </Project>
