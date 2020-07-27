@@ -15,7 +15,7 @@ import { JwtInterceptor } from './core/interceptors/jwt.interceptor';
 import { BaseUrlInterceptor } from './core/interceptors/base-url.interceptor';
 import { NavBarComponent } from './components/shared/nav-bar/nav-bar.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-
+import { CategoryCreateComponent } from './components/administration/category/category-create/category-create.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +25,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     SignupComponent,
     NavBarComponent,
     FooterComponent,
+    CategoryCreateComponent,
   ],
   imports: [
     BrowserModule,

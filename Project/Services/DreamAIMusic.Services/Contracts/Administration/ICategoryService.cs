@@ -11,7 +11,7 @@
     {
         IList<T> All<T>();
 
-        Task<string> Create(CategoryInputModel model);
+        Task Create(CategoryInputModel model);
 
         Task Update(string id, CategoryEditModel model);
 

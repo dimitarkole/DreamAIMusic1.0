@@ -26,13 +26,11 @@
             .To<T>()
             .ToList();
 
-        public async Task<string> Create(CategoryInputModel model)
+        public async Task Create(CategoryInputModel model)
         {
             Category category = model.To<Category>();
             await this.context.Categories.AddAsync(category);
             await this.context.SaveChangesAsync();
-
-            return category.Id;
         }
 
         public async Task Delete(string id)
