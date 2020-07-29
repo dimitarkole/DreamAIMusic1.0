@@ -23,15 +23,14 @@
 
         public IList<T> All<T>() => this.context.Categories
             .Where(c => c.DeletedOn == null)
-            .To<T>().ToList();
+            .To<T>()
+            .ToList();
 
-        public async Task<string> Create(CategoryInputModel model, string userId)
+        public async Task Create(CategoryInputModel model)
         {
             Category category = model.To<Category>();
             await this.context.Categories.AddAsync(category);
             await this.context.SaveChangesAsync();
-
-            return category.Id;
         }
 
         public async Task Delete(string id)
@@ -52,7 +51,7 @@
             Category category = this.context.Categories
                .FirstOrDefault(s => s.Id == id);
 
-            model.To<Song>(category);
+            model.To<Category>(category);
 
             this.context.Categories.Update(category);
             await this.context.SaveChangesAsync();
