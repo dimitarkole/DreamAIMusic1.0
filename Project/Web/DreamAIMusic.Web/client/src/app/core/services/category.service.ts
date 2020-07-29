@@ -23,7 +23,7 @@ export class CategoryService {
   }
 
   edit(category: Category) {
-    return this.http.put(this.route, category);
+    return this.http.put(`${this.route}/${category.id}`, category);
   }
 
   delete(id: number) {

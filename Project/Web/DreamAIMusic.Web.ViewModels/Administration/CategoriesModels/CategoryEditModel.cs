@@ -5,7 +5,7 @@ using System.Text;
 using DreamAIMusic.Data.Models;
 namespace DreamAIMusic.Web.ViewModels.Administration.CategoriesModels
 {
-    public class CategoryEditModel : IMapTo<Category>
+    public class CategoryEditModel : IMapTo<Category>, IMapFrom<Category>
     {
         public string Name { get; set; }
     }

@@ -33,8 +33,8 @@
               "src/assets/plugins/OwlCarousel2-2.3.4/animate.css",
               "src/assets/styles/main_styles.css",
               "src/assets/styles/responsive.css",
-              "src/assets/styles/form_styles.css"
-
+              "src/assets/styles/form_styles.css",
+              "src/assets/styles/table_style.css"
             ],
             "scripts": [
               //"src/styles/"

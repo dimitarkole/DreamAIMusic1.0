@@ -2,17 +2,15 @@
   <form class="w-50" (ngSubmit)="formHandler()" [formGroup]="categoryForm">
     <div class="form-group">
       <label>Name</label>
-      <input class="form-control" formControlName="name" type="text" placeholder="Име на категорията">
-      <span class="text-danger" *ngIf="name.touched && name.hasError('required')">Името е задаължително!</span>
+      <input class="form-control" formControlName="name" type="text" placeholder="Category name">
+      <span class="text-danger" *ngIf="name.touched && name.hasError('required')">The name is required!</span>
       <span class="text-danger" *ngIf="name.hasError('minlength')">
-        Category name must contain {{nameMinLength}} символа
-        дълго
+        Category name must contain {{nameMinLength}} characters!
       </span>
       <span class="text-danger" *ngIf="name.hasError('maxlength')">
-        Името трябва да бъде най-много {{nameMaxLength}}
-        символа
+        Category name must be at most {{nameMinLength}} characters!
       </span>
     </div>
-    <button [disabled]="categoryForm.invalid" type="submit" class="btn btn-primary">Добави</button>
+    <button [disabled]="categoryForm.invalid" type="submit" class="btn btn-primary">Add</button>
   </form>
 </div>
