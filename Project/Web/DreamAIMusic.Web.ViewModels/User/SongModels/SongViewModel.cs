@@ -1,14 +1,17 @@
-﻿using AutoMapper;
-using DreamAIMusic.Data.Models;
-using DreamAIMusic.Services.Mapping;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
+﻿namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using AutoMapper;
+    using DreamAIMusic.Data.Models;
+    using DreamAIMusic.Services.Mapping;
+
     public class SongViewModel : IMapFrom<Song>
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string Path { get; set; }

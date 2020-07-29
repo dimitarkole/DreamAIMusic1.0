@@ -71,7 +71,8 @@
             {
                 return this.BadRequest();
             }
-            else if (this.songService.IsOwn(id, userId))
+
+            if (this.songService.IsOwn(id, userId))
             {
                 return this.StatusCode(StatusCodes.Status406NotAcceptable);
             }

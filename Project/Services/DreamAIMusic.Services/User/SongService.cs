@@ -54,9 +54,7 @@
             .Where(s =>
                 s.Id == songId
                 && s.UserId == userId)
-            .FirstOrDefault()
-            == null ?
-            false : true;
+            .FirstOrDefault() == null;
 
         public async Task Update(string id, SongEditModel model)
         {
