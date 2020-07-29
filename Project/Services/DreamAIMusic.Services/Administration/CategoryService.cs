@@ -51,7 +51,7 @@
             Category category = this.context.Categories
                .FirstOrDefault(s => s.Id == id);
 
-            model.To<Song>(category);
+            model.To<Category>(category);
 
             this.context.Categories.Update(category);
             await this.context.SaveChangesAsync();
