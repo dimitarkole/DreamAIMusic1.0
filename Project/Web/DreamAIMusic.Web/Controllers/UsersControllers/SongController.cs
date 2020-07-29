@@ -33,23 +33,12 @@
         }
 
         [HttpGet]
-        [Route(nameof(Get))]
-        public ActionResult<IEnumerable<SongViewModel>> Get()
-            => this.Ok(this.songService.All<SongViewModel>());
-
-        [HttpGet]
         [Route(nameof(GetOwn))]
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
         public ActionResult<IEnumerable<SongViewModel>> GetOwn()
             => this.Ok(this.songService.AllOwn<SongViewModel>(this.userManager.GetUserId(this.User)));
 
-        [HttpGet("{id}")]
-        public ActionResult<SongViewModel> Get(string id) =>
-            this.Ok(this.songService.GetById<SongViewModel>(id));
-
         [HttpPost]
         [Route(nameof(Post))]
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
         public async Task<IActionResult> Post(SongInputModel model)
         {
             if (!this.ModelState.IsValid)

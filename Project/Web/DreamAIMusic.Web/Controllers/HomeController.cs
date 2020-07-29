@@ -1,6 +1,7 @@
 ﻿namespace DreamAIMusic.Web.Controllers
 {
     using System;
+    using System.Collections.Generic;
     using System.Diagnostics;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
@@ -28,33 +29,13 @@
             this.songService = songService;
         }
 
-        [Authorize]
-        [Route(nameof(Index))]
         [HttpGet]
-        public IActionResult Index()
-        {
-            // var musics = this.songService.All<SongViewModel>();
-            return this.Ok("Works Index");
-        }
+        [Route(nameof(Get))]
+        public ActionResult<IEnumerable<SongViewModel>> Get()
+          => this.Ok(this.songService.All<SongViewModel>());
 
-        [Route(nameof(Privacy))]
-        [HttpGet]
-        public IActionResult Privacy()
-        {
-            return this.Ok("Works Privacy");
-
-        }
-
-        [Route(nameof(Error))]
-        [HttpGet]
-        [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
-        public IActionResult Error()
-        {
-            return this.Ok("Works Error");
-
-            /*
-            return this.View(
-                new ErrorViewModel { RequestId = Activity.Current?.Id ?? this.HttpContext.TraceIdentifier });*/
-        }
+        [HttpGet("{id}")]
+        public ActionResult<SongViewModel> Get(string id) =>
+           this.Ok(this.songService.GetById<SongViewModel>(id));
     }
 }
