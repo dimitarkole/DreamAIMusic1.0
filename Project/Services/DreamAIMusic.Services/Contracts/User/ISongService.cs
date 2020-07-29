@@ -5,22 +5,22 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using DreamAIMusic.Web.ViewModels.UserModels.MusicModels;
+    using DreamAIMusic.Web.ViewModels.UserModels.SongModels;
 
     public interface ISongService
     {
-        IList<T> All<T>();
+        IEnumerable<T> All<T>();
 
-        IList<T> AllOwenMusic<T>(string userId);
+        IEnumerable<T> AllOwn<T>(string userId);
 
-        Task<string> Create(SongInputModel model, string userId);
-
-        SongInputModel CreateSongModel();
-
-        Task Update(string id, SongEditModel model);
+        Task Create(SongInputModel model, string userId);
 
         T GetById<T>(string id);
 
+        Task Update(string id, SongEditModel model);
+
         Task Delete(string id);
+
+        bool IsOwn(string songId, string userId);
     }
 }

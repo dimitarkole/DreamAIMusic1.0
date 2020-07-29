@@ -5,7 +5,7 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Web.ViewModels;
-    using DreamAIMusic.Web.ViewModels.UserModels.MusicModels;
+    using DreamAIMusic.Web.ViewModels.UserModels.SongModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -19,10 +19,10 @@
 
         public HomeController(
             ISongService songService,
-            UserManager<ApplicationUser> userManager, 
+            UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LogoutModel> logger, 
-            IHostingEnvironment hostingEnvironment) 
+            ILogger<LogoutModel> logger,
+            IHostingEnvironment hostingEnvironment)
             : base(userManager, signInManager, logger, hostingEnvironment)
         {
             this.songService = songService;

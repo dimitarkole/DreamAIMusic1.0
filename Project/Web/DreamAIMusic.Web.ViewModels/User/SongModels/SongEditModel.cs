@@ -5,7 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace DreamAIMusic.Web.ViewModels.UserModels.MusicModels
+namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
 {
     public class SongEditModel : IMapTo<Song>//, IHaveCustomMappings
     {

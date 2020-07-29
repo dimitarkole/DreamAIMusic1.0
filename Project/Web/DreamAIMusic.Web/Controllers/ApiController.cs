@@ -19,7 +19,7 @@
         protected readonly SignInManager<ApplicationUser> signInManager;
         protected readonly ILogger<LogoutModel> logger;
         protected readonly IHostingEnvironment hostingEnvironment;
-        protected readonly string userId;
+
         public ApiController(
           UserManager<ApplicationUser> userManager,
           SignInManager<ApplicationUser> signInManager,
@@ -30,7 +30,6 @@
             this.signInManager = signInManager;
             this.logger = logger;
             this.hostingEnvironment = hostingEnvironment;
-            //this.userId = thi
         }
     }
 }

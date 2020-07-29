@@ -14,7 +14,6 @@
     using Microsoft.AspNetCore.Authorization;
     using DreamAIMusic.Common;
 
-    [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class UserController : ApiController
     {
 
