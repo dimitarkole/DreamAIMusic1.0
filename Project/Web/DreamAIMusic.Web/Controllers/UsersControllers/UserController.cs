@@ -17,7 +17,6 @@
     [Authorize(Roles = GlobalConstants.UserRoleName)]
     public class UserController : ApiController
     {
-
         public UserController(
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
