@@ -1,5 +1,6 @@
 import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-nav-bar',
@@ -10,16 +11,18 @@ export class NavBarComponent {
   @Output() sidenavToggle = new EventEmitter<void>();
   isAuth: boolean = false;
   isAdmin: boolean = false;
-
+  role: string = "";
   constructor(
+    private router: Router,
     public authService: AuthService
   ) {
     this.isAdmin = authService.isAdmin;
     this.isAuth = authService.isAuth;
-
+    this.role = authService.role;
     this.authService.isAuthChanged.subscribe(() => {
       this.isAuth = this.authService.isAuth;
       this.isAdmin = this.authService.isAdmin;
+      this.role = this.authService.role;
     })
   }
 
@@ -30,5 +33,7 @@ export class NavBarComponent {
   logout() {
     this.authService.logout();
     this.authService.initializeAuthenticationState();
+    this.router.navigate(['/']);
+    location.reload();
   }
 }

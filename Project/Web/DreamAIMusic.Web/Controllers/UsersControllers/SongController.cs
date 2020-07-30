@@ -33,12 +33,10 @@
         }
 
         [HttpGet]
-        [Route(nameof(GetOwn))]
         public ActionResult<IEnumerable<SongViewModel>> GetOwn()
             => this.Ok(this.songService.AllOwn<SongViewModel>(this.userManager.GetUserId(this.User)));
 
         [HttpPost]
-        [Route(nameof(Post))]
         public async Task<IActionResult> Post(SongInputModel model)
         {
             if (!this.ModelState.IsValid)

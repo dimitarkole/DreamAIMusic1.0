@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <form class="w-50" (ngSubmit)="formHandler()" [formGroup]="songForm">
+    <div class="form-group">
+      <label>Name</label>
+      <input class="form-control" formControlName="name" type="text" placeholder="Song name">
+      <span class="text-danger" *ngIf="name.touched && name.hasError('required')">The name is required!</span>
+      <span class="text-danger" *ngIf="name.hasError('minlength')">
+        The song name must contain {{nameMinLength}} characters!
+      </span>
+      <span class="text-danger" *ngIf="name.hasError('maxlength')">
+        The song name must be at most {{nameMinLength}} characters!
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Path</label>
+      <input class="form-control" formControlName="path" type="text" placeholder="path">
+      <span class="text-danger" *ngIf="path.touched && path.hasError('required')">The path is required!</span>
+    </div>
+
+    <div class="form-group">
+      <label>Categoty</label>
+      <select class="form-control" formControlName="musicCategoryId" [value]='default'>
+        <option value="default" disabled selected>Select category</option>
+        <option *ngFor="let category of categories$ | async" [value]="category.id">{{category.name}}</option>
+      </select>
+      <span class="text-danger" *ngIf="musicCategoryId.touched && (musicCategoryId.hasError('required') || musicCategoryId.hasError('pattern'))">The category is required!</span>
+    </div>
+
+    <div class="form-group">
+      <label>Text</label>
+      <input class="form-control" formControlName="text" type="text" placeholder="Text">
+      <span class="text-danger" *ngIf="text.touched && text.hasError('required')">The text is required!</span>
+      <span class="text-danger" *ngIf="text.hasError('minlength')">
+        The song text must contain {{textMinLength}} characters!
+      </span>
+      <span class="text-danger" *ngIf="text.hasError('maxlength')">
+        The song text must be at most {{textMaxLength}} characters!
+      </span>
+    </div>
+    <button [disabled]="songForm.invalid" type="submit" class="btn btn-primary">Add</button>
+  </form>
+</div>

@@ -19,7 +19,7 @@
               <li><a routerLink="/">Home</a></li>
               <li *ngIf="isAdmin"><a routerLink="/category/create">Add categoty</a></li>
               <li *ngIf="isAdmin"><a routerLink="/category">All categoty</a></li>
-
+              <li *ngIf="role=='User'"><a routerLink="/song/create">Add Song</a></li>
             </ul>
           </nav>
 

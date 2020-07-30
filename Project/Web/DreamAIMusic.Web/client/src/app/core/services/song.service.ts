@@ -19,16 +19,16 @@ export class SongService {
     return this.http.get<Song[]>(this.routeSongController);
   }
 
-  create(category: Song) {
-    return this.http.post(this.routeSongController, category);
+  create(song: Song) {
+    return this.http.post(this.routeSongController, song);
   }
 
   getById(id: number) {
     return this.http.get<Song>(`${this.routeHomeController}/${id}`);
   }
 
-  edit(category: Song) {
-    return this.http.put(`${this.routeSongController}/${category.id}`, category);
+  edit(song: Song) {
+    return this.http.put(`${this.routeSongController}/${song.id}`, song);
   }
 
   delete(id: number) {
