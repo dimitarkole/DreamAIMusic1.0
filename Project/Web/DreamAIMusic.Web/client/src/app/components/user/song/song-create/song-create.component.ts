@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
 import { Router } from '@angular/router';
 import { SongService } from '../../../../core/services/song.service';
@@ -6,6 +6,7 @@ import { Song } from '../../../shared/models/song';
 import Category from '../../../shared/models/category';
 import { Observable } from 'rxjs';
 import { CategoryService } from '../../../../core/services/category.service';
+import { HttpEventType } from '@angular/common/http';
 
 @Component({
   selector: 'app-song-create',
@@ -19,6 +20,11 @@ export class SongCreateComponent implements OnInit {
   textMinLength = 10;
   textMaxLength = 1000;
   songForm: FormGroup
+  public progress: number;
+  public message: string;
+  private routeUpload: string = 'song/Upload';
+
+  @Output() public onUploadFinished = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -37,6 +43,12 @@ export class SongCreateComponent implements OnInit {
           Validators.required,
           Validators.minLength(this.nameMinLength),
           Validators.maxLength(this.nameMaxLength)
+        ]
+      ],
+      imageFile: [
+        null,
+        [
+          Validators.required
         ]
       ],
       path: [
@@ -64,9 +76,9 @@ export class SongCreateComponent implements OnInit {
   }
 
   formHandler() {
-    let category: Song = this.songForm.value;
-
-    this.songService.create(category)
+    let song: Song = this.songForm.value;
+    console.log(song);
+    this.songService.create(song)
       .subscribe(_ => {
         this.router.navigate(['song', 'all']);
       })
@@ -89,5 +101,20 @@ export class SongCreateComponent implements OnInit {
   get musicCategoryId(): AbstractControl {
     return this.songForm.get('musicCategoryId');
   }
-  
+
+  get imageFile(): AbstractControl {
+    return this.songForm.get('imageFile');
+  }
+
+  public uploadImage = (files) => {
+    this.songService.uploadImage(files).subscribe(event => {
+        if (event.type === HttpEventType.UploadProgress)
+          this.progress = Math.round(100 * event.loaded / event.total);
+        else if (event.type === HttpEventType.Response) {
+          this.message = 'Upload success.';
+          this.onUploadFinished.emit(event.body);
+         // this.songForm.controls['imageFile'].setValue(event.ok);
+        }
+    });
+  }
 }

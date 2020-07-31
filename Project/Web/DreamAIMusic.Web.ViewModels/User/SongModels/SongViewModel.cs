@@ -16,6 +16,8 @@
 
         public string Path { get; set; }
 
+        public string Image { get; set; }
+
         public string MusicCategoryId { get; set; }
 
         public string MusicCategoryName { get; set; }

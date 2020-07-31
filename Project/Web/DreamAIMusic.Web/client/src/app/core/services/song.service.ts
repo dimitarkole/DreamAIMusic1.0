@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpEventType } from '@angular/common/http';
 import { Song } from '../../components/shared/models/song';
 
 @Injectable({
@@ -20,7 +20,7 @@ export class SongService {
   }
 
   create(song: Song) {
-    return this.http.post(this.routeSongController, song);
+    return this.http.post(this.routeSongController, song, { reportProgress: true, observe: 'events' });
   }
 
   getById(id: number) {
@@ -33,5 +33,17 @@ export class SongService {
 
   delete(id: number) {
     return this.http.delete(`${this.routeSongController}/${id}`);
+  }
+
+  uploadImage(files) {
+    if (files.length === 0) {
+      return;
+    }
+
+    let fileToUpload = <File>files[0];
+    const formData = new FormData();
+    formData.append('file', fileToUpload, fileToUpload.name);
+    return this.http.post(`${this.routeSongController}/UploadImage`,
+      formData, { reportProgress: true, observe: 'events' });
   }
 }
