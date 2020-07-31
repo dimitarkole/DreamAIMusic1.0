@@ -20,6 +20,7 @@ import { CategoryCreateComponent } from './components/administration/category/ca
 import { CategoryListComponent } from './components/administration/category/category-list/category-list.component';
 import { CategoryDeleteModalComponent } from './components/administration/category/category-delete-modal/category-delete-modal.component';
 import { CategoryEditComponent } from './components/administration/category/category-edit/category-edit.component';
+import { SongCreateComponent } from './components/user/song/song-create/song-create.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import { CategoryEditComponent } from './components/administration/category/cate
     CategoryListComponent,
     CategoryDeleteModalComponent,
     CategoryEditComponent,
+    SongCreateComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,

@@ -49,5 +49,6 @@
   <ItemGroup>
     <Folder Include="client\src\app\components\administration\category\" />
     <Folder Include="client\src\app\components\user\" />
+    <Folder Include="Resources\Images\" />
   </ItemGroup>
 </Project>

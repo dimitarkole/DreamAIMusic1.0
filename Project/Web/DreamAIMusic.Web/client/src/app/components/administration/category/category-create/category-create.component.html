@@ -1,5 +1,5 @@
 <div class="d-flex justify-content-center">
-  <form class="w-50" (ngSubmit)="formHandler()" [formGroup]="categoryForm">
+  <form class="w-50" (ngSubmit)="formHandler()" [formGroup]="songService">
     <div class="form-group">
       <label>Name</label>
       <input class="form-control" formControlName="name" type="text" placeholder="Category name">

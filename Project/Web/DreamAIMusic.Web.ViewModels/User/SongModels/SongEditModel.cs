@@ -17,6 +17,8 @@ namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
 
         public string Text { get; set; }
 
+        public string Image { get; set; }
+
         /* public void CreateMappings(IProfileExpression configuration)
             {
                 throw new NotImplementedException();

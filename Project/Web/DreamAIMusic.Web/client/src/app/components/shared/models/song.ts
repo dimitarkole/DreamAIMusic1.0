@@ -2,6 +2,8 @@ export interface Song {
   id: number,
   name: string
   path: string,
+  imageFile: File,
+  imagePath: string,
   musicCategoryId: string,
   musicCategoryName: string,
   text: string,
