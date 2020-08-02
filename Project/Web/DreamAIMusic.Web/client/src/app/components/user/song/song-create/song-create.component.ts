@@ -48,13 +48,13 @@ export class SongCreateComponent implements OnInit {
       imageFile: [
         null,
         [
-          Validators.required
+         // Validators.required
         ]
       ],
       path: [
         null,
         [
-          Validators.required
+         // Validators.required
         ]
       ],
       musicCategoryId: [

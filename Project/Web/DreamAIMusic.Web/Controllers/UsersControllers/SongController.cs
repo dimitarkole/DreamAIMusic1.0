@@ -53,7 +53,7 @@
             var userId = this.userManager.GetUserId(this.User);
 
             // uploadImage
-            try
+           /* try
             {
                 var file = model.ImageFile;
                 var folderName = Path.Combine("Resources", "Images");
@@ -73,16 +73,15 @@
                 else
                 {
                     return this.BadRequest();
-                }
+                }*/
 
                 await this.songService.Create(model, userId);
                 return this.StatusCode(StatusCodes.Status201Created);
-
-            }
+           /* }
             catch (Exception ex)
             {
                 return this.StatusCode(500, $"Internal server error: {ex}");
-            }
+            }*/
 
         }
 
