@@ -5,6 +5,7 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { SongService } from '../../../../core/services/song.service';
 import { Router } from '@angular/router';
 import getPage from '../../../../common/paginator';
+import { SongDeleteModalComponent } from '../song-delete-modal/song-delete-modal.component';
 
 @Component({
   selector: 'app-song-list',
@@ -30,19 +31,16 @@ export class SongListComponent{
     })
   }
 
-  /*openDelete(categoryId: number) {
-    let modal = this.modalService.open(CategoryDeleteModalComponent);
+  openDelete(songId: number) {
+    let modal = this.modalService.open(SongDeleteModalComponent);
     modal.result.then(value => {
-      debugger;
-      this.categoryService.delete(categoryId).toPromise()
-        .then(_ => {
-          this.router.navigate(['/category/all']);
-
+      this.songService.delete(songId).subscribe(_ => {
+          this.router.navigate(['/song']);
         })
     }).catch(err => {
       console.log(err);
     })
-  }*/
+  }
 
   public getSongsPerPage(page: number): void {
     this.song = getPage<Song>(this.allSongs, page, this.itemsPerPage);
