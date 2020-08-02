@@ -21,6 +21,7 @@ import { CategoryListComponent } from './components/administration/category/cate
 import { CategoryDeleteModalComponent } from './components/administration/category/category-delete-modal/category-delete-modal.component';
 import { CategoryEditComponent } from './components/administration/category/category-edit/category-edit.component';
 import { SongCreateComponent } from './components/user/song/song-create/song-create.component';
+import { SongListComponent } from './components/user/song/song-list/song-list.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +36,7 @@ import { SongCreateComponent } from './components/user/song/song-create/song-cre
     CategoryDeleteModalComponent,
     CategoryEditComponent,
     SongCreateComponent,
+    SongListComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,

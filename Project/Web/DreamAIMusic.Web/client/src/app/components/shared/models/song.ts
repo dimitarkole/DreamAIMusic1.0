@@ -1,6 +1,6 @@
 export interface Song {
   id: number,
-  name: string
+  name: string,
   path: string,
   imageFile: File,
   imagePath: string,
