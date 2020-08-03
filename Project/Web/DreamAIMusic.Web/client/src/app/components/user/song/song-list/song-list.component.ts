@@ -15,7 +15,6 @@ import { SongEditComponent } from '../song-edit/song-edit.component';
 })
 export class SongListComponent{
   @Input() categoty: Song
-
   page: number = globalConstants.pagination.defaultPage;
   collectionSize: number;
   private itemsPerPage: number;
