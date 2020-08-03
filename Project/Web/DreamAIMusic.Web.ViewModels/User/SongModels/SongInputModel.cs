@@ -10,7 +10,7 @@
     using DreamAIMusic.Web.ViewModels.CommonResurces.CategoryModels;
     using Microsoft.AspNetCore.Http;
 
-    public class SongInputModel : IMapTo<Song>//, IHaveCustomMappings
+    public class SongInputModel : IMapTo<Song>, IHaveCustomMappings
     {
         public string Name { get; set; }
 
@@ -19,21 +19,21 @@
         // 6045ff71-7af1-4b03-a805-f6da3ba1a800
         public string MusicCategoryId { get; set; }
 
-       // public List<CategoryViewModel> Categories { get; set; }
-
+        // public List<CategoryViewModel> Categories { get; set; }
         public string Text { get; set; }
+
+        public string ImagePath { get; set; }
+
+        public IFormFile ImageFile { get; set; }
 
         /*[Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
-        public IFormFile File { get; set; }
+        public IFormFile File { get; set; }*/
 
-      /*  public void CreateMappings(IProfileExpression configuration)
+        public void CreateMappings(IProfileExpression configuration)
         {
             configuration.CreateMap<Song, SongInputModel>()
-                            .ForMember(s => s.Categories, y => y.Ignore())
-                            .ForMember(s => s.File, y => y.Ignore());
+                            .ForMember(s => s.ImageFile, y => y.Ignore());
         }
-      */
-
     }
 }

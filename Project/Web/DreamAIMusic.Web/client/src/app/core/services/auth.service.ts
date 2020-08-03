@@ -17,6 +17,7 @@ export class AuthService {
   public isAuth = false;
   public isAdmin = false;
   public username: string;
+  public role: string;
   isAuthChanged = new Subject<boolean>();
 
   initializeAuthenticationState() {
@@ -32,6 +33,7 @@ export class AuthService {
         this.username = tokenData['unique_name'];
         this.isAuth = true;
         this.isAdmin = tokenData["role"] === "Administrator";
+        this.role = tokenData["role"];
       }
       catch (Error) {
         this.isAuth = false;

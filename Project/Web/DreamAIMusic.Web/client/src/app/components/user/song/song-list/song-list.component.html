@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="jp-playlist-current col-md-3" *ngFor="let song of song; index as i">
+      <div class="wrapper">
+        <div class="music music-cover">
+          <img src="{{ song.imagePath }}" alt="" class="cover-img" />
+        </div>
+        <div class="music album-controls">
+          <img src="{{ song.image }}" alt="" class="album-img" />
+          <div class="album-info">
+            <span class="song-title">{{song.name}}</span>
+            <div class="song-utility">
+              <div class="row">
+                <button class="col-md-3 fa text-white glyphicon glyphicon-play-circle" aria-hidden="true" (click)="openDelete(song.id)">
+                </button>
+                <button class="col-md-3 fa glyphicon glyphicon-pencil text-white" routerLink="/song/edit/{{song.id}}" >
+                </button>
+                <button class="col-md-3 fa glyphicon glyphicon-trash text-white" aria-hidden="true" (click)="openDelete(song.id)">
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<div class="d-flex justify-content-center">
+  <ngb-pagination class="text-center" [collectionSize]="allSongs.length" (pageChange)="getSongsPerPage($event)" [(page)]="page" [maxSize]="10" [rotate]="true" [boundaryLinks]="true">
+  </ngb-pagination>
+</div>
+<br />
+
