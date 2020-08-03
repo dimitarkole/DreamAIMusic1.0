@@ -34,11 +34,11 @@
               "src/assets/styles/main_styles.css",
               "src/assets/styles/responsive.css",
               "src/assets/styles/form_styles.css",
-              "src/assets/styles/table_style.css"
-            ],
+              "src/assets/styles/table_style.css",
+              "src/assets/styles/song_list_style.css"
+            ],  
             "scripts": [
               //"src/styles/"
-
             ]
           },
           "configurations": {

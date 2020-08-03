@@ -1,4 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Song } from '../components/shared/models/song';
+import { globalConstants } from '../common/global-constants';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { SongService } from '../core/services/song.service';
+import { Router } from '@angular/router';
+import getPage from '../common/paginator';
 
 @Component({
   selector: 'app-home',
@@ -6,6 +12,24 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  constructor(
-  ) { }
+  @Input() categoty: Song
+  page: number = globalConstants.pagination.defaultPage;
+  collectionSize: number;
+  private itemsPerPage: number;
+  song: Song[] = [];
+  allSongs: Song[] = [];
+
+  constructor(private modalService: NgbModal,
+    private songService: SongService,
+    private router: Router) {
+    this.itemsPerPage = globalConstants.pagination.itemsPerPage;
+    this.songService.all().subscribe(data => {
+      this.allSongs = data;
+      this.getSongsPerPage(this.page);
+    })
+  }
+
+  public getSongsPerPage(page: number): void {
+    this.song = getPage<Song>(this.allSongs, page, this.itemsPerPage);
+  }
 }

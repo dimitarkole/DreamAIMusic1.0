@@ -30,7 +30,6 @@
         }
 
         [HttpGet]
-        [Route(nameof(Get))]
         public ActionResult<IEnumerable<SongViewModel>> Get()
           => this.Ok(this.songService.All<SongViewModel>());
 
