@@ -6,6 +6,7 @@ import { SongService } from '../../../../core/services/song.service';
 import { Router } from '@angular/router';
 import getPage from '../../../../common/paginator';
 import { SongDeleteModalComponent } from '../song-delete-modal/song-delete-modal.component';
+import { SongEditComponent } from '../song-edit/song-edit.component';
 
 @Component({
   selector: 'app-song-list',
@@ -31,7 +32,7 @@ export class SongListComponent{
     })
   }
 
-  openDelete(songId: number) {
+  openDelete(songId: string) {
     let modal = this.modalService.open(SongDeleteModalComponent);
     modal.result.then(value => {
       this.songService.delete(songId).subscribe(_ => {
@@ -40,6 +41,10 @@ export class SongListComponent{
     }).catch(err => {
       console.log(err);
     })
+  }
+
+  openEdit(song: Song) {
+    this.router.navigate(['/song/edit', song.id]);
   }
 
   public getSongsPerPage(page: number): void {

@@ -23,6 +23,7 @@ import { CategoryEditComponent } from './components/administration/category/cate
 import { SongCreateComponent } from './components/user/song/song-create/song-create.component';
 import { SongListComponent } from './components/user/song/song-list/song-list.component';
 import { SongDeleteModalComponent } from './components/user/song/song-delete-modal/song-delete-modal.component';
+import { SongEditComponent } from './components/user/song/song-edit/song-edit.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { SongDeleteModalComponent } from './components/user/song/song-delete-mod
     SongCreateComponent,
     SongListComponent,
     SongDeleteModalComponent,
+    SongEditComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,
