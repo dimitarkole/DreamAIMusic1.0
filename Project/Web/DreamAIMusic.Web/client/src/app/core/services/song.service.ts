@@ -23,15 +23,15 @@ export class SongService {
     return this.http.post(this.routeSongController, song, { reportProgress: true, observe: 'events' });
   }
 
-  getById(id: number) {
+  getById (id: string){
     return this.http.get<Song>(`${this.routeHomeController}/${id}`);
   }
 
-  edit(song: Song) {
-    return this.http.put(`${this.routeSongController}/${song.id}`, song);
+  edit(song: Song, id: string) {
+    return this.http.put(`${this.routeSongController}/${id}`, song);
   }
 
-  delete(id: number) {
+  delete(id: string) {
     return this.http.delete(`${this.routeSongController}/${id}`);
   }
 

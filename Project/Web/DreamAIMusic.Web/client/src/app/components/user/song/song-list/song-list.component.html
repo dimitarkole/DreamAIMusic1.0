@@ -12,7 +12,7 @@
               <div class="row">
                 <button class="col-md-3 fa text-white glyphicon glyphicon-play-circle" aria-hidden="true" (click)="openDelete(song.id)">
                 </button>
-                <button class="col-md-3 fa glyphicon glyphicon-pencil text-white" (click)="openEdit(category)">
+                <button class="col-md-3 fa glyphicon glyphicon-pencil text-white" routerLink="/song/edit/{{song.id}}" >
                 </button>
                 <button class="col-md-3 fa glyphicon glyphicon-trash text-white" aria-hidden="true" (click)="openDelete(song.id)">
                 </button>
