@@ -25,7 +25,7 @@ const routes: Routes = [
   {
     path: 'song', children: [
       { path: '', component: SongListComponent },
-      { path: 'all', component: SongListComponent },
+      { path: 'own', component: SongListComponent },
       { path: 'create', component: SongCreateComponent },
       {
         path: 'edit/:id',
