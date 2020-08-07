@@ -67,22 +67,16 @@
 	{
 		margin-right: 40px;
 	}
-	.artist_info
+	.song_info
 	{
 		padding-left: 0;
 	}
-	.artist_content
+	.song_content
 	{
 		width: 100%;
 	}
-	.single_player_container
-	{
-		padding-left: 0;
 	}
-	.single_player
-	{
-		padding-right: 23px;
-	}
+
 	.player_progress_box
 	{
 		width: calc(100% - 135px);
@@ -152,18 +146,18 @@
 	{
 		font-size: 56px;
 	}
-	.artist_col
+	.song_col
 	{
 		margin-top: 60px;
 	}
-	.artist_image
+	.song_image
 	{
 		width: 100%;
 		left: auto;
 		padding-right: 0;
 		padding-left: 96px;
 	}
-	.artist_image > img:last-of-type
+	.song_image > img:last-of-type
 	{
 		right: auto;
 		left: 0;
@@ -348,12 +342,12 @@
 	{
 		font-size: 30px;
 	}
-	.artist_name h1,
+	.song_name h1,
 	.songs_title h1
 	{
 		font-size: 36px;
 	}
-	.artist_info_list ul li
+	.song_info_list ul li
 	{
 		font-size: 18px;
 	}
@@ -374,7 +368,7 @@
 		padding-left: 15px;
 		padding-right: 15px;
 	}
-	.featured_artist_content
+	.featured_song_content
 	{
 	    padding-top: 140px;
 	    padding-bottom: 150px;
