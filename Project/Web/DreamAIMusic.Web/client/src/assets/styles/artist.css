@@ -11,7 +11,7 @@
 4. Menu
 5. Home
 6. Search
-7. Artist
+7. song
 8. Songs
 9. Newsletter
 10. Video
@@ -357,20 +357,7 @@ section
 	background: linear-gradient(to right, #2457d7, #3b125d);
 	z-index: 100;
 }
-/*Header gradient bottom border*/
-.header::after
-{
-	position: absolute;
-	left: 0;
-	bottom: 0;
-	width: 100%;
-	height: 2px;
-	content: '';
-	background-color: #2ac275;
-	background-image: linear-gradient(to right, #eeff2d, #2ac275);
-	background: #2ac275;
-	background: linear-gradient(to right, #eeff2d, #2ac275);
-}
+
 .header_content
 {
 	width: calc(100% + 30px);
@@ -795,50 +782,29 @@ section
 }
 
 /*********************************
-7. Artist
+7. song
 *********************************/
 
-.artist
+.song
 {
 	background: #ffffff;
 	padding-top: 119px;
 }
-.artist_image
-{
-	width: calc(100% + 99px);
-	left: -99px;
-	padding-right: 66px;
-	z-index: 1;
-	padding-bottom: 73px;
-}
-.artist_image > img:first-of-type
-{
-	box-shadow: 0px 35px 43px rgba(0,0,0,0.35);
-}
-.artist_image > img:last-of-type
-{
-	position: absolute;
-	top: 73px;
-	right: 162px;
-	width: calc(100% - 66px);
-	z-index: -1;
-	opacity: 0.32;
-}
-.artist_info
+.song_info
 {
 	width: calc(100% + 20px);
 	padding-left: 35px;
 }
-.artist_name
+.song_name
 {
 	margin-top: -3px;
 }
-.artist_name h1
+.song_name h1
 {
 	font-size: 60px;
 	font-weight: 400;
 }
-.artist_title
+.song_title
 {
 	font-size: 16px;
 	font-weight: 400;
@@ -847,25 +813,25 @@ section
 	padding-left: 4px;
 	margin-top: -12px;
 }
-.artist_info_list
+.song_info_list
 {
 	margin-top: 41px;
 }
-.artist_info_list ul li
+.song_info_list ul li
 {
 	font-size: 24px;
 	font-weight: 400;
 	color: #2a2a2a;
 }
-.artist_info_list ul li:not(:last-of-type)
+.song_info_list ul li:not(:last-of-type)
 {
 	margin-bottom: 11px;
 }
-.artist_info_list ul li span
+.song_info_list ul li span
 {
 	color: #6d6d6d;
 }
-.artist_info_text
+.song_info_text
 {
 	margin-top: 28px;
 }
@@ -894,7 +860,7 @@ section
 {
 	margin-top: 13px;
 }
-.artist_store
+.song_store
 {
 	margin-top: 47px;
 	padding-left: 2px;
@@ -915,21 +881,9 @@ section
 {
 	margin-bottom: 18px;
 }
-.single_player_container
-{
-	
-}
-.single_player
-{
-	width: 100%;
-	background: #eef2f6;
-	border-radius: 22px;
-	padding-left: 23px;
-	padding-right: 55px;
-}
-.single_player_inner
-{
-	height: 102px;
+.single_player {
+  width: 100%;
+  border-radius: 0px;
 }
 .jp-audio
 {
@@ -1019,7 +973,7 @@ section
 	top: -27px;
 	left: 0;
 }
-.jp-artist
+.jp-song
 {
 	font-size: 16px;
 	font-weight: 700;
