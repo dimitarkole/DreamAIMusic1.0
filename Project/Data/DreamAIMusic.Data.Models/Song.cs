@@ -11,7 +11,7 @@
         public Song()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Commentars = new HashSet<Commentar>();
+            this.Comments = new HashSet<Comment>();
             this.CountDisLikes = 0;
             this.CountLikes = 0;
             this.CountViews = 0;
@@ -25,9 +25,9 @@
 
         public string Path { get; set; }
 
-        public string MusicCategoryId { get; set; }
+        public string CategoryId { get; set; }
 
-        public virtual Category MusicCategory { get; set; }
+        public virtual Category Category { get; set; }
 
         public string Text { get; set; }
 
@@ -39,7 +39,7 @@
 
         public long CountViews { get; set; }
 
-        public virtual ICollection<Commentar> Commentars { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
 
         public long CountLikes { get; set; }
 

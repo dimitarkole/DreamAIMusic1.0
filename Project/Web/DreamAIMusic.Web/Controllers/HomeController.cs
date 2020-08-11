@@ -34,7 +34,7 @@
           => this.Ok(this.songService.All<SongViewModel>());
 
         [HttpGet("{id}")]
-        public ActionResult<SongViewModel> Get(string id) =>
-           this.Ok(this.songService.GetById<SongViewModel>(id));
+        public ActionResult<SongPlayModel> Get(string id) =>
+           this.Ok(this.songService.GetById<SongPlayModel>(id));
     }
 }

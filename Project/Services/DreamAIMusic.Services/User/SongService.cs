@@ -61,7 +61,7 @@
             Song song = this.context.Songs.Find(id);
             song.Name = model.Name;
             song.Path = model.Path;
-            song.MusicCategoryId = model.CategoryId;
+            song.CategoryId = model.CategoryId;
             song.Text = model.Text;
 
             this.context.Songs.Update(song);

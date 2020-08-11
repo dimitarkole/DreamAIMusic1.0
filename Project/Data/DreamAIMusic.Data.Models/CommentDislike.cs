@@ -6,11 +6,12 @@
 
     using DreamAIMusic.Data.Common.Models;
 
-    public class Commentar : IAuditInfo, IDeletableEntity, ILikeInfo
+    public class CommentDislike : IAuditInfo, IDeletableEntity
     {
-        public Commentar()
+        public CommentDislike()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.CreatedOn = DateTime.UtcNow;
         }
 
         //
@@ -18,19 +19,13 @@
         //     Gets or sets the primary key for this role.
         public virtual string Id { get; set; }
 
-        public virtual string MusicId { get; set; }
-
-        public virtual Song Music { get; set; }
-
-        public string UserId { get; set; }
+        public virtual string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
-        public string Text { get; set; }
+        public virtual string CommentId { get; set; }
 
-        public long CountLikes { get; set; }
-
-        public long CountDisLikes { get; set; }
+        public virtual Comment Comment { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
