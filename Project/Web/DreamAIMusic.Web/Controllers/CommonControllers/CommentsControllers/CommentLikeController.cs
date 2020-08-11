@@ -1,0 +1,60 @@
+﻿namespace DreamAIMusic.Web.Controllers.CommonControllers.CommentsControllers
+{
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
+    using DreamAIMusic.Common;
+    using DreamAIMusic.Data.Models;
+    using DreamAIMusic.Services.Contracts.Common;
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Identity;
+    using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
+    using Microsoft.AspNetCore.Mvc;
+    using Microsoft.Extensions.Logging;
+
+    public class CommentLikeController : ApiController
+    {
+        private readonly ICommentLikeService commentLikeService;
+
+        public CommentLikeController(
+            ICommentLikeService commentLikeService,
+            UserManager<ApplicationUser> userManager,
+            SignInManager<ApplicationUser> signInManager,
+            ILogger<LogoutModel> logger,
+            IHostingEnvironment hostingEnvironment)
+            : base(userManager, signInManager, logger, hostingEnvironment)
+        {
+            this.commentLikeService = commentLikeService;
+        }
+
+        [HttpGet]
+        public ActionResult GetCount(string commentarId)
+          => this.Ok(this.commentLikeService.Count(commentarId));
+
+        [HttpPost]
+        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        public async Task<IActionResult> Post(string commentId)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest();
+            }
+
+            var userId = this.userManager.GetUserId(this.User);
+
+            await this.commentLikeService.Create(commentId, userId);
+            return this.Ok();
+        }
+
+        [HttpDelete("{id}")]
+        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        public async Task<IActionResult> Delete(string id)
+        {
+            await this.commentLikeService.Delete(id);
+            return this.Ok();
+        }
+    }
+}

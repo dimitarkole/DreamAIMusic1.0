@@ -30,7 +30,11 @@
 
         public DbSet<Song> Songs { get; set; }
 
-        public DbSet<Commentar> Commentars { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<CommentDislike> CommentDislikes { get; set; }
+
+        public DbSet<CommentLike> CommentLikes { get; set; }
 
         public DbSet<Plan> Plans { get; set; }
 

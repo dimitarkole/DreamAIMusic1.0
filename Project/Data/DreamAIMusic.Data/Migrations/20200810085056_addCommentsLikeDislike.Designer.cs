@@ -4,14 +4,16 @@ using DreamAIMusic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DreamAIMusic.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200810085056_addCommentsLikeDislike")]
+    partial class addCommentsLikeDislike
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -139,6 +141,9 @@ namespace DreamAIMusic.Data.Migrations
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
 
+                    b.Property<string>("CommentId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
@@ -151,8 +156,8 @@ namespace DreamAIMusic.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ParentCommentId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int?>("ParentCommentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("SongId")
                         .HasColumnType("nvarchar(450)");
@@ -165,15 +170,15 @@ namespace DreamAIMusic.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("IsDeleted");
+                    b.HasIndex("CommentId");
 
-                    b.HasIndex("ParentCommentId");
+                    b.HasIndex("IsDeleted");
 
                     b.HasIndex("SongId");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Comments");
+                    b.ToTable("Commentars");
                 });
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.CommentDislike", b =>
@@ -649,9 +654,9 @@ namespace DreamAIMusic.Data.Migrations
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.Comment", b =>
                 {
-                    b.HasOne("DreamAIMusic.Data.Models.Comment", "ParentComment")
-                        .WithMany("CommentsChildren")
-                        .HasForeignKey("ParentCommentId");
+                    b.HasOne("DreamAIMusic.Data.Models.Comment", null)
+                        .WithMany("ChildrenComments")
+                        .HasForeignKey("CommentId");
 
                     b.HasOne("DreamAIMusic.Data.Models.Song", "Song")
                         .WithMany("Comments")

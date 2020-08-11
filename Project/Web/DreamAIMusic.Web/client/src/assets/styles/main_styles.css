@@ -1117,11 +1117,11 @@ section
 }
 .single_player_container
 {
-   border-radius: 0;
+	
 }
-.single_player {
-  width: 100%;
-  border-radius: 0px;
+.single_player
+{
+	width: 100%;
 }
 .jp-audio
 {
@@ -1137,6 +1137,12 @@ section
 	width: 390px;
 	padding-right: 41px;
 	flex: 0 0 auto;
+}
+.song_image
+{
+	width: 119px;
+	height: 119px;
+	border: solid 2px #ffffff;
 }
 .player_bars
 {
