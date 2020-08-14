@@ -1,15 +1,13 @@
 ﻿namespace DreamAIMusic.Services.Contracts.Common
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
+    using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
     using System.Threading.Tasks;
 
     public interface ICommentLikeService
     {
         int Count(string commentId);
 
-        Task Create(string commentId, string userId);
+        Task Create(CommentLikeInputModel model, string userId);
 
         Task Delete(string id);
     }

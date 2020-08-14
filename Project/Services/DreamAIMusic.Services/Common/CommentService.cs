@@ -28,8 +28,9 @@
                         && c.ParentComment == null)
                     .To<T>();
 
-        public async Task Create(CommentInputModel model, string songId, string userId)
+        public async Task Create(CommentInputModel model, string userId)
         {
+            var songId = model.SongId;
             Comment comment = model.To<Comment>();
             Song song = this.context.Songs.Find(songId);
             ApplicationUser user = this.context.Users.Find(userId);
@@ -42,8 +43,9 @@
             await this.context.SaveChangesAsync();
         }
 
-        public async Task CreateChildrenComment(CommentInputModel model, string parentCommentId, string userId)
+        public async Task CreateChildrenComment(CommentEditModel model, string userId)
         {
+            string parentCommentId = model.ParentCommentId;
             Comment parentComment = this.context.Comments.Find(parentCommentId);
             string songId = parentComment.SongId;
             Song song = this.context.Songs.Find(songId);

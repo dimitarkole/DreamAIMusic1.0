@@ -15,15 +15,8 @@ import { HttpEventType } from '@angular/common/http';
 })
 export class SongPlayComponent implements OnInit {
   songId: string;
-  categories$: Observable<Category[]>
-  nameMinLength = 2;
-  nameMaxLength = 30;
-  textMinLength = 10;
-  textMaxLength = 1000;
-  songForm: FormGroup
-  public progress: number;
-  public message: string;
-  private routeUpload: string = 'song/Upload';
+  song: Song;
+  categories$: Observable<Category[]>;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
@@ -34,88 +27,8 @@ export class SongPlayComponent implements OnInit {
   }
 
   ngOnInit() {
-    let song: Song = this.route.snapshot.data.song;
-    console.log(song);
-    this.songId = song.id;
-    this.songForm = this.formBuilder.group({
-      id: song.id,
-      name: [
-        song.name,
-        [
-          Validators.required,
-          Validators.minLength(this.nameMinLength),
-          Validators.maxLength(this.nameMaxLength)
-        ]
-      ],
-      imageFile: [
-        song.imageFile,
-        [
-          // Validators.required
-        ]
-      ],
-      path: [
-        song.path,
-        [
-          // Validators.required
-        ]
-      ],
-      musicCategoryId: [
-        song.musicCategoryId,
-        [
-          Validators.required,
-          Validators.pattern('^((?!default).)*$'),
-        ]
-      ],
-      text: [
-        song.text,
-        [
-          Validators.required,
-          Validators.minLength(this.textMinLength),
-          Validators.maxLength(this.textMaxLength)
-        ]
-      ]
-    })
-  }
-
-  formHandler() {
-    let song: Song = this.songForm.value;
-    this.songService.edit(song, this.songId)
-      .subscribe(_ => {
-        this.router.navigate(['song', 'all']);
-      })
-
-    this.songForm.reset();
-  }
-
-  get name(): AbstractControl {
-    return this.songForm.get('name');
-  }
-
-  get path(): AbstractControl {
-    return this.songForm.get('path');
-  }
-
-  get text(): AbstractControl {
-    return this.songForm.get('text');
-  }
-
-  get musicCategoryId(): AbstractControl {
-    return this.songForm.get('musicCategoryId');
-  }
-
-  get imageFile(): AbstractControl {
-    return this.songForm.get('imageFile');
-  }
-
-  public uploadImage = (files) => {
-    this.songService.uploadImage(files).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress)
-        this.progress = Math.round(100 * event.loaded / event.total);
-      else if (event.type === HttpEventType.Response) {
-        this.message = 'Upload success.';
-        //this.onUploadFinished.emit(event.body);
-        // this.songForm.controls['imageFile'].setValue(event.ok);
-      }
-    });
+    this.song = this.route.snapshot.data.song;
+    this.songId = this.song.id;
+    console.log(this.song);
   }
 }

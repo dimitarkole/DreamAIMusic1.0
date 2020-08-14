@@ -1,4 +1,4 @@
-﻿namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
+﻿namespace DreamAIMusic.Web.ViewModels.User.SongModels
 {
     using System;
     using System.Collections.Generic;
@@ -8,6 +8,7 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Mapping;
     using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
+    using DreamAIMusic.Web.ViewModels.User.SongModels;
 
     public class SongPlayModel : IMapFrom<Song>
     {
@@ -34,5 +35,8 @@
         public DateTime CreatedOn { get; set; }
 
         public IEnumerable<CommentViewModel> Comments { get; set; }
+
+        public SongUserViewModel User { get; set; }
+
     }
 }

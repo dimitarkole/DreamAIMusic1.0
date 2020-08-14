@@ -1935,7 +1935,6 @@ section
   line-height: 1;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-image: linear-gradient(to right, #2457d7, #3b125d);
   padding:10px;
 }
 

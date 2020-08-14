@@ -25,6 +25,9 @@ import { SongListComponent } from './components/user/song/song-list/song-list.co
 import { SongDeleteModalComponent } from './components/user/song/song-delete-modal/song-delete-modal.component';
 import { SongEditComponent } from './components/user/song/song-edit/song-edit.component';
 import { SongPlayComponent } from './home/song/song-play/song-play.component';
+import { CommentListComponent } from './home/song/comment/comment-list/comment-list.component';
+import { CommentInfoComponent } from './home/song/comment/comment-info/comment-info.component';
+import { CommentCreateComponent } from './home/song/comment/comment-create/comment-create.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +46,9 @@ import { SongPlayComponent } from './home/song/song-play/song-play.component';
     SongDeleteModalComponent,
     SongEditComponent,
     SongPlayComponent,
+    CommentListComponent,
+    CommentInfoComponent,
+    CommentCreateComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,

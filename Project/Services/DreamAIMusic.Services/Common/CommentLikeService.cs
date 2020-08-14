@@ -25,8 +25,9 @@
                .Where(c => c.CommentId == commentId)
                .Count();
 
-        public async Task Create(string commentId, string userId)
+        public async Task Create(CommentLikeInputModel model, string userId)
         {
+            string commentId = model.CommentId;
             _ = this.DeleteOwnCommentDislike(commentId, userId);
 
             var user = this.context.Users

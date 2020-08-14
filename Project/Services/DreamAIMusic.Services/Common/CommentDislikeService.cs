@@ -9,6 +9,7 @@
     using DreamAIMusic.Data;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.Common;
+    using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
 
     public class CommentDislikeService : ICommentDislikeService
     {
@@ -24,8 +25,9 @@
              .Where(c => c.CommentId == commentId)
              .Count();
 
-        public async Task Create(string commentId, string userId)
+        public async Task Create(CommentDislikeInputModel model, string userId)
         {
+            string commentId = model.CommentId;
             _ = this.DeleteOwnCommentLike(commentId, userId);
             var user = this.context.Users
                 .Where(u => u.Id == userId)

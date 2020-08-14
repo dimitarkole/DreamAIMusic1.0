@@ -1,4 +1,4 @@
-﻿namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
+﻿namespace DreamAIMusic.Web.ViewModels.User.SongModels
 {
     using System;
     using System.Collections.Generic;

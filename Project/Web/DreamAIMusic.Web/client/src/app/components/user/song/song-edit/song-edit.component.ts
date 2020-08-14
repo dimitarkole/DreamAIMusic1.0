@@ -58,8 +58,8 @@ export class SongEditComponent implements OnInit {
           // Validators.required
         ]
       ],
-      musicCategoryId: [
-        song.musicCategoryId,
+      songCategoryId: [
+        song.songCategoryId,
         [
           Validators.required,
           Validators.pattern('^((?!default).)*$'),
@@ -98,8 +98,8 @@ export class SongEditComponent implements OnInit {
     return this.songForm.get('text');
   }
 
-  get musicCategoryId(): AbstractControl {
-    return this.songForm.get('musicCategoryId');
+  get songCategoryId(): AbstractControl {
+    return this.songForm.get('songCategoryId');
   }
 
   get imageFile(): AbstractControl {
