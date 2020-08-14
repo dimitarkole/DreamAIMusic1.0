@@ -11,9 +11,9 @@
     {
         IEnumerable<T> All<T>(string songId);
 
-        Task Create(CommentInputModel model, string songId, string userId);
+        Task Create(CommentInputModel model, string userId);
 
-        Task CreateChildrenComment(CommentInputModel model, string parentCommentId, string userId);
+        Task CreateChildrenComment(CommentEditModel model, string userId);
 
         Task Update(string id, CommentEditModel model);
 

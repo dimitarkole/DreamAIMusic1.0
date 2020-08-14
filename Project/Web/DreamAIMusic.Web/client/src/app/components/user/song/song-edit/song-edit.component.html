@@ -42,11 +42,11 @@
 
     <div class="form-group">
       <label>Categoty</label>
-      <select class="form-control" formControlName="musicCategoryId" [value]='default'>
+      <select class="form-control" formControlName="songCategoryId" [value]='default'>
         <option value="default" disabled selected>Select category</option>
         <option *ngFor="let category of categories$ | async" [value]="category.id">{{category.name}}</option>
       </select>
-      <span class="text-danger" *ngIf="musicCategoryId.touched && (musicCategoryId.hasError('required') || musicCategoryId.hasError('pattern'))">The category is required!</span>
+      <span class="text-danger" *ngIf="songCategoryId.touched && (songCategoryId.hasError('required') || songCategoryId.hasError('pattern'))">The category is required!</span>
     </div>
 
     <div class="form-group">

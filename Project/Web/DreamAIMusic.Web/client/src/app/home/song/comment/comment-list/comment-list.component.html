@@ -1,0 +1,8 @@
+<ng-container *ngFor="let comment of allComments" class="row">
+  <app-comment-info [comment]="comment" class="col-md-12"></app-comment-info>
+</ng-container>
+
+<div class="d-flex justify-content-center">
+  <ngb-pagination class="text-center" [collectionSize]="allComment?.length" (pageChange)="getSongsPerPage($event)" [(page)]="page" [maxSize]="10" [rotate]="true" [boundaryLinks]="true">
+  </ngb-pagination>
+</div>

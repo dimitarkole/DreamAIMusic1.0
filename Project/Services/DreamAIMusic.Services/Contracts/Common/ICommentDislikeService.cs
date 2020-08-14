@@ -1,5 +1,6 @@
 ﻿namespace DreamAIMusic.Services.Contracts.Common
 {
+    using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
     using System;
     using System.Collections.Generic;
     using System.Text;
@@ -9,7 +10,7 @@
     {
         int Count(string commentarId);
 
-        Task Create(string commentarId, string userId);
+        Task Create(CommentDislikeInputModel model, string userId);
 
         Task Delete(string id);
     }

@@ -1,0 +1,8 @@
+.like, .dislike {
+  font-size: 12px;
+  padding: 5px;
+}
+
+.dislike{
+   margin-left:5px;
+}

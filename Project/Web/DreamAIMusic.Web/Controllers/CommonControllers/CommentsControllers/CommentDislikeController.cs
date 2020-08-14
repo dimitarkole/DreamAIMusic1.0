@@ -8,6 +8,7 @@
     using DreamAIMusic.Common;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.Common;
+    using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -36,7 +37,7 @@
 
         [HttpPost]
         [Authorize(Roles = GlobalConstants.UserRoleName)]
-        public async Task<IActionResult> Post(string commentId)
+        public async Task<IActionResult> Post(CommentDislikeInputModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -45,7 +46,7 @@
 
             var userId = this.userManager.GetUserId(this.User);
 
-            await this.commentDislikeService.Create(commentId, userId);
+            await this.commentDislikeService.Create(model, userId);
             return this.Ok();
         }
 

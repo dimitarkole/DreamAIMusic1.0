@@ -3,7 +3,7 @@
     using DreamAIMusic.Data;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
-    using DreamAIMusic.Web.ViewModels.UserModels.SongModels;
+    using DreamAIMusic.Web.ViewModels.User.SongModels;
     using System;
     using System.Collections.Generic;
     using System.Text;

@@ -36,8 +36,9 @@
            => this.Ok(this.commentService.All<CommentViewModel>(musicId));
 
         [HttpPost]
+        [Route("[action]")]
         [Authorize(Roles = GlobalConstants.UserRoleName)]
-        public async Task<IActionResult> Post(CommentInputModel model, string songId)
+        public async Task<IActionResult> Post(CommentInputModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -46,14 +47,14 @@
 
             var userId = this.userManager.GetUserId(this.User);
 
-            await this.commentService.Create(model, songId, userId);
+            await this.commentService.Create(model, userId);
             return this.Ok();
         }
 
         [HttpPost]
-        // [Authorize(Roles = GlobalConstants.UserRoleName)]
-        [Route("[action]")]
-        public async Task<IActionResult> PostChildrenCommentar(CommentInputModel model, string parentCommentId)
+        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Route("[action]/$parentCommentId")]
+        public async Task<IActionResult> PostChildrenCommentar(CommentEditModel model)
         {
             if (!this.ModelState.IsValid)
             {
@@ -62,7 +63,7 @@
 
             var userId = this.userManager.GetUserId(this.User);
 
-            await this.commentService.CreateChildrenComment(model, parentCommentId, userId);
+            await this.commentService.CreateChildrenComment(model, userId);
             return this.Ok();
         }
 

@@ -6,7 +6,7 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Web.ViewModels;
-    using DreamAIMusic.Web.ViewModels.UserModels.SongModels;
+    using DreamAIMusic.Web.ViewModels.User.SongModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;

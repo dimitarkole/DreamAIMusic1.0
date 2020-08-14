@@ -6,5 +6,7 @@
     public class CommentInputModel : IMapTo<Comment>
     {
         public string Text { get; set; }
+
+        public string SongId { get; set; }
     }
 }

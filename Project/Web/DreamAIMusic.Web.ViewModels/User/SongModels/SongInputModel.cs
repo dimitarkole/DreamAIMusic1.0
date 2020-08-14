@@ -1,4 +1,4 @@
-﻿namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
+﻿namespace DreamAIMusic.Web.ViewModels.User.SongModels
 {
     using System;
     using System.Collections.Generic;
@@ -17,7 +17,7 @@
         public string Path { get; set; }
 
         // 6045ff71-7af1-4b03-a805-f6da3ba1a800
-        public string MusicCategoryId { get; set; }
+        public string CategoryId { get; set; }
 
         // public List<CategoryViewModel> Categories { get; set; }
         public string Text { get; set; }
