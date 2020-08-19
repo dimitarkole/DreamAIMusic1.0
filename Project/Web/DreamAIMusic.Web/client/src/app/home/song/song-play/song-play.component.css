@@ -2,3 +2,7 @@
   width: 100%;
   border-radius: 0px;
 }
+
+.song-play-image{
+   height: 50%;/*350px;*/
+}

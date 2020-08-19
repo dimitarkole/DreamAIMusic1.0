@@ -9,6 +9,13 @@
   <PropertyGroup>
     <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="client\src\assets\resource\**" />
+    <Content Remove="client\src\assets\resource\**" />
+    <EmbeddedResource Remove="client\src\assets\resource\**" />
+    <None Remove="client\src\assets\resource\**" />
+  </ItemGroup>
   <ItemGroup>
     <AdditionalFiles Include="..\..\stylecop.json" />
   </ItemGroup>

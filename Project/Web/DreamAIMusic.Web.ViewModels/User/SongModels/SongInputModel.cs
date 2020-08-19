@@ -17,14 +17,12 @@
         public string Path { get; set; }
 
         // 6045ff71-7af1-4b03-a805-f6da3ba1a800
-        public string CategoryId { get; set; }
+        public string SongCategoryId { get; set; }
 
         // public List<CategoryViewModel> Categories { get; set; }
         public string Text { get; set; }
 
         public string ImagePath { get; set; }
-
-        public IFormFile ImageFile { get; set; }
 
         /*[Required(ErrorMessage = "Please select a file.")]
         [DataType(DataType.Upload)]
@@ -32,8 +30,6 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration.CreateMap<Song, SongInputModel>()
-                            .ForMember(s => s.ImageFile, y => y.Ignore());
         }
     }
 }

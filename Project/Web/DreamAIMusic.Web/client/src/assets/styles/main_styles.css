@@ -1140,8 +1140,7 @@ section
 }
 .song_image
 {
-	width: 119px;
-	height: 119px;
+	width: 100%;
 	border: solid 2px #ffffff;
 }
 .player_bars

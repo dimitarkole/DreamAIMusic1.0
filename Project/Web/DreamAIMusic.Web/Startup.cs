@@ -75,11 +75,12 @@
             {
                 app.UseDatabaseErrorPage();
             }
+
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-                RequestPath = new PathString("/Resources"),
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"client/src/assets/resources")),
+                RequestPath = new PathString("/client/src/assets/resources"),
             });
 
             app

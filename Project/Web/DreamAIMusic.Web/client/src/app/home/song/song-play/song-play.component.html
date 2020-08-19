@@ -1,9 +1,8 @@
 <div class="row">
-
   <!-- song Image -->
   <div class="col-lg-7">
-    <div class="song_image">
-      <img src="../../../../assets/images/artist_3.jpg" alt="">
+    <div class="row">
+      <img src="{{'../../../../assets/resources/song/images/' + song.imagePath }}" class="col-lg-12 song-play-image" alt="">
     </div>
 
     <!-- Player -->
@@ -26,7 +25,7 @@
               <div class="player_progress_box">
                 <div class="jp-current-time" role="timer" aria-label="time">00:00</div>
                 <div class="song_info">
-                  <div class="jp-title" aria-label="title">Sunny</div>
+                  <div class="jp-title" aria-label="title">{{song.name}}</div>
                 </div>
                 <div class="jp-progress">
                   <div class="jp-seek-bar" style="width: 100%;">
@@ -52,7 +51,6 @@
                 </div>
               </div>
             </div>
-
           </div>
           <div class="jp-no-solution" style="display: none;">
             <span>Update Required</span>
@@ -72,17 +70,12 @@
           {{song.text}}
         </p>
       </div>
-
       <div class="col-md-1">
 
       </div>
     </div>
 
-
-
-
     <hr />
-
     <div class="row">
       <div class="col-md-3">
         <p>
@@ -94,29 +87,16 @@
          
         </p>
       </div>
-
       <div class="col-md-1">
 
       </div>
     </div>
+
     <app-comment-create [songId]="song.id" class="col-md-12"></app-comment-create>
     <app-comment-list [allComments]="song.comments" class="col-md-12"></app-comment-list>
-
+  </div>
+  <!-- song Content -->
+  <div class="col-lg-5 song_col">
 
   </div>
-
-    <!-- song Content -->
-    <div class="col-lg-5 song_col">
-
-
-
-
-
-
-
-
-    </div>
-  </div>
-
-
-
+</div>
