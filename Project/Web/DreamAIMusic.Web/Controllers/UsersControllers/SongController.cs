@@ -51,38 +51,8 @@
             }
 
             var userId = this.userManager.GetUserId(this.User);
-
-            // uploadImage
-           /* try
-            {
-                var file = model.ImageFile;
-                var folderName = Path.Combine("Resources", "Images");
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-
-                if (file.Length > 0)
-                {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(folderName, fileName);
-
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
-                }
-                else
-                {
-                    return this.BadRequest();
-                }*/
-
-                await this.songService.Create(model, userId);
-                return this.StatusCode(StatusCodes.Status201Created);
-           /* }
-            catch (Exception ex)
-            {
-                return this.StatusCode(500, $"Internal server error: {ex}");
-            }*/
-
+            await this.songService.Create(model, userId);
+            return this.StatusCode(StatusCodes.Status201Created);
         }
 
         [Authorize(Roles = GlobalConstants.UserRoleName)]
@@ -126,21 +96,24 @@
             try
             {
                 var file = this.Request.Form.Files[0];
-                var folderName = Path.Combine("Resources", "Images");
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+                var userId = this.userManager.GetUserId(this.User);
 
+                var folderName = Path.Combine("client", "src", "assets",  "resources", "song", "Images");
+                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
                 if (file.Length > 0)
                 {
-                    var fileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-                    var fullPath = Path.Combine(pathToSave, fileName);
-                    var dbPath = Path.Combine(folderName, fileName);
+                    var songName = this.Request.Form["songName"].ToString();
+                    songName.Replace(' ', '_');
+                    string extension = Path.GetExtension(file.FileName);
+                    var imageName = songName + "_" + this.RandomName() + extension;
+                    var fullPath = Path.Combine(pathToSave, imageName);
 
                     using (var stream = new FileStream(fullPath, FileMode.Create))
                     {
                         file.CopyTo(stream);
                     }
 
-                    return this.Ok(new { dbPath });
+                    return this.Ok(new { ImagePath = imageName });
                 }
                 else
                 {
@@ -151,6 +124,15 @@
             {
                 return this.StatusCode(500, $"Internal server error: {ex}");
             }
+        }
+
+        private string RandomName()
+        {
+            int length = Common.GlobalConstants.CreateFile.RandomNameLength;
+            Random random = new Random();
+            const string chars = Common.GlobalConstants.CreateFile.RandomNameCharacters;
+            return new string(Enumerable.Repeat(chars, length)
+              .Select(s => s[random.Next(s.Length)]).ToArray());
         }
     }
 }

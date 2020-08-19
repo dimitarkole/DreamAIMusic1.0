@@ -13,5 +13,12 @@
             public const string SongFolderPath = "/Songs/";
             public const string MusicPosterPath = "/images/DreamAIMusic.jpg";
         }
+
+        public static class CreateFile
+        {
+            public const string RandomNameCharacters = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+            public const int RandomNameLength = 5;
+        }
     }
 }

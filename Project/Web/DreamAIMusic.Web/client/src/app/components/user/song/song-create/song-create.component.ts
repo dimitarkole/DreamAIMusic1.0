@@ -6,7 +6,7 @@ import { Song } from '../../../shared/models/song';
 import Category from '../../../shared/models/category';
 import { Observable } from 'rxjs';
 import { CategoryService } from '../../../../core/services/category.service';
-import { HttpEventType } from '@angular/common/http';
+import { HttpEventType, HttpRequest, HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-song-create',
@@ -19,18 +19,24 @@ export class SongCreateComponent implements OnInit {
   nameMaxLength = 30;
   textMinLength = 10;
   textMaxLength = 1000;
-  songForm: FormGroup
+  songForm: FormGroup;
   public progress: number;
   public message: string;
-  private routeUpload: string = 'song/Upload';
 
+  imageUrl: string = "/assets/images/app.jpg";
+  fileToUpload: File = null;
+
+  error: string;
+  userId: number = 1;
+  uploadResponse = { status: '', message: '', filePath: '' };
   @Output() public onUploadFinished = new EventEmitter();
 
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private categoryService: CategoryService,
-    private songService: SongService)
+    private songService: SongService,
+    private http: HttpClient)
   {
     this.categories$ = categoryService.all();
   }
@@ -45,16 +51,10 @@ export class SongCreateComponent implements OnInit {
           Validators.maxLength(this.nameMaxLength)
         ]
       ],
-      imageFile: [
+      imagePath: [
         null,
         [
-         // Validators.required
-        ]
-      ],
-      path: [
-        null,
-        [
-         // Validators.required
+         Validators.required
         ]
       ],
       songCategoryId: [
@@ -76,22 +76,28 @@ export class SongCreateComponent implements OnInit {
   }
 
   formHandler() {
-    let song: Song = this.songForm.value;
-    console.log(song);
-    this.songService.create(song)
-      .subscribe(_ => {
-        this.router.navigate(['song', 'all']);
-      })
+    this.songService.postFile(this.fileToUpload, this.name.value).subscribe(
+      (data) => {
+        this.songForm.get('imagePath').setValue(data["imagePath"]);
+        console.log(data["imagePath"])
+        console.log(this.imagePath.value);
+        console.log(this.songForm)
 
-    this.songForm.reset();
+        let song: Song = this.songForm.value;
+        this.songService.create(song, this.fileToUpload)
+          .subscribe(_ => {
+            this.router.navigate(['song', 'own']);
+            this.songForm.reset();
+
+          });
+      });
+
+
+   
   }
 
   get name(): AbstractControl {
     return this.songForm.get('name');
-  }
-
-  get path(): AbstractControl {
-    return this.songForm.get('path');
   }
 
   get text(): AbstractControl {
@@ -102,19 +108,28 @@ export class SongCreateComponent implements OnInit {
     return this.songForm.get('songCategoryId');
   }
 
-  get imageFile(): AbstractControl {
-    return this.songForm.get('imageFile');
+  get imagePath(): AbstractControl {
+    return this.songForm.get('imagePath');
   }
 
-  public uploadImage = (files) => {
-    this.songService.uploadImage(files).subscribe(event => {
-        if (event.type === HttpEventType.UploadProgress)
-          this.progress = Math.round(100 * event.loaded / event.total);
-        else if (event.type === HttpEventType.Response) {
-          this.message = 'Upload success.';
-          this.onUploadFinished.emit(event.body);
-         // this.songForm.controls['imageFile'].setValue(event.ok);
-        }
-    });
+
+  handleFileInput(file: FileList) {
+    this.fileToUpload = file.item(0);
+
+    //Show image preview
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.imageUrl = event.target.result;
+      this.songForm.get('imagePath').setValue(event.target.result);
+
+    }
+    reader.readAsDataURL(this.fileToUpload);
+  }
+
+  onFileChange(event) {
+    if (event.target.files.length > 0) {
+      const file = event.target.files[0];
+      this.songForm.get('imagePath').setValue(file);
+    }
   }
 }

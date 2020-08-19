@@ -105,16 +105,4 @@ export class SongEditComponent implements OnInit {
   get imageFile(): AbstractControl {
     return this.songForm.get('imageFile');
   }
-
-  public uploadImage = (files) => {
-    this.songService.uploadImage(files).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress)
-        this.progress = Math.round(100 * event.loaded / event.total);
-      else if (event.type === HttpEventType.Response) {
-        this.message = 'Upload success.';
-        //this.onUploadFinished.emit(event.body);
-        // this.songForm.controls['imageFile'].setValue(event.ok);
-      }
-    });
-  }
 }

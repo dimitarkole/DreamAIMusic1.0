@@ -18,7 +18,7 @@
 
         public string Path { get; set; }
 
-        public string Image { get; set; }
+        public string ImagePath { get; set; }
 
         public string CategoryId { get; set; }
 
@@ -37,6 +37,5 @@
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public SongUserViewModel User { get; set; }
-
     }
 }
