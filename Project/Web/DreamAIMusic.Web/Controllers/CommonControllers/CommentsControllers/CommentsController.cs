@@ -1,8 +1,6 @@
 ﻿namespace DreamAIMusic.Web.Controllers.CommonControllers.CommentsControllers
 {
-    using System;
     using System.Collections.Generic;
-    using System.Linq;
     using System.Threading.Tasks;
 
     using DreamAIMusic.Common;
@@ -10,7 +8,6 @@
     using DreamAIMusic.Services.Contracts.Common;
     using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
     using Microsoft.AspNetCore.Mvc;
@@ -24,9 +21,8 @@
             ICommentService commentService,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LogoutModel> logger,
-            IHostingEnvironment hostingEnvironment)
-            : base(userManager, signInManager, logger, hostingEnvironment)
+            ILogger<LogoutModel> logger)
+            : base(userManager, signInManager, logger)
         {
             this.commentService = commentService;
         }

@@ -12,7 +12,6 @@
     using DreamAIMusic.Web.Extensions;
     using DreamAIMusic.Web.ViewModels.CommonResurces.IdentityModels;
     using Microsoft.AspNetCore.Authorization;
-    using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
     using Microsoft.AspNetCore.Mvc;
@@ -27,9 +26,8 @@
 			IIdentityService identityService,
 			UserManager<ApplicationUser> userManager,
 			SignInManager<ApplicationUser> signInManager,
-			ILogger<LogoutModel> logger,
-			IHostingEnvironment hostingEnvironment)
-			: base(userManager, signInManager, logger, hostingEnvironment)
+			ILogger<LogoutModel> logger)
+			: base(userManager, signInManager, logger)
         {
             this.identityService = identityService;
         }
