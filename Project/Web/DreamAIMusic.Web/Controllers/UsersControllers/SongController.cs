@@ -22,19 +22,15 @@
     public class SongController : UserController
     {
         private readonly ISongService songService;
-        private readonly IWebHostEnvironment webHostEnviroment;
 
         public SongController(
             ISongService songService,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LogoutModel> logger,
-            IWebHostEnvironment webHostEnviroment,
-            IHostingEnvironment hostingEnvironment)
-            : base(userManager, signInManager, logger, hostingEnvironment)
+            ILogger<LogoutModel> logger)
+            : base(userManager, signInManager, logger)
         {
             this.songService = songService;
-            this.webHostEnviroment = webHostEnviroment;
         }
 
         [HttpGet]

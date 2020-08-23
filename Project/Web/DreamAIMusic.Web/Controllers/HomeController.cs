@@ -22,9 +22,8 @@
             ISongService songService,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LogoutModel> logger,
-            IHostingEnvironment hostingEnvironment)
-            : base(userManager, signInManager, logger, hostingEnvironment)
+            ILogger<LogoutModel> logger)
+            : base(userManager, signInManager, logger)
         {
             this.songService = songService;
         }
