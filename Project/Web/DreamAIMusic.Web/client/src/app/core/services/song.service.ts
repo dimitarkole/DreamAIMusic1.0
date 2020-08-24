@@ -38,11 +38,12 @@ export class SongService {
     return this.http.delete(`${this.routeSongController}/${id}`);
   }
 
-  postFile(fileToUpload: File, songName: string) {
+  postFile(imageFileToUpload: File, MP3FileToUpload: File, songName: string) {
      const formData: FormData = new FormData();
-     formData.append('image', fileToUpload, fileToUpload.name);
+    formData.append('image', imageFileToUpload, imageFileToUpload.name);
+    formData.append('mp3', MP3FileToUpload, MP3FileToUpload.name);
      formData.append('songName', songName);
     return this.http
-      .post(`${this.routeSongController}/uploadImage`, formData);
+      .post(`${this.routeSongController}/uploadSongFile`, formData);
   }
 }

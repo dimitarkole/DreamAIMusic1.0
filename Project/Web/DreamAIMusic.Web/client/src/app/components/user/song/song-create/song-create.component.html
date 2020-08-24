@@ -3,9 +3,19 @@
     <div class="form-group">
       <label>Image</label>
       <img [src]="imageUrl" style="width:250px;height:200px">
-      <input type="file" #Image accept="image/*" (change)="handleFileInput($event.target.files)">
-      <span class="text-danger" *ngIf="imagePath.hasError('required')">
+      <input type="file" #Image accept="image/*" (change)="handleImageFileInput($event.target.files)">
+      <span class="text-danger" *ngIf="ImageExtension.hasError('required')">
         The song must have image!
+      </span>
+    </div>
+    <div class="form-group">
+      <label>Image</label>
+      <audio controls="controls">
+        <source [src]="mp3FileToUpload" type="audio/mp3" />
+      </audio>
+      <input type="file" #Image accept="audio/*" (change)="handleMP3FileInput($event.target.files)">
+      <span class="text-danger" *ngIf="Mp3Extension.hasError('required')">
+        The song must have musisc!
       </span>
     </div>
     <div class="form-group">
@@ -21,25 +31,25 @@
     </div>
 
     <div class="form-group">
-        <label>Categoty</label>
-        <select class="form-control" formControlName="songCategoryId" [value]='default'>
-          <option value="default" disabled selected>Select category</option>
-          <option *ngFor="let category of categories$ | async" [value]="category.id">{{category.name}}</option>
-        </select>
-        <span class="text-danger" *ngIf="songCategoryId.touched && (songCategoryId.hasError('required') || songCategoryId.hasError('pattern'))">The category is required!</span>
-     </div>
+      <label>Categoty</label>
+      <select class="form-control" formControlName="songCategoryId" [value]='default'>
+        <option value="default" disabled selected>Select category</option>
+        <option *ngFor="let category of categories$ | async" [value]="category.id">{{category.name}}</option>
+      </select>
+      <span class="text-danger" *ngIf="songCategoryId.touched && (songCategoryId.hasError('required') || songCategoryId.hasError('pattern'))">The category is required!</span>
+    </div>
 
-     <div class="form-group">
-        <label>Text</label>
-        <input class="form-control" formControlName="text" type="text" placeholder="Text">
-        <span class="text-danger" *ngIf="text.touched && text.hasError('required')">The text is required!</span>
-        <span class="text-danger" *ngIf="text.hasError('minlength')">
-          The song text must contain {{textMinLength}} characters!
-        </span>
-        <span class="text-danger" *ngIf="text.hasError('maxlength')">
-          The song text must be at most {{textMaxLength}} characters!
-        </span>
-      </div>
-      <button [disabled]="songForm.invalid" type="submit" class="btn btn-primary">Add</button>
+    <div class="form-group">
+      <label>Text</label>
+      <input class="form-control" formControlName="text" type="text" placeholder="Text">
+      <span class="text-danger" *ngIf="text.touched && text.hasError('required')">The text is required!</span>
+      <span class="text-danger" *ngIf="text.hasError('minlength')">
+        The song text must contain {{textMinLength}} characters!
+      </span>
+      <span class="text-danger" *ngIf="text.hasError('maxlength')">
+        The song text must be at most {{textMaxLength}} characters!
+      </span>
+    </div>
+    <button [disabled]="songForm.invalid" type="submit" class="btn btn-primary">Add</button>
   </form>
 </div>

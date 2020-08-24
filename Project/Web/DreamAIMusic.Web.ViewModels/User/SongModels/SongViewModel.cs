@@ -15,7 +15,11 @@
 
         public string Name { get; set; }
 
-        public string ImagePath { get; set; }
+        public string UniqueSongFilesName { get; set; }
+
+        public string ImageExtension { get; set; }
+
+        public string Mp3Extension { get; set; }
 
         public DateTime CreatedOn { get; set; }
     }

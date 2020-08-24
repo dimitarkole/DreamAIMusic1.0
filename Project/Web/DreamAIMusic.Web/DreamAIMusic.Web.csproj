@@ -57,6 +57,7 @@
     <Folder Include="client\src\app\components\administration\category\" />
     <Folder Include="client\src\app\components\user\" />
     <Folder Include="client\src\app\home\song\comment\" />
+    <Folder Include="client\src\assets\resources\song\аudio\" />
     <Folder Include="Resources\Images\" />
   </ItemGroup>
 </Project>

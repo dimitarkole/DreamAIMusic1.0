@@ -11,9 +11,9 @@
         public Category()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.Songs = new HashSet<Song>();
         }
 
-        //
         // Summary:
         //     Gets or sets the primary key for this role.
         public virtual string Id { get; set; }
@@ -27,5 +27,7 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<Song> Songs { get; set; }
     }
 }

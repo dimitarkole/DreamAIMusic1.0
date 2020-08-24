@@ -47,13 +47,13 @@ export class SongEditComponent implements OnInit {
         ]
       ],
       imageFile: [
-        song.imageFile,
+       null,
         [
           // Validators.required
         ]
       ],
       path: [
-        song.path,
+        null,//song.path,
         [
           // Validators.required
         ]

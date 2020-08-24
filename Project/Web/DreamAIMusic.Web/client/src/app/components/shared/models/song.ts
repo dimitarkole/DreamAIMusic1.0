@@ -4,9 +4,7 @@ import User from './user';
 export interface Song {
   id: string,
   name: string,
-  path: string,
-  imageFile: File,
-  imagePath: string,
+  uniqueSongFilesName: string,
   songCategoryId: string,
   songCategoryName: string,
   text: string,
@@ -16,4 +14,6 @@ export interface Song {
   createdOn: Date,
   comments: Array<Comment>,
   user: User,
+  imageExtension: string,
+  mp3Extension: string,
 }
