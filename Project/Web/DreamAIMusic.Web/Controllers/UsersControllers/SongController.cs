@@ -18,6 +18,7 @@
     using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.Extensions.Logging;
+    using NHibernate.Mapping;
 
     public class SongController : UserController
     {
@@ -87,29 +88,26 @@
         [HttpPost]
         [DisableRequestSizeLimit]
         [Route("[action]")]
-        public IActionResult UploadImage()
+        public IActionResult UploadSongFile()
         {
             try
             {
-                var file = this.Request.Form.Files[0];
+                var imageFile = this.Request.Form.Files[0];
+                var mp3File = this.Request.Form.Files[1];
                 var userId = this.userManager.GetUserId(this.User);
-
-                var folderName = Path.Combine("client", "src", "assets",  "resources", "song", "Images");
-                var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
-                if (file.Length > 0)
+                if (imageFile.Length > 0)
                 {
                     var songName = this.Request.Form["songName"].ToString();
                     songName.Replace(' ', '_');
-                    string extension = Path.GetExtension(file.FileName);
-                    var imageName = songName + "_" + this.RandomName() + extension;
-                    var fullPath = Path.Combine(pathToSave, imageName);
+                    var uniqueName = songName + "_" + this.RandomName();
 
-                    using (var stream = new FileStream(fullPath, FileMode.Create))
-                    {
-                        file.CopyTo(stream);
-                    }
+                    var imageExtension = this.UploadFile(imageFile, uniqueName, "images");
+                    var mp3Extension = this.UploadFile(mp3File, uniqueName, "аudio");
 
-                    return this.Ok(new { ImagePath = imageName });
+                    return this.Ok(new { uniqueSongFilesName = uniqueName,
+                        ImageExtension = imageExtension,
+                        Mp3Extension = mp3Extension,
+                    });
                 }
                 else
                 {
@@ -124,11 +122,27 @@
 
         private string RandomName()
         {
-            int length = Common.GlobalConstants.CreateFile.RandomNameLength;
+            int length = Common.GlobalConstants.CreateFile.RandomSongNameLength;
             Random random = new Random();
             const string chars = Common.GlobalConstants.CreateFile.RandomNameCharacters;
             return new string(Enumerable.Repeat(chars, length)
               .Select(s => s[random.Next(s.Length)]).ToArray());
+        }
+
+        private string UploadFile(IFormFile file, string uniqueName, string folder)
+        {
+            var folderName = Path.Combine("client", "src", "assets", "resources", "song", folder);
+            var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);
+            var songName = this.Request.Form["songName"].ToString();
+            string extension = Path.GetExtension(file.FileName);
+            uniqueName += extension;
+            var fullPath = Path.Combine(pathToSave, uniqueName);
+            using (var stream = new FileStream(fullPath, FileMode.Create))
+            {
+                file.CopyTo(stream);
+            }
+
+            return extension;
         }
     }
 }

@@ -448,7 +448,7 @@ namespace DreamAIMusic.Data.Migrations
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("ImagePath")
+                    b.Property<string>("ImageExtension")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("IsDeleted")
@@ -457,13 +457,16 @@ namespace DreamAIMusic.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
+                    b.Property<string>("Mp3Extension")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Path")
+                    b.Property<string>("Text")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Text")
+                    b.Property<string>("UniqueSongFilesName")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserId")
@@ -724,7 +727,7 @@ namespace DreamAIMusic.Data.Migrations
             modelBuilder.Entity("DreamAIMusic.Data.Models.Song", b =>
                 {
                     b.HasOne("DreamAIMusic.Data.Models.Category", "Category")
-                        .WithMany()
+                        .WithMany("Songs")
                         .HasForeignKey("CategoryId");
 
                     b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")

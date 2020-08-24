@@ -24,7 +24,10 @@ export class SongCreateComponent implements OnInit {
   public message: string;
 
   imageUrl: string = "/assets/images/app.jpg";
-  fileToUpload: File = null;
+  mp3Url: string = "/assets/images/app.jpg";
+
+  imageFileToUpload: File = null;
+  mp3FileToUpload: File = null;
 
   error: string;
   userId: number = 1;
@@ -51,12 +54,6 @@ export class SongCreateComponent implements OnInit {
           Validators.maxLength(this.nameMaxLength)
         ]
       ],
-      imagePath: [
-        null,
-        [
-         Validators.required
-        ]
-      ],
       songCategoryId: [
         'default',
         [
@@ -71,29 +68,40 @@ export class SongCreateComponent implements OnInit {
           Validators.minLength(this.textMinLength),
           Validators.maxLength(this.textMaxLength)
         ]
-      ]
+      ],
+      imageExtension: [
+        null,
+        [
+          //Validators.required,
+        ]
+      ],
+      mp3Extension: [
+        null,
+        [
+          //Validators.required,
+        ]
+      ],
+      uniqueSongFilesName: [
+        null
+      ],
     })
   }
 
   formHandler() {
-    this.songService.postFile(this.fileToUpload, this.name.value).subscribe(
+    this.songService.postFile(this.imageFileToUpload, this.mp3FileToUpload, this.name.value).subscribe(
       (data) => {
-        this.songForm.get('imagePath').setValue(data["imagePath"]);
-        console.log(data["imagePath"])
-        console.log(this.imagePath.value);
-        console.log(this.songForm)
+        console.log(data);
+        this.songForm.get('uniqueSongFilesName').setValue(data["uniqueSongFilesName"]);
+        this.songForm.get('imageExtension').setValue(data["imageExtension"]);
+        this.songForm.get('mp3Extension').setValue(data["mp3Extension"]);
 
         let song: Song = this.songForm.value;
-        this.songService.create(song, this.fileToUpload)
+        this.songService.create(song, this.imageFileToUpload)
           .subscribe(_ => {
             this.router.navigate(['song', 'own']);
             this.songForm.reset();
-
           });
       });
-
-
-   
   }
 
   get name(): AbstractControl {
@@ -107,29 +115,36 @@ export class SongCreateComponent implements OnInit {
   get songCategoryId(): AbstractControl {
     return this.songForm.get('songCategoryId');
   }
-
-  get imagePath(): AbstractControl {
-    return this.songForm.get('imagePath');
+  
+  get ImageExtension(): AbstractControl {
+    return this.songForm.get('imageExtension');
   }
 
+  get Mp3Extension(): AbstractControl{
+    return this.songForm.get('mp3Extension');
+  }
 
-  handleFileInput(file: FileList) {
-    this.fileToUpload = file.item(0);
+  handleImageFileInput(file: FileList) {
+    this.imageFileToUpload = file.item(0);
 
     //Show image preview
     var reader = new FileReader();
     reader.onload = (event: any) => {
       this.imageUrl = event.target.result;
-      this.songForm.get('imagePath').setValue(event.target.result);
-
+      this.songForm.get('imageExtension').setValue(event.target.result);
     }
-    reader.readAsDataURL(this.fileToUpload);
+    reader.readAsDataURL(this.imageFileToUpload);
   }
 
-  onFileChange(event) {
-    if (event.target.files.length > 0) {
-      const file = event.target.files[0];
-      this.songForm.get('imagePath').setValue(file);
+  handleMP3FileInput(file: FileList) {
+    this.mp3FileToUpload = file.item(0);
+
+    //Show image preview
+    var reader = new FileReader();
+    reader.onload = (event: any) => {
+      this.mp3Url = event.target.result;
+      this.songForm.get('mp3Extension').setValue(event.target.result);
     }
+    reader.readAsDataURL(this.mp3FileToUpload);
   }
 }

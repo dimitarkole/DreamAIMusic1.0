@@ -42,7 +42,7 @@
 
         public DbSet<Vaucher> Vauchers { get; set; }
 
-        public DbSet<Playlist> Playlists{ get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
 
         public DbSet<PlaylistSong> PlaylistSongs { get; set; }
 

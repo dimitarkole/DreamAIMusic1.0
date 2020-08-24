@@ -10,10 +10,10 @@
   <div class="jp-playlist-current col-md-3" *ngFor="let song of song; index as i">
     <div class="wrapper">
       <div class="music music-cover">
-        <img src="{{'../../assets/resources/song/images/' + song.imagePath }}" alt="" class="cover-img" />
+        <img src="{{'../../assets/resources/song/images/' + song.uniqueSongFilesName + song.imageExtension }}" alt="" class="cover-img" />
       </div>
       <div class="music album-controls">
-        <img src="{{'../../assets/resources/song/images/' + song.imagePath }}" alt="" class="album-img" />
+        <img src="{{'../../assets/resources/song/images/' + song.uniqueSongFilesName + song.imageExtension}}" alt="" class="album-img" />
         <div class="album-info">
           <span class="song-title">{{song.name}}</span>
           <div class="song-utility">

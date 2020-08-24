@@ -60,7 +60,7 @@
         {
             Song song = this.context.Songs.Find(id);
             song.Name = model.Name;
-            song.Path = model.Path;
+            // song.Path = model.Path;
             song.CategoryId = model.CategoryId;
             song.Text = model.Text;
 
