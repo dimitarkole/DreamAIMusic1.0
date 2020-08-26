@@ -74,7 +74,7 @@
                 .FirstOrDefault(r => r.Name == roleName) == null)
             {
                 var role = new ApplicationRole(roleName);
-                await this.context.Roles.AddAsync(role);
+               // await this.context.Roles.AddAsync(role);
                 this.context.SaveChanges();
             }
         }

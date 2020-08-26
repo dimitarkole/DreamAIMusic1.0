@@ -13,19 +13,22 @@ namespace DreamAIMusic.Data.Models
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Roles = new HashSet<IdentityUserRole<string>>();
+            this.Roles = new List<UserRole>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Songs = new HashSet<Song>();
             this.Orders = new HashSet<Order>();
             this.Playlists = new HashSet<Playlist>();
+            this.Settings = new List<UserSetting>();
         }
 
-        public virtual string Avatar { get; set; }
+        public virtual string ImageUrl { get; set; }
 
-        public virtual string Name { get; set; }
+        public virtual string FirstName { get; set; }
 
-        public virtual string Family { get; set; }
+        public string MiddleName { get; set; }
+
+        public virtual string LastName { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
@@ -37,8 +40,6 @@ namespace DreamAIMusic.Data.Models
 
         public DateTime? DeletedOn { get; set; }
 
-        public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
-
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }
 
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
@@ -48,5 +49,13 @@ namespace DreamAIMusic.Data.Models
         public virtual ICollection<Order> Orders { get; set; }
 
         public virtual ICollection<Playlist> Playlists { get; set; }
+
+        public string TimeZoneId { get; set; }
+
+        public ApplicationTimeZone TimeZone { get; set; }
+
+        public ICollection<UserRole> Roles { get; set; }
+
+        public ICollection<UserSetting> Settings { get; set; }
     }
 }

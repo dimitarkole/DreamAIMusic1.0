@@ -93,7 +93,8 @@
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<ICommentService, CommentService>()
                 .AddTransient<ICommentLikeService, CommentLikeService>()
-                .AddTransient<ICommentDislikeService, CommentDislikeService>();
+                .AddTransient<ICommentDislikeService, CommentDislikeService>()
+                .AddTransient<IProfileService, ProfileService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
            => services.AddSwaggerGen(c =>

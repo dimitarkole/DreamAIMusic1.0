@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\DreamAIMusic.Common\DreamAIMusic.Common.csproj" />
     <ProjectReference Include="..\DreamAIMusic.Data.Common\DreamAIMusic.Data.Common.csproj" />
   </ItemGroup>
   
