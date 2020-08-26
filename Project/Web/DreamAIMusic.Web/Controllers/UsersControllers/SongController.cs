@@ -122,7 +122,7 @@
 
         private string RandomName()
         {
-            int length = Common.GlobalConstants.CreateFile.RandomSongNameLength;
+            int length = Common.GlobalConstants.CreateFile.RandomNameLength;
             Random random = new Random();
             const string chars = Common.GlobalConstants.CreateFile.RandomNameCharacters;
             return new string(Enumerable.Repeat(chars, length)

@@ -41,7 +41,7 @@
 				UserName = model.Username,
 			};
 
-			user.Roles.Add(this.identityService.SetUserRole(user));
+			//user.Roles.Add(this.identityService.SetUserRole(user));
 
 			IdentityResult result = await userManager.CreateAsync(user, model.Password);
 			if (!result.Succeeded)

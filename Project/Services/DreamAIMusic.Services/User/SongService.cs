@@ -1,18 +1,19 @@
 ﻿namespace DreamAIMusic.Services.User
 {
-    using DreamAIMusic.Data;
-    using DreamAIMusic.Data.Models;
-    using DreamAIMusic.Services.Contracts.User;
-    using DreamAIMusic.Web.ViewModels.User.SongModels;
     using System;
     using System.Collections.Generic;
+    using System.Globalization;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-    using DreamAIMusic.Services.Mapping;
-    using System.Linq;
+
+    using DreamAIMusic.Data;
+    using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.Administration;
+    using DreamAIMusic.Services.Contracts.User;
+    using DreamAIMusic.Services.Mapping;
     using DreamAIMusic.Web.ViewModels.CommonResurces.CategoryModels;
-    using System.Globalization;
+    using DreamAIMusic.Web.ViewModels.User.SongModels;
 
     public class SongService : ISongService
     {
