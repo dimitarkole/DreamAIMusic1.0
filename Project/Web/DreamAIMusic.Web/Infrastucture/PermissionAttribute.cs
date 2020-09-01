@@ -30,10 +30,10 @@ namespace DreamAIMusic.Web.Infrastucture
                 string id = user.GetUserId();
                 IProfileService userService = context.HttpContext.RequestServices.GetRequiredService<IProfileService>();
 
-                if (!userService.HasPermissions(id, this.permissionType))
+                /*if (!userService.HasPermissions(id, this.permissionType))
                 {
                     context.Result = new ForbidResult();
-                }
+                }*/
             }
         }
     }

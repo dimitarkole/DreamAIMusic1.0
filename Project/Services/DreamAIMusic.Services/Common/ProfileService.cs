@@ -79,7 +79,7 @@
             return users.To<ProfileViewModel>().ToList();
         }
 
-        public bool HasPermissions(string id, PermissionType permissionType)
+        /*public bool HasPermissions(string id, PermissionType permissionType)
         {
             IQueryable<string> userRolesIds = this.context.Roles
                 .Where(ur => ur.Id == id)
@@ -87,10 +87,10 @@
 
             bool hasPermission = this.context.Roles
                  .Any(r => userRolesIds.Contains(r.Id) &&
-                    r.Permissions.Any(p => p.Permission.Type == permissionType));
+                    r.Any(p => p.Permission.Type == permissionType));
 
             return hasPermission;
-        }
+        }*/
 
         public async Task SetTimeZone(string timeZoneId, string userId)
         {
@@ -99,12 +99,6 @@
             this.context.Users.Update(user);
             await this.context.SaveChangesAsync();
         }
-
-        public T GetTimeZone<T>(string userId) =>
-            this.context.Users
-            .Where(u => u.Id == userId)
-            .Select(u => u.TimeZone.To<T>())
-            .FirstOrDefault();
 
         public async Task ToggleSetting(int settingId)
         {
@@ -162,12 +156,12 @@
             await context.SaveChangesAsync();
         }
 
-        public IEnumerable<PermissionType> GetPermissions(IEnumerable<string> roles) =>
+       /* public IEnumerable<PermissionType> GetPermissions(IEnumerable<string> roles) =>
             context.Roles
                 .Where(r => roles.Contains(r.Name))
                 .SelectMany(r => r.Permissions.Select(p => p.Permission.Type))
                 .Distinct()
-                .ToList();
+                .ToList();*/
 
         public async Task<ApplicationUser> Update(string id, ProfileEditModel model)
         {

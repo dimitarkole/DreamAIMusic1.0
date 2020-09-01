@@ -13,12 +13,12 @@ namespace DreamAIMusic.Data.Models
         public ApplicationUser()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.Roles = new List<UserRole>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Songs = new HashSet<Song>();
             this.Orders = new HashSet<Order>();
             this.Playlists = new HashSet<Playlist>();
+            this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Settings = new List<UserSetting>();
         }
 
@@ -52,10 +52,8 @@ namespace DreamAIMusic.Data.Models
 
         public string TimeZoneId { get; set; }
 
-        public ApplicationTimeZone TimeZone { get; set; }
-
-        public ICollection<UserRole> Roles { get; set; }
-
         public ICollection<UserSetting> Settings { get; set; }
+
+        public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
     }
 }

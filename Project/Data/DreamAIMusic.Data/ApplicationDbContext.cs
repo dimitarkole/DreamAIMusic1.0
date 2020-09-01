@@ -12,7 +12,7 @@
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
 
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Role, string, IdentityUserClaim<string>, UserRole, IdentityUserLogin<string>, IdentityRoleClaim<string>, IdentityUserToken<string>>
+    public class ApplicationDbContext : IdentityDbContext<ApplicationUser, IdentityRole, string>
     {
         private static readonly MethodInfo SetIsDeletedQueryFilterMethod =
             typeof(ApplicationDbContext).GetMethod(
@@ -29,12 +29,6 @@
         public DbSet<UserSetting> UserSettings { get; set; }
 
         public DbSet<Category> Categories { get; set; }
-
-        public DbSet<RolePermission> RolePermissions { get; set; }
-
-        public DbSet<Permission> Permissions { get; set; }
-
-        public DbSet<ApplicationTimeZone> TimeZones { get; set; }
 
         public DbSet<Song> Songs { get; set; }
 
