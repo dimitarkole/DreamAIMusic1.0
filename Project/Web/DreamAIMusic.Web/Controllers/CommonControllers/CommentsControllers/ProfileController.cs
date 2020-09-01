@@ -11,7 +11,6 @@
     using DreamAIMusic.Web.Infrastucture;
     using DreamAIMusic.Web.Infrastucture.Extensions;
     using DreamAIMusic.Web.ViewModels.CommonResurces.ProfilleModels;
-    using DreamAIMusic.Web.ViewModels.CommonResurces.TimeZoneModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
@@ -32,11 +31,9 @@
             this.profileService = profileService;
         }
 
-        [Permission(PermissionType.UserAdministration)]
         [HttpGet]
         public ActionResult All() => this.Ok(this.profileService.All<ProfileViewModel>());
 
-        [Permission(PermissionType.UserAdministration)]
         [HttpGet("{id}")]
         public IActionResult Get(string id) => this.Ok(this.profileService.GetById<ProfileEditModel>(id));
 
@@ -55,7 +52,7 @@
         [HttpGet(nameof(ValidateToken))]
         public IActionResult ValidateToken() => this.Ok(this.User.Identity.IsAuthenticated);
 
-        [AllowAnonymous]
+        /*[AllowAnonymous]
         [HttpGet(nameof(HasPermission))]
         public IActionResult HasPermission(PermissionType permissionType)
         {
@@ -65,9 +62,8 @@
             }
 
             return this.Ok(this.profileService.HasPermissions(this.User.GetUserId(), permissionType));
-        }
-
-        [Permission(PermissionType.UserAdministration)]
+        }*/
+        
         [HttpPost(nameof(ChangePassword))]
         public async Task<ActionResult> ChangePassword([FromBody] PasswordChangeInputModel model)
         {
@@ -77,7 +73,6 @@
             return result.ToActionResult();
         }
 
-        [Permission(PermissionType.UserAdministration)]
         [HttpPut("{id}")]
         public async Task<ActionResult> Edit(ProfileEditModel model, string id)
         {
@@ -94,7 +89,6 @@
             return this.Ok();
         }
 
-        [Permission(PermissionType.ManageUserPermissions)]
         [HttpPatch(nameof(ChangePermissions))]
         public async Task<ActionResult> ChangePermissions(ChangePermissionsInputModel model)
         {
@@ -104,7 +98,6 @@
             return result.ToActionResult();
         }
 
-        [Permission(PermissionType.UserAdministration)]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteUser(string id)
         {
@@ -112,7 +105,6 @@
             return this.Ok();
         }
 
-        [Permission(PermissionType.UserAdministration)]
         [HttpPost(nameof(RenewUser))]
         public async Task<ActionResult> RenewUser([FromBody] string id)
         {
@@ -135,7 +127,7 @@
         [HttpGet("[action]/{id}")]
         public ActionResult GetUserName(string id) => this.Ok(this.profileService.GetById<UserFullNameViewModel>(id));
 
-        [HttpPost(nameof(SetTimeZone))]
+       /* [HttpPost(nameof(SetTimeZone))]
         public async Task<ActionResult> SetTimeZone(UserTimeZoneInputModel model)
         {
             string id = this.User.GetUserId();
@@ -149,7 +141,7 @@
             string userId = this.User.GetUserId();
             TimeZoneViewModel timeZone = this.profileService.GetTimeZone<TimeZoneViewModel>(userId);
             return this.Ok(timeZone);
-        }
+        }*/
 
        /* [HttpGet(nameof(Notifications))]
         public ActionResult Notifications() => Ok(notificationsService.GetUserNotifications<NotificationViewModel>(User.GetUserId()));

@@ -18,8 +18,6 @@ namespace DreamAIMusic.Data.Models
             : base(name)
         {
             this.Id = Guid.NewGuid().ToString();
-            Permissions = new List<RolePermission>();
-            Users = new List<UserRole>();
         }
 
         public DateTime CreatedOn { get; set; }
@@ -29,9 +27,5 @@ namespace DreamAIMusic.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
-
-        public ICollection<RolePermission> Permissions { get; set; }
-
-        public ICollection<UserRole> Users { get; set; }
     }
 }

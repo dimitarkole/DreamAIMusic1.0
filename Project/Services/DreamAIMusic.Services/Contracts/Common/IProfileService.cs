@@ -26,15 +26,11 @@ namespace DreamAIMusic.Services.Contracts.Common
 
         IEnumerable<ProfileViewModel> Search(UserFilter model);
 
-        bool HasPermissions(string id, PermissionType permissionType);
+        //bool HasPermissions(string id, PermissionType permissionType);
 
         bool UserExistsByEmail(string email, string id = null);
 
         Task<ApplicationUser> Update(string id, ProfileEditModel model);
-
-        Task SetTimeZone(int timeZoneId, string userId);
-
-        T GetTimeZone<T>(string userId);
 
         Task ToggleSetting(int settingId);
 
@@ -48,6 +44,6 @@ namespace DreamAIMusic.Services.Contracts.Common
 
         Task UploadProfileImage(string userId, UserProfilePictueInputModel model);
 
-        IEnumerable<PermissionType> GetPermissions(IEnumerable<string> roles);
+        //IEnumerable<PermissionType> GetPermissions(IEnumerable<string> roles);
     }
 }
