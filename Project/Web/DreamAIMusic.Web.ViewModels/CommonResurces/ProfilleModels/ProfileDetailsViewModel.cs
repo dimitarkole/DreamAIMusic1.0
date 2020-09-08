@@ -1,15 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DreamAIMusic.Web.ViewModels.CommonResurces.ProfilleModels
+﻿namespace DreamAIMusic.Web.ViewModels.CommonResurces.ProfilleModels
 {
-    public class ProfileDetailsViewModel
+    using DreamAIMusic.Data.Models;
+    using DreamAIMusic.Services.Mapping;
+    using System;
+
+    public class ProfileDetailsViewModel : IMapFrom<ApplicationUser>
     {
-        public virtual string Avatar { get; set; }
+        public virtual string ImageUrl { get; set; }
 
         public virtual string Name { get; set; }
 
-        public virtual string Family { get; set; }
+        public string Family { get; set; }
+
+        public string Email { get; set; }
+
+        public string Username { get; set; }
+
+        public int Age { get; set; }
+
+        public string Phone { get; set; }
+
+        public DateTime Birtday { get; set; }
+
+        public virtual int SongsCount { get; set; }
+
+        public virtual int PlaylistsCount { get; set; }
     }
 }

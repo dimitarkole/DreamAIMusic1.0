@@ -42,6 +42,7 @@ export class SongCreateComponent implements OnInit {
     private http: HttpClient)
   {
     this.categories$ = categoryService.all();
+    //console.log(this.categories$);
   }
 
   ngOnInit() {

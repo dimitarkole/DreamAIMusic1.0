@@ -28,6 +28,7 @@ import { SongPlayComponent } from './home/song/song-play/song-play.component';
 import { CommentListComponent } from './home/song/comment/comment-list/comment-list.component';
 import { CommentInfoComponent } from './home/song/comment/comment-info/comment-info.component';
 import { CommentCreateComponent } from './home/song/comment/comment-create/comment-create.component';
+import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { CommentCreateComponent } from './home/song/comment/comment-create/comme
     CommentListComponent,
     CommentInfoComponent,
     CommentCreateComponent,
+    MyProfileComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,
