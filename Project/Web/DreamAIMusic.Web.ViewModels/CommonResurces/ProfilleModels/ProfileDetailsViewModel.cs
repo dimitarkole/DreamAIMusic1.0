@@ -2,6 +2,7 @@
 {
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Mapping;
+
     using System;
 
     public class ProfileDetailsViewModel : IMapFrom<ApplicationUser>

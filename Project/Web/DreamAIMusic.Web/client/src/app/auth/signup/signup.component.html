@@ -4,45 +4,85 @@
   <div class="col-xl-6 ">
     <div class="wrap-login100">
       <form (ngSubmit)="signUp()" [formGroup]="signUpForm" class="login100-form validate-form p-l-55 p-r-55 p-t-178">
-          <a class="form-title-left" routerLink="/login">
-            Sign In
-          </a>
-          <a class="form-title-rigth  form-title-active" routerLink="/signup">
-            Sign Up
-          </a>
+        <a class="form-title-left" routerLink="/login">
+          Sign In
+        </a>
+        <a class="form-title-rigth  form-title-active" routerLink="/signup">
+          Sign Up
+        </a>
 
-          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
-            <input class="input100" type="text" name="username" placeholder="Username" formControlName="username">
-            <div class="form-label text-danger text-right" *ngIf="signUpForm.get('username').touched && signUpForm.get('username').hasError('required')">
-              The username is required!
+        <div class="row">
+          <div class="col-md-6">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your name">
+              <input class="input100" type="text" name="name" placeholder="Name" formControlName="name">
+              <div class="form-label text-danger text-right" *ngIf="name.touched && name.hasError('required')">
+                The name is required!
+              </div>
             </div>
           </div>
-
-          <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email">
-            <input class="input100" type="text" name="email" placeholder="email" formControlName="email">
-            <div class="form-label text-danger text-right" *ngIf="signUpForm.get('email').touched && signUpForm.get('email').hasError('required')">
-              The email is required!
+          <div class="col-md-6">
+            <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your family">
+              <input class="input100" type="text" name="family" placeholder="Family" formControlName="family">
+              <div class="form-label text-danger text-right" *ngIf="family.touched && family.hasError('required')">
+                The family is required!
+              </div>
             </div>
           </div>
+        </div>
 
-          <div class="wrap-input100 validate-input" data-validate="Please enter password">
-            <input class="input100" type="password" name="pass" placeholder="Password" formControlName="password">
-            <div class="form-label text-danger text-right" *ngIf="signUpForm.get('password').touched && signUpForm.get('password').hasError('required')">
-              The password is required!
-            </div>
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter username">
+          <input class="input100" type="text" name="username" placeholder="Username" formControlName="username">
+          <div class="form-label text-danger text-right" *ngIf="username.touched && username.hasError('required')">
+            The username is required!
           </div>
+        </div>
 
-          <div class="container-login100-form-btn">
-            <button class="login100-form-btn">
-              Sign up
-            </button>
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter email">
+          <input class="input100" type="text" name="Rmail" placeholder="Email" formControlName="email">
+          <div class="form-label text-danger text-right" *ngIf="email.touched && email.hasError('required')">
+            The email is required!
           </div>
-        </form>
+          <div class="form-label text-danger text-right" *ngIf="email.touched && email.hasError('email')">
+            Enter currect email address!
+          </div>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter password">
+          <input class="input100" type="password" name="password" placeholder="Password" formControlName="password">
+          <div class="form-label text-danger text-right" *ngIf="password.touched && password.hasError('required')">
+            The password is required!
+          </div>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Please confirm password">
+          <input class="input100" type="password" name="confirmPassword" placeholder="Confirm password" formControlName="confirmPassword">
+          <div class="form-label text-danger text-right" *ngIf="confirmPassword.touched && confirmPassword.hasError('required')">
+            The confirm password is required!
+          </div>
+          <div *ngIf="confirmPassword.touched && confirmPassword.invalid" class="alert alert-danger">
+            <div *ngIf="confirmPassword.errors.required">Password is required.</div>
+            <div *ngIf="confirmPassword.errors.confirmedValidator">Password and Confirm Password must be match.</div>
+          </div>
+        </div>
+
+        <div class="wrap-input100 validate-input m-b-16" data-validate="Please enter your birthday">
+          <input class="input100" type="date" name="birthday" placeholder="Birthday" formControlName="birthday" [max]="maxDate|date ">
+          <div class="form-label text-danger text-right" *ngIf="birthday.touched && birthday.hasError('required')">
+            The birthday is required!
+          </div>
+        </div>
+
+        <div class="container-login100-form-btn">
+          <button class="login100-form-btn" [disabled]="signUpForm.invalid">
+            Sign up
+          </button>
+        </div>
+      </form>
     </div>
   </div>
 </div>
 
--->
+
 <!-- <div class="row">
   <div class="col-xl-3">
   </div>
