@@ -42,8 +42,7 @@ export class CategoryEditComponent implements OnInit {
     this.categoryService.edit(category)
       .subscribe(_ => {
         this.modal.close(); //It closes successfully
-      })
-    
+      })   
   }
 
   get name(): AbstractControl {

@@ -38,7 +38,6 @@ export class CategoryListComponent {
       this.categoryService.delete(categoryId).toPromise()
         .then(_ => {
           this.router.navigate(['/category/all']);
-
         })
     }).catch(err => {
       console.log(err);

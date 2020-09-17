@@ -1,40 +1,28 @@
 ﻿namespace DreamAIMusic.Web.ViewModels.CommonResurces.IdentityModels
 {
+    using DreamAIMusic.Common;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.Text;
 
     public class RegisterInputModel
-    {
-		private const int UsernameMinLength = 5;
-		private const int UsernameMaxLength = 30;
-
-		private const int NameMinLength = 1;
-		private const int NameMaxLength = 30;
-
-		private const int FamilyMinLength = 1;
-		private const int FamilyMaxLength = 30;
-
-		private const int PasswordMinLength = 8;
-		private const int PasswordMaxLength = 20;
-
+	{
 
 		[Required]
-		[MinLength(UsernameMinLength)]
-		[MaxLength(UsernameMaxLength)]
+		[MinLength(GlobalConstants.UsernameMinLength)]
+		[MaxLength(GlobalConstants.UsernameMaxLength)]
 		public string Username { get; set; }
 
 		[Required]
-		[MinLength(NameMinLength)]
-		[MaxLength(NameMaxLength)]
-		public string Name { get; set; }
+		[MinLength(GlobalConstants.FirstNameMinLength)]
+		[MaxLength(GlobalConstants.FirstNameMaxLength)]
+		public string FirstName { get; set; }
 
 		[Required]
-		[MinLength(FamilyMinLength)]
-		[MaxLength(FamilyMaxLength)]
-
-		public string Family { get; set; }
+		[MinLength(GlobalConstants.LastNameMinLength)]
+		[MaxLength(GlobalConstants.LastNameMaxLength)]
+		public string LastName { get; set; }
 
 		[Required]
 		[EmailAddress]
@@ -44,8 +32,8 @@
 		public DateTime Birthday { get; set; }
 
 		[Compare(nameof(ConfirmPassword))]
-		[MinLength(PasswordMinLength)]
-		[MaxLength(PasswordMaxLength)]
+		[MinLength(GlobalConstants.PasswordMinLength)]
+		[MaxLength(GlobalConstants.PasswordMaxLength)]
 		[Required]
 		public string Password { get; set; }
 

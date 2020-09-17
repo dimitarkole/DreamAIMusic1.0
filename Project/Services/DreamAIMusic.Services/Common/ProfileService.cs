@@ -163,6 +163,7 @@
             ApplicationUser user = this.context.Users.Find(id);
             user.FirstName = model.FirstName;
             user.LastName = model.LastName;
+            user.Birthday = model.Birthday;
 
             this.context.Users.Update(user);
             await this.context.SaveChangesAsync();

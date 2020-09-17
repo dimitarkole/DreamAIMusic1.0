@@ -19,77 +19,80 @@
       <div class="tab-content">
         <div id="about" class="tab-pane fade in active show">
           <div class="card-body info-card social-about">
-            <h2 class="text-blue">Personal Info</h2>
             <div class="row">
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Name</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    {{user.name}}
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Family</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    {{user.family}}
-                  </div>
-                </div>
-              </div>
+                <h2 class="text-blue col-md-2">Personal info</h2>
+                  <span class="glyphicon glyphicon-edit btn text-dark col-md-1" (click)="openEdit()" aria-hidden="true"></span>
             </div>
             <div class="row">
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Birthday</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    {{user.birthday}}
-                  </div>
-                </div>
-              </div>
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Age</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    {{user.age}}
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Name</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.firstName}}
+                    </div>
                   </div>
                 </div>
-              </div>
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Family</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.lastName}}
+                    </div>
+                  </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Birthday</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.birthday | date: 'dd.MM.yyyy'}}
+                    </div>
+                  </div>
+                </div>
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Age</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.age}}
+                    </div>
+                  </div>
+                </div>
             </div>
 
             <div class="row">
-              <div class="col-sm-6">
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">E-mail</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    {{user.email}}
+                <div class="col-sm-6">
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">E-mail</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.email}}
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div class="col-sm-6">
+                <div class="col-sm-6">
 
-                <div class="row">
-                  <div class="col-sm-3">
-                    <h6 class="mb-0">Phone</h6>
-                  </div>
-                  <div class="col-sm-9 text-secondary">
-                    {{user.phone}}
+                  <div class="row">
+                    <div class="col-sm-3">
+                      <h6 class="mb-0">Phone</h6>
+                    </div>
+                    <div class="col-sm-9 text-secondary">
+                      {{user.phone}}
+                    </div>
                   </div>
                 </div>
-              </div>
             </div>
-
           </div>
+
         </div>
         <div id="songsCount" class="tab-pane fade">
           <div class="card-body info-card social-about">

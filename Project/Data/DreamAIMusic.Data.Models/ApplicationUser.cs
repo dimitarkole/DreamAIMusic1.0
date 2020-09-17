@@ -34,7 +34,7 @@ namespace DreamAIMusic.Data.Models
 
         public VisabilityType VisabilityPhone { get; set; }
 
-        public DateTime Birtday { get; set; }
+        public DateTime Birthday { get; set; }
 
         public VisabilityType VisabilityBirtday { get; set; }
 

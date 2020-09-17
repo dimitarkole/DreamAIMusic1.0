@@ -11,6 +11,7 @@ import { SongEditComponent } from './components/user/song/song-edit/song-edit.co
 import { SongResolver } from './core/resolvers/song.resolver';
 import { SongPlayComponent } from './home/song/song-play/song-play.component';
 import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
+import { UserResolver } from './core/resolvers/user.resolver';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -52,7 +53,9 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'myProfile', component: MyProfileComponent 
+    path: 'myProfile', children: [
+      { path: '', component: MyProfileComponent },
+    ]
   },
 ];
 

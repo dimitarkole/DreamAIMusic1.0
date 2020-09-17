@@ -6,6 +6,7 @@ import User from '../../components/shared/models/user';
   providedIn: 'root'
 })
 export class ProfileService {
+ 
   private routeProfileController: string = 'Profile';
 
   constructor(private http: HttpClient) { }
@@ -13,4 +14,13 @@ export class ProfileService {
   MyProfile() {
     return this.http.get<User>(`${this.routeProfileController}/MyProfile`);
   }
+
+  getById(id: string) {
+    return this.http.get<User>(`${this.routeProfileController}/${id}`);
+  }
+
+  edit(user: User) {
+    return this.http.put(`${this.routeProfileController}/EditMyProfile`, user);
+  }
+
 }

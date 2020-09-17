@@ -76,7 +76,7 @@
         [HttpPut("{id}")]
         public async Task<ActionResult> Edit(ProfileEditModel model, string id)
         {
-            this.ValidateUser(model, id);
+            // this.ValidateUser(model, id);
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest(this.ModelState.Errors());
@@ -84,8 +84,25 @@
 
             ApplicationUser user = await this.profileService.Update(id, model);
             await this.ClearUserRoles(user);
-            await this.userManager.AddToRolesAsync(user, model.Roles);
 
+            // await this.userManager.AddToRolesAsync(user, model.Roles);
+            return this.Ok();
+        }
+
+        [HttpPut(nameof(EditMyProfile))]
+        public async Task<ActionResult> EditMyProfile(ProfileEditModel model)
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            // this.ValidateUser(model, userId);
+            if (!this.ModelState.IsValid)
+            {
+                return this.BadRequest(this.ModelState.Errors());
+            }
+
+            ApplicationUser user = await this.profileService.Update(userId, model);
+
+            // await this.ClearUserRoles(user);
+            // await this.userManager.AddToRolesAsync(user, model.Roles);
             return this.Ok();
         }
 

@@ -7,11 +7,13 @@
 
     public class ProfileDetailsViewModel : IMapFrom<ApplicationUser>
     {
+        public virtual string Id { get; set; }
+
         public virtual string ImageUrl { get; set; }
 
-        public virtual string Name { get; set; }
+        public virtual string FirstName { get; set; }
 
-        public string Family { get; set; }
+        public string LastName { get; set; }
 
         public string Email { get; set; }
 
@@ -21,7 +23,7 @@
 
         public string Phone { get; set; }
 
-        public DateTime Birtday { get; set; }
+        public DateTime Birthday { get; set; }
 
         public virtual int SongsCount { get; set; }
 
