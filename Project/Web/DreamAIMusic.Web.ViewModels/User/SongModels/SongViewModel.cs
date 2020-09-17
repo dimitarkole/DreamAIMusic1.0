@@ -1,7 +1,8 @@
-﻿namespace DreamAIMusic.Web.ViewModels.UserModels.SongModels
+﻿namespace DreamAIMusic.Web.ViewModels.User.SongModels
 {
     using System;
     using System.Collections.Generic;
+    using System.IO;
     using System.Text;
 
     using AutoMapper;
@@ -14,21 +15,11 @@
 
         public string Name { get; set; }
 
-        public string Path { get; set; }
+        public string UniqueSongFilesName { get; set; }
 
-        public string Image { get; set; }
+        public string ImageExtension { get; set; }
 
-        public string MusicCategoryId { get; set; }
-
-        public string MusicCategoryName { get; set; }
-
-        public string Text { get; set; }
-
-        public string CountViews { get; set; }
-
-        public long CountLikes { get; set; }
-
-        public long CountDisLikes { get; set; }
+        public string Mp3Extension { get; set; }
 
         public DateTime CreatedOn { get; set; }
     }

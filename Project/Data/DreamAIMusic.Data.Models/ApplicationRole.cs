@@ -2,7 +2,7 @@
 namespace DreamAIMusic.Data.Models
 {
     using System;
-
+    using System.Collections.Generic;
     using DreamAIMusic.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;

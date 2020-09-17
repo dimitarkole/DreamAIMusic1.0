@@ -34,11 +34,29 @@
               "src/assets/styles/main_styles.css",
               "src/assets/styles/responsive.css",
               "src/assets/styles/form_styles.css",
-              "src/assets/styles/table_style.css"
+              "src/assets/styles/table_style.css",
+              "src/assets/styles/song_list_style.css",
+              "src/assets/styles/artists.css",
+              "src/assets/styles/artists_responsive.css"
+
             ],
             "scripts": [
-              //"src/styles/"
-
+             /* "src/assets/js/jquery-3.3.1.min.js",
+              "src/assets/styles/bootstrap-4.1.2/popper.js",
+              "src/assets/styles/bootstrap-4.1.2/bootstrap.min.js",
+              "src/assets/plugins/greensock/TweenMax.min.js",
+              "src/assets/plugins/greensock/TimelineMax.min.js",
+              "src/assets/plugins/scrollmagic/ScrollMagic.min.js",
+              "src/assets/plugins/greensock/animation.gsap.min.js",
+              "src/assets/plugins/greensock/ScrollToPlugin.min.js",
+              "src/assets/plugins/OwlCarousel2-2.3.4/owl.carousel.js",
+              "src/assets/plugins/jPlayer/jquery.jplayer.min.js",
+              "src/assets/plugins/jPlayer/jplayer.playlist.min.js",
+              "src/assets/plugins/easing/easing.js",
+              "src/assets/plugins/progressbar/progressbar.min.js",
+              "src/assets/plugins/parallax-js-master/parallax.min.js",
+              "src/assets/plugins/scrollTo/jquery.scrollTo.min.js",
+              "src/assets/js/artists.js"*/
             ]
           },
           "configurations": {

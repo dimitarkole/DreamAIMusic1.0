@@ -6,5 +6,9 @@ export const modelConstants = {
         descriptionMaxLength: 500,
         priceMinValue:0.01,
         priceMaxValue: 1000000
-    }
+  },
+   comment: {
+    textMinLength: 1,
+    textMaxLength: 5000,
+  }
 }

@@ -5,7 +5,7 @@
     using System.Text;
     using System.Threading.Tasks;
 
-    using DreamAIMusic.Web.ViewModels.UserModels.SongModels;
+    using DreamAIMusic.Web.ViewModels.User.SongModels;
 
     public interface ISongService
     {

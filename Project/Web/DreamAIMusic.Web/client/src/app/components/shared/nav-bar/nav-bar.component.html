@@ -8,7 +8,7 @@
             <a href="#" class="d-flex flex-row align-items-end justify-content-start">
               <img src="../../../../assets/images/icon_2.png" alt="Alternate Text" class="logo_bars" />
               <!--<span class="logo_bars d-flex flex-row align-items-end justify-content-between">
-              <span></span><span></span><span></span><span></span><span></span></span> -->
+      <span></span><span></span><span></span><span></span><span></span></span> -->
               <span class="logo_text">AI Music</span>
             </a>
           </div>
@@ -17,22 +17,92 @@
           <nav class="main_nav">
             <ul class="d-flex flex-row align-items-center justify-content-start">
               <li><a routerLink="/">Home</a></li>
-              <li *ngIf="isAdmin"><a routerLink="/category/create">Add categoty</a></li>
-              <li *ngIf="isAdmin"><a routerLink="/category">All categoty</a></li>
-              <li *ngIf="role=='User'"><a routerLink="/song/create">Add Song</a></li>
-              <li *ngIf="role=='User'"><a routerLink="/song/all">All own song</a></li>
             </ul>
           </nav>
 
           <!-- User area -->
-          <div class="log_reg d-flex flex-row align-items-center justify-content-start">
-            <ul class="d-flex flex-row align-items-start justify-content-start">
-              <li *ngIf="!isAuth"><a routerLink="/login">Login</a></li>
-              <li *ngIf="!isAuth"><a routerLink="/signup">Register</a></li>
-              <li *ngIf="isAuth"><a (click)="logout()">Logout</a></li>
-            </ul>
-            <!-- Hamburger -->
-            <div class="hamburger d-flex flex-column align-items-end justify-content-between"><div></div><div></div><div></div></div>
+          <div class="custum_dropdown_menu_header d-flex flex-row align-items-center justify-content-start" *ngIf="isAuth">
+            <nav class="main_nav">
+              <ul class="d-flex flex-row align-items-start justify-content-start row">
+                <!-- Dropdown -->
+                <li>
+                  <a routerLink="/category/create" *ngIf="isAdmin">
+                    <img src="../../../../assets/images/icon_addCategory.png" alt="Alternate Text" class="add_element_header" />
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
+                    {{username}}
+                  </a>
+
+                  <!-- admin items -->
+                  <div class="dropdown-menu">
+                    <div class="dropdown-item">
+                      <a routerLink="/myProfile" class="row text-dark">
+                        <small>Wellcom,</small>
+                        {{username}}
+                      </a>
+
+                    </div>
+                    <div class="dropdown-item" *ngIf="isAdmin">
+                      <a routerLink="/category/create" class="row ">
+                        <i class="col-md-2" style="background: url('../../../../assets/images/icon_addCategory.png') no-repeat;"></i>
+                        <div class="col-md-10 text-dark">
+                          Add categories
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="dropdown-item" *ngIf="isAdmin">
+                      <a routerLink="/category" class="row ">
+                        <i class="col-md-2" style="background: url('../../../../assets/images/icon_allCategory.png') no-repeat;"></i>
+                        <div class="col-md-10 text-dark">
+                          All categories
+                        </div>
+                      </a>
+                    </div>
+
+                    <!-- user items -->
+                    <div class="dropdown-item" *ngIf="role==='User'">
+                      <a routerLink="/song/create" class="row text-dark">
+                        <i class="col-md-2" style="background: url('../../../../assets/images/icon_addSong.png') no-repeat;"></i>
+                        <div class="col-md-9">
+                          Add Song
+                        </div>
+                      </a>
+                    </div>
+
+                    <div class="dropdown-item" *ngIf="role==='User'">
+                      <a routerLink="/song/own" class="row text-dark">
+                        <i class="col-md-2" style="background: url('../../../../assets/images/icon_ownSongs.png') no-repeat;"></i>
+                        <div class="col-md-9">
+                          Own Song
+                        </div>
+                      </a>
+                    </div>
+
+                    <!-- logout -->
+                    <div class="dropdown-item">
+                      <a (click)="logout()" class="row text-dark">
+                        <i class="col-md-2" style="background: url('../../../../assets/images/icon_logout.png') no-repeat;"></i>
+                        <div class="col-md-9">
+                          Logout
+                        </div>
+                      </a>
+                    </div>
+                  </div>
+                </li>
+              </ul>
+            </nav>
+          </div>
+
+          <div class="log_reg d-flex flex-row align-items-center justify-content-start" *ngIf="!isAuth">
+            <nav class="main_nav">
+              <ul class="d-flex flex-row align-items-start justify-content-start row">
+                <li><a routerLink="/login">Login</a></li>
+                <li><a routerLink="/signup">Register</a></li>
+              </ul>
+            </nav>
           </div>
         </div>
       </div>

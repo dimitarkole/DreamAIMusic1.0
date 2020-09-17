@@ -35,7 +35,7 @@
     {
         public Startup(IConfiguration configuration) => Configuration = configuration;
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration Configuration { get; protected set; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
@@ -75,11 +75,12 @@
             {
                 app.UseDatabaseErrorPage();
             }
+
             app.UseStaticFiles();
             app.UseStaticFiles(new StaticFileOptions()
             {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"Resources")),
-                RequestPath = new PathString("/Resources"),
+                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), @"client/src/assets/resources")),
+                RequestPath = new PathString("/client/src/assets/resources"),
             });
 
             app

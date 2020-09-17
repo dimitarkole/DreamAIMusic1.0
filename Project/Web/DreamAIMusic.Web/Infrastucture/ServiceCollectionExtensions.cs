@@ -90,7 +90,11 @@
                 .AddTransient<ISettingsService, SettingsService>()
                 .AddTransient<ICategoryService, CategoryService>()
                 .AddTransient<ISongService, SongService>()
-                .AddTransient<IIdentityService, IdentityService>();
+                .AddTransient<IIdentityService, IdentityService>()
+                .AddTransient<ICommentService, CommentService>()
+                .AddTransient<ICommentLikeService, CommentLikeService>()
+                .AddTransient<ICommentDislikeService, CommentDislikeService>()
+                .AddTransient<IProfileService, ProfileService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
            => services.AddSwaggerGen(c =>

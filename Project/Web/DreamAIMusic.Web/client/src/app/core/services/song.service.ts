@@ -19,8 +19,11 @@ export class SongService {
     return this.http.get<Song[]>(this.routeSongController);
   }
 
-  create(song: Song) {
+  create(song: Song, fileToUpload: File) {
+    // upload image
     return this.http.post(this.routeSongController, song, { reportProgress: true, observe: 'events' });
+    // create song
+   
   }
 
   getById (id: string){
@@ -35,15 +38,12 @@ export class SongService {
     return this.http.delete(`${this.routeSongController}/${id}`);
   }
 
-  uploadImage(files) {
-    if (files.length === 0) {
-      return;
-    }
-
-    let fileToUpload = <File>files[0];
-    const formData = new FormData();
-    formData.append('file', fileToUpload, fileToUpload.name);
-    return this.http.post(`${this.routeSongController}/UploadImage`,
-      formData, { reportProgress: true, observe: 'events' });
+  postFile(imageFileToUpload: File, MP3FileToUpload: File, songName: string) {
+     const formData: FormData = new FormData();
+    formData.append('image', imageFileToUpload, imageFileToUpload.name);
+    formData.append('mp3', MP3FileToUpload, MP3FileToUpload.name);
+     formData.append('songName', songName);
+    return this.http
+      .post(`${this.routeSongController}/uploadSongFile`, formData);
   }
 }

@@ -26,11 +26,17 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<UserSetting> UserSettings { get; set; }
+
         public DbSet<Category> Categories { get; set; }
 
         public DbSet<Song> Songs { get; set; }
 
-        public DbSet<Commentar> Commentars { get; set; }
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<CommentDislike> CommentDislikes { get; set; }
+
+        public DbSet<CommentLike> CommentLikes { get; set; }
 
         public DbSet<Plan> Plans { get; set; }
 
@@ -38,7 +44,7 @@
 
         public DbSet<Vaucher> Vauchers { get; set; }
 
-        public DbSet<Playlist> Playlists{ get; set; }
+        public DbSet<Playlist> Playlists { get; set; }
 
         public DbSet<PlaylistSong> PlaylistSongs { get; set; }
 

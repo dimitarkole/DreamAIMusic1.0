@@ -18,7 +18,7 @@
         //     Gets or sets the primary key for this role.
         public virtual string Id { get; set; }
 
-        public virtual Song Song{ get; set; }
+        public virtual Song Song { get; set; }
 
         public virtual string SongId { get; set; }
 

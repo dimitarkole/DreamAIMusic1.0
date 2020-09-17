@@ -6,7 +6,7 @@ import Category from 'src/app/components/shared/models/category';
   providedIn: 'root'
 })
 export class CategoryService {
-  private route: string = 'category';
+  private route: string = 'Category';
 
   constructor(private http: HttpClient) { }
 

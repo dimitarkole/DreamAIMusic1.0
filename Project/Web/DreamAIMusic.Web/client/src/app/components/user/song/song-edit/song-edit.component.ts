@@ -47,19 +47,19 @@ export class SongEditComponent implements OnInit {
         ]
       ],
       imageFile: [
-        song.imageFile,
+       null,
         [
           // Validators.required
         ]
       ],
       path: [
-        song.path,
+        null,//song.path,
         [
           // Validators.required
         ]
       ],
-      musicCategoryId: [
-        song.musicCategoryId,
+      songCategoryId: [
+        song.songCategoryId,
         [
           Validators.required,
           Validators.pattern('^((?!default).)*$'),
@@ -98,23 +98,11 @@ export class SongEditComponent implements OnInit {
     return this.songForm.get('text');
   }
 
-  get musicCategoryId(): AbstractControl {
-    return this.songForm.get('musicCategoryId');
+  get songCategoryId(): AbstractControl {
+    return this.songForm.get('songCategoryId');
   }
 
   get imageFile(): AbstractControl {
     return this.songForm.get('imageFile');
-  }
-
-  public uploadImage = (files) => {
-    this.songService.uploadImage(files).subscribe(event => {
-      if (event.type === HttpEventType.UploadProgress)
-        this.progress = Math.round(100 * event.loaded / event.total);
-      else if (event.type === HttpEventType.Response) {
-        this.message = 'Upload success.';
-        //this.onUploadFinished.emit(event.body);
-        // this.songForm.controls['imageFile'].setValue(event.ok);
-      }
-    });
   }
 }

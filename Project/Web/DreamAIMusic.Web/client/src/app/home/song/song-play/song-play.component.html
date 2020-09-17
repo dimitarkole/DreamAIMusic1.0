@@ -1,0 +1,114 @@
+<div class="row">
+  <!-- song Image -->
+  <div class="col-lg-7">
+    <div class="row">
+      <img src="{{'../../../../assets/resources/song/images/' + song.uniqueSongFilesName + song.imageExtension }}" class="col-lg-12 song-play-image" alt="">
+    </div>
+
+    <audio controls>
+      <source src="horse.ogg" type="audio/ogg">
+      <source src="../../../../assets/resources/song/аudio/TONI STORARO_s8hea.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
+    <!-- Player -->
+    <div class="single_player_container">
+      <div class="single_player">
+        <div class="jp-jplayer jplayer" data-title="Sunny" data-song="Bensound" data-ancestor=".jp_container_3" data-url="../../../../assets/files/" id="jp_jplayer_2" style="width: 0px; height: 0px;">
+          <img id="jp_poster_2" style="width: 0px; height: 0px; display: none;">
+          <audio id="jp_audio_2" preload="metadata" src="{{'../../../../assets/resources/song/аudio/'+ song.uniqueSongFilesName + song.mp3Extension }}" title="Sunny"></audio>
+        </div>
+        <div class="jp-audio jp_container_3" role="application" aria-label="media player">
+          <div class="jp-gui jp-interface single_player_inner d-flex flex-row align-items-center justify-content-start">
+
+            <!-- Player Controls -->
+            <div class="player_controls_box">
+              <div class="jp-controls-holder player_controls d-flex flex-row align-items-start justify-content-start">
+                <button class="jp-play player_button" tabindex="0"></button>
+                <button class="jp-stop player_button" tabindex="0"></button>
+              </div>
+            </div>
+
+            <!-- Progress Bar -->
+            <div class="player_bars d-flex flex-row align-items-start justify-content-start">
+              <div class="player_progress_box">
+                <div class="jp-current-time" role="timer" aria-label="time">00:00</div>
+                <div class="song_info">
+                  <div class="jp-title" aria-label="title">{{song.name}}</div>
+                </div>
+                <div class="jp-progress">
+                  <div class="jp-seek-bar" style="width: 100%;">
+                    <div>
+                      <div class="jp-play-bar" style="width: 0%;"><span></span></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="jp-duration ml-auto" role="timer" aria-label="duration">02:20</div>
+              </div>
+
+              <!-- Volume Controls -->
+              <div class="jp-volume-controls ml-auto">
+                <div class="mute_button">
+                  <button class="jp-mute" tabindex="0"></button>
+                </div>
+                <div class="d-flex flex-row align-items-center justify-content-start">
+                  <div class="jp-volume-bar">
+                    <div>
+                      <div class="jp-volume-bar-value" style="width: 20%;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="jp-no-solution" style="display: none;">
+            <span>Update Required</span>
+            To play the media you will need to either update your browser to a recent version or update your <a href="http://get.adobe.com/flashplayer/" target="_blank">Flash plugin</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <hr />
+    <div class="row">
+      <div class="col-md-1">
+        avatar
+      </div>
+      <div class=" col-md-10">
+        <h5>{{song.user.userName}}</h5>
+        <p>
+          {{'../../../../assets/resources/song/аudio/'+ song.uniqueSongFilesName + song.mp3Extension }}
+        </p>
+        <p>
+          {{song.text}}
+        </p>
+      </div>
+      <div class="col-md-1">
+
+      </div>
+    </div>
+
+    <hr />
+    <div class="row">
+      <div class="col-md-3">
+        <p>
+          Comments ( {{song.comments.length}})
+        </p>
+      </div>
+      <div class=" col-md-10">
+        <p>
+
+        </p>
+      </div>
+      <div class="col-md-1">
+
+      </div>
+    </div>
+
+    <app-comment-create [songId]="song.id" class="col-md-12"></app-comment-create>
+    <app-comment-list [allComments]="song.comments" class="col-md-12"></app-comment-list>
+  </div>
+  <!-- song Content -->
+  <div class="col-lg-5 song_col">
+
+  </div>
+</div>

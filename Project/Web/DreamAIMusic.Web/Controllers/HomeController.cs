@@ -6,7 +6,7 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Web.ViewModels;
-    using DreamAIMusic.Web.ViewModels.UserModels.SongModels;
+    using DreamAIMusic.Web.ViewModels.User.SongModels;
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Hosting;
     using Microsoft.AspNetCore.Identity;
@@ -22,20 +22,18 @@
             ISongService songService,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
-            ILogger<LogoutModel> logger,
-            IHostingEnvironment hostingEnvironment)
-            : base(userManager, signInManager, logger, hostingEnvironment)
+            ILogger<LogoutModel> logger)
+            : base(userManager, signInManager, logger)
         {
             this.songService = songService;
         }
 
         [HttpGet]
-        [Route(nameof(Get))]
         public ActionResult<IEnumerable<SongViewModel>> Get()
           => this.Ok(this.songService.All<SongViewModel>());
 
         [HttpGet("{id}")]
-        public ActionResult<SongViewModel> Get(string id) =>
-           this.Ok(this.songService.GetById<SongViewModel>(id));
+        public ActionResult<SongPlayModel> Get(string id) =>
+           this.Ok(this.songService.GetById<SongPlayModel>(id));
     }
 }

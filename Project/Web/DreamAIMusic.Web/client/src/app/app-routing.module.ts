@@ -9,10 +9,25 @@ import { SongCreateComponent } from './components/user/song/song-create/song-cre
 import { SongListComponent } from './components/user/song/song-list/song-list.component';
 import { SongEditComponent } from './components/user/song/song-edit/song-edit.component';
 import { SongResolver } from './core/resolvers/song.resolver';
+import { SongPlayComponent } from './home/song/song-play/song-play.component';
+import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
+import { UserResolver } from './core/resolvers/user.resolver';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
-  { path: 'home', component: HomeComponent },
+  {
+    path: 'home', children: [
+      { path: '', component: HomeComponent },
+      {
+        path: 'play/:id',
+        component: SongPlayComponent,
+        resolve:
+        {
+          song: SongResolver
+        }
+      },
+    ]
+  },
   { path: 'signup', component: SignupComponent },
   { path: 'login', component: LoginComponent },
   {
@@ -25,7 +40,7 @@ const routes: Routes = [
   {
     path: 'song', children: [
       { path: '', component: SongListComponent },
-      { path: 'all', component: SongListComponent },
+      { path: 'own', component: SongListComponent },
       { path: 'create', component: SongCreateComponent },
       {
         path: 'edit/:id',
@@ -36,7 +51,12 @@ const routes: Routes = [
         } 
       },
     ]
-  }
+  },
+  {
+    path: 'myProfile', children: [
+      { path: '', component: MyProfileComponent },
+    ]
+  },
 ];
 
 @NgModule({
