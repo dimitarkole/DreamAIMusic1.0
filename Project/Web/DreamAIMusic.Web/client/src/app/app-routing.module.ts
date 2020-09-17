@@ -10,6 +10,8 @@ import { SongListComponent } from './components/user/song/song-list/song-list.co
 import { SongEditComponent } from './components/user/song/song-edit/song-edit.component';
 import { SongResolver } from './core/resolvers/song.resolver';
 import { SongPlayComponent } from './home/song/song-play/song-play.component';
+import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
+import { UserResolver } from './core/resolvers/user.resolver';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -49,7 +51,12 @@ const routes: Routes = [
         } 
       },
     ]
-  }
+  },
+  {
+    path: 'myProfile', children: [
+      { path: '', component: MyProfileComponent },
+    ]
+  },
 ];
 
 @NgModule({

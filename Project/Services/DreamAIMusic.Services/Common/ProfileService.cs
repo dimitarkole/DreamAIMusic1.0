@@ -71,11 +71,6 @@
                 users = users.Where(u => u.FirstName.Contains(model.FirstName));
             }
 
-            if (!string.IsNullOrEmpty(model.MiddleName))
-            {
-                users = users.Where(u => u.MiddleName.Contains(model.MiddleName));
-            }
-
             return users.To<ProfileViewModel>().ToList();
         }
 
@@ -167,8 +162,8 @@
         {
             ApplicationUser user = this.context.Users.Find(id);
             user.FirstName = model.FirstName;
-            user.MiddleName = model.MiddleName;
             user.LastName = model.LastName;
+            user.Birthday = model.Birthday;
 
             this.context.Users.Update(user);
             await this.context.SaveChangesAsync();

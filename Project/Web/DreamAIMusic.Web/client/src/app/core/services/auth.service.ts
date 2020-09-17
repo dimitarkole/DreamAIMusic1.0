@@ -4,6 +4,7 @@ import { globalConstants } from 'src/app/common/global-constants';
 import { HttpClient } from '@angular/common/http';
 import { Subject } from 'rxjs';
 import * as jwtDecode from "jwt-decode";
+import User from '../../components/shared/models/user';
 
 @Injectable({
   providedIn: 'root'
@@ -53,8 +54,8 @@ export class AuthService {
     return localStorage.setItem(globalConstants.jwtTokenKey, token);
   }
 
-  register(email: string, password: string, username: string) {
-    return this.http.post("Identity/Register", { email, password, username, confirmPassword: password });
+  register(user: User) {
+    return this.http.post("Identity/Register", user);
   }
 
   login(username: string, password: string) {

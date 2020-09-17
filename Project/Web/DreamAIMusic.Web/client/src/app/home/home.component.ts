@@ -12,7 +12,6 @@ import getPage from '../common/paginator';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  @Input() categoty: Song
   page: number = globalConstants.pagination.defaultPage;
   collectionSize: number;
   private itemsPerPage: number;

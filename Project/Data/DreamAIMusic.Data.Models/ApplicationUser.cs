@@ -3,7 +3,7 @@ namespace DreamAIMusic.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
+    using DreamAIMusic.Common;
     using DreamAIMusic.Data.Common.Models;
 
     using Microsoft.AspNetCore.Identity;
@@ -26,7 +26,17 @@ namespace DreamAIMusic.Data.Models
 
         public virtual string FirstName { get; set; }
 
-        public string MiddleName { get; set; }
+        public int Age { get; set; }
+
+        public VisabilityType VisabilityAge { get; set; }
+
+        public string Phone { get; set; }
+
+        public VisabilityType VisabilityPhone { get; set; }
+
+        public DateTime Birthday { get; set; }
+
+        public VisabilityType VisabilityBirtday { get; set; }
 
         public virtual string LastName { get; set; }
 

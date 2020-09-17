@@ -1,14 +1,24 @@
 ﻿namespace DreamAIMusic.Web.ViewModels.CommonResurces.ProfilleModels
 {
+    using DreamAIMusic.Common;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Mapping;
+    using System;
+    using System.ComponentModel.DataAnnotations;
 
-    public class ProfileEditModel : ProfileInputModel, IMapTo<ApplicationUser>
+    public class ProfileEditModel : IMapFrom<ApplicationUser>, IMapTo<ApplicationUser>
     {
-        public virtual string FirstName { get; set; }
+        [Required]
+        [MinLength(GlobalConstants.FirstNameMinLength)]
+        [MaxLength(GlobalConstants.FirstNameMaxLength)]
+        public string FirstName { get; set; }
 
-        public virtual string MiddleName { get; set; }
+        [Required]
+        [MinLength(GlobalConstants.LastNameMinLength)]
+        [MaxLength(GlobalConstants.LastNameMaxLength)]
+        public string LastName { get; set; }
 
-        public virtual string LastName { get; set; }
+        [Required]
+        public virtual DateTime Birthday { get; set; }
     }
 }

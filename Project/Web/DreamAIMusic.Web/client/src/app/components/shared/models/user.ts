@@ -1,6 +1,13 @@
 export default interface User {
-    id: number,
+  id: string,
   username: string,
+  age: number,
+  firstName: string,
+  lastName: string,
+  birthday: Date,
   email: string,
-  avatar: string,
+  imageUrl: string,
+  phone: string,
+  songsCount: number,
+  playlistsCount: number,
 }

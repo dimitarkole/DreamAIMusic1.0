@@ -5,12 +5,18 @@
       <img src="{{'../../../../assets/resources/song/images/' + song.uniqueSongFilesName + song.imageExtension }}" class="col-lg-12 song-play-image" alt="">
     </div>
 
+    <audio controls>
+      <source src="horse.ogg" type="audio/ogg">
+      <source src="../../../../assets/resources/song/аudio/TONI STORARO_s8hea.mp3" type="audio/mpeg">
+      Your browser does not support the audio element.
+    </audio>
+
     <!-- Player -->
     <div class="single_player_container">
       <div class="single_player">
         <div class="jp-jplayer jplayer" data-title="Sunny" data-song="Bensound" data-ancestor=".jp_container_3" data-url="../../../../assets/files/" id="jp_jplayer_2" style="width: 0px; height: 0px;">
           <img id="jp_poster_2" style="width: 0px; height: 0px; display: none;">
-          <audio id="jp_audio_2" preload="metadata"  src="{{'../../../../assets/resources/song/аudio/'+ song.uniqueSongFilesName + song.mp3Extension }}" title="Sunny"></audio>
+          <audio id="jp_audio_2" preload="metadata" src="{{'../../../../assets/resources/song/аudio/'+ song.uniqueSongFilesName + song.mp3Extension }}" title="Sunny"></audio>
         </div>
         <div class="jp-audio jp_container_3" role="application" aria-label="media player">
           <div class="jp-gui jp-interface single_player_inner d-flex flex-row align-items-center justify-content-start">
@@ -69,6 +75,9 @@
       </div>
       <div class=" col-md-10">
         <h5>{{song.user.userName}}</h5>
+        <p>
+          {{'../../../../assets/resources/song/аudio/'+ song.uniqueSongFilesName + song.mp3Extension }}
+        </p>
         <p>
           {{song.text}}
         </p>
