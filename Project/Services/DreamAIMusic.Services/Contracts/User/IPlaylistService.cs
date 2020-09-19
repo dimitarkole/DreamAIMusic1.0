@@ -11,13 +11,15 @@
     {
         IList<T> All<T>();
 
-        IList<T> Search<T>(string userId, PlaylistSearchModel model);
+        IList<T> SearchOwn<T>(PlaylistSearchModel model, string userId);
+
+        IList<T> Search<T>(PlaylistSearchModel model);
 
         IList<T> AllOwn<T>(string userId);
 
-        Task Create(string userId, PlaylistCreateModel model);
+        Task Create(PlaylistCreateModel model, string userId);
 
-        Task Update(string id, PlaylistEditModel model);
+        Task Update(PlaylistEditModel model, string id);
 
         T GetById<T>(string id);
 
@@ -28,5 +30,7 @@
         Task AddSongToPlaylist(string id, string songId);
 
         Task DeletePlaylistSong(string id);
+
+        bool IsOwn(string id, string userId);
     }
 }

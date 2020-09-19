@@ -45,7 +45,7 @@
                .To<T>()
                .ToList();
 
-        public async Task Create(string userId, PlaylistCreateModel model)
+        public async Task Create(PlaylistCreateModel model, string userId)
         {
             Playlist playlist = model.To<Playlist>();
             playlist.UserId = userId;
@@ -72,12 +72,39 @@
                .To<T>()
                .FirstOrDefault();
 
-        public IList<T> Search<T>(string userId, PlaylistSearchModel model)
+        public bool IsOwn(string id, string userId)
+            => this.context.Playlists
+               .Any(p => p.DeletedOn == null
+                    && p.Id == id
+                    && p.UserId == userId);
+
+        public IList<T> Search<T>(PlaylistSearchModel model)
         {
-            throw new NotImplementedException();
+            var playlists = this.context.Playlists
+                .Where(p => p.DeletedOn == null);
+
+            if (model.Name != null)
+            {
+                playlists = playlists.Where(p => p.Name == model.Name);
+            }
+
+            return playlists.To<T>().ToList();
         }
 
-        public async Task Update(string id, PlaylistEditModel model)
+        public IList<T> SearchOwn<T>(PlaylistSearchModel model, string userId)
+        {
+            var playlists = this.context.Playlists
+                .Where(p => p.DeletedOn == null &&
+                    p.UserId == userId);
+            if (model.Name != null)
+            {
+                playlists = playlists.Where(p => p.Name == model.Name);
+            }
+
+            return playlists.To<T>().ToList();
+        }
+
+        public async Task Update(PlaylistEditModel model, string id)
         {
             Playlist playlist = this.context.Playlists
                  .FirstOrDefault(s => s.Id == id);
