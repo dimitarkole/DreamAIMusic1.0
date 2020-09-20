@@ -1,10 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DreamAIMusic.Web.ViewModels.User.PlaylistModels
+﻿namespace DreamAIMusic.Web.ViewModels.User.PlaylistModels
 {
-    public class PlaylistSearchModel
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using DreamAIMusic.Data.Models;
+    using DreamAIMusic.Services.Mapping;
+
+    public class PlaylistSearchModel : IMapTo<Playlist>
     {
         public string Name { get; set; }
     }
