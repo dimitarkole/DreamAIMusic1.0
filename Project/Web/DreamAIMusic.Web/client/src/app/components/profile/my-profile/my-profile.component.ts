@@ -6,6 +6,7 @@ import { ProfileService } from '../../../core/services/profile.service';
 import { Observable } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { ProfileEditComponent } from '../profile-edit/profile-edit.component';
+import { ProfileChangePasswordComponent } from '../profile-change-password/profile-change-password.component';
 
 @Component({
   selector: 'app-my-profile',
@@ -33,6 +34,18 @@ export class MyProfileComponent implements OnInit {
 
   openEdit() {
     let modal = this.modalService.open(ProfileEditComponent);
+    console.log(this.user);
+
+    modal.componentInstance.user = this.user;
+    modal.result.then(_ => {
+      this.router.navigate(['/myProfile']);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  openChangePassword() {
+    let modal = this.modalService.open(ProfileChangePasswordComponent);
     console.log(this.user);
 
     modal.componentInstance.user = this.user;
