@@ -10,4 +10,7 @@ export default interface User {
   phone: string,
   songsCount: number,
   playlistsCount: number,
+  lastPassword: string;
+  newPassword: string;
+  currentPassword: string;
 }
