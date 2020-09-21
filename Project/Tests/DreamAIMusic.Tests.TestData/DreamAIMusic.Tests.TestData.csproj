@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\DreamAIMusic.Data.Models\DreamAIMusic.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\DreamAIMusic.Web.ViewModels\DreamAIMusic.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\..\Web\DreamAIMusic.Web\DreamAIMusic.Web.csproj" />
+  </ItemGroup>
+
+</Project>
