@@ -12,6 +12,7 @@ import { SongResolver } from './core/resolvers/song.resolver';
 import { SongPlayComponent } from './home/song/song-play/song-play.component';
 import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
 import { UserResolver } from './core/resolvers/user.resolver';
+import { PlaylistListComponent } from './components/user/playlist/playlist-list/playlist-list.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -55,6 +56,11 @@ const routes: Routes = [
   {
     path: 'myProfile', children: [
       { path: '', component: MyProfileComponent },
+    ]
+  },
+  {
+    path: 'playlist', children: [
+      { path: 'own', component: PlaylistListComponent },
     ]
   },
 ];
