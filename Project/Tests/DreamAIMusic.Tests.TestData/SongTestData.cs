@@ -23,12 +23,10 @@ namespace DreamAIMusic.Tests.TestData
 
         public static string IsOwnSongIdTrue => GetSongs[0].Id;
 
-
         public static string IsOwnSongUserIdTrue => Users
             .Where(u => u.Id == GetSongs[0].UserId)
             .FirstOrDefault()
             .Id;
-
 
         public static string IsOwnSongUserIdFalse => Users
             .Where(u => u.Id != GetSongs[0].UserId)
@@ -37,11 +35,9 @@ namespace DreamAIMusic.Tests.TestData
 
         public static string IsOwnSongIdFalse => GetSongs[0].Id;
 
-
         public static string DeleteSongId => GetSongs[0].Id;
 
         public static string GetById => GetSongs[0].Id;
-
 
         public static List<Category> Categories => new List<Category>()
         {
