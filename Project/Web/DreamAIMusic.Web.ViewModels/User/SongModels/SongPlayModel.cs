@@ -16,23 +16,25 @@
 
         public string Name { get; set; }
 
+        public string UserUserName { get; set; }
+
         public string UniqueSongFilesName { get; set; }
 
         public string ImageExtension { get; set; }
 
         public string Mp3Extension { get; set; }
 
-        public string CategoryId { get; set; }
+        public virtual string CategoryId { get; set; }
 
-        public string CategoryName { get; set; }
+        public virtual string CategoryName { get; set; }
 
         public string Text { get; set; }
 
-        public string CountViews { get; set; }
+        // public string CountViews { get; set; }
 
-        public long CountLikes { get; set; }
+        // public long CountLikes { get; set; }
 
-        public long CountDisLikes { get; set; }
+        // public long CountDisLikes { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
