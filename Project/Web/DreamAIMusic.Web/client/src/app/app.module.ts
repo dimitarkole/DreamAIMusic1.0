@@ -31,6 +31,7 @@ import { CommentCreateComponent } from './home/song/comment/comment-create/comme
 import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
 import { ProfileEditComponent } from './components/profile/profile-edit/profile-edit.component';
 import { PlaylistListComponent } from './components/user/playlist/playlist-list/playlist-list.component';
+import { PlaylistCreateComponent } from './components/user/playlist/playlist-create/playlist-create.component';
 
 @NgModule({
   declarations: [
@@ -55,12 +56,14 @@ import { PlaylistListComponent } from './components/user/playlist/playlist-list/
     MyProfileComponent,
     ProfileEditComponent,
     PlaylistListComponent,
+    PlaylistCreateComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,
     CategoryEditComponent,
     SongDeleteModalComponent,
-    ProfileEditComponent],
+    ProfileEditComponent,
+    PlaylistCreateComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
