@@ -23,7 +23,4 @@ export class ProfileService {
     return this.http.put(`${this.routeProfileController}/EditMyProfile`, user);
   }
 
-  changePassword(user: User) {
-    return this.http.post(`${this.routeProfileController}/ChangePassword`, user);
-  }
 }
