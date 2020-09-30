@@ -40,17 +40,19 @@ export class ProfileEditComponent implements OnInit {
       id: this.user.id,
       firstName: [
         this.user.firstName,
-        [Validators.required, Validators.minLength(this.firstNameMinLength), Validators.maxLength(this.firstNameMinLength)],
+        [Validators.required, Validators.minLength(1), Validators.maxLength(30)],
       ],
       lastName: [
         this.user.lastName,
-        [Validators.required, Validators.minLength(this.lastNameMinLength), Validators.maxLength(this.lastNameMaxLength)]
+        [Validators.required, Validators.minLength(1), Validators.maxLength(30)]
       ],
       birthday: [
         this.user.birthday,
         [Validators.required]
       ],
     });
+
+    console.log(this.birthday);
   }
 
   OnSubmit() {
