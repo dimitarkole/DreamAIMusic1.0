@@ -67,7 +67,6 @@ import { PlaylistDeleteComponent } from './components/user/playlist/playlist-del
     CategoryEditComponent,
     SongDeleteModalComponent,
     ProfileEditComponent,
-    PlaylistListComponent,
     PlaylistCreateComponent,
     PlaylistEditComponent,
     PlaylistDeleteComponent],
