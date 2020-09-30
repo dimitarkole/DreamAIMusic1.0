@@ -32,6 +32,7 @@ import { MyProfileComponent } from './components/profile/my-profile/my-profile.c
 import { ProfileEditComponent } from './components/profile/profile-edit/profile-edit.component';
 import { PlaylistListComponent } from './components/user/playlist/playlist-list/playlist-list.component';
 import { PlaylistCreateComponent } from './components/user/playlist/playlist-create/playlist-create.component';
+import { PlaylistEditComponent } from './components/user/playlist/playlist-edit/playlist-edit.component';
 
 @NgModule({
   declarations: [
@@ -57,13 +58,15 @@ import { PlaylistCreateComponent } from './components/user/playlist/playlist-cre
     ProfileEditComponent,
     PlaylistListComponent,
     PlaylistCreateComponent,
+    PlaylistEditComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,
     CategoryEditComponent,
     SongDeleteModalComponent,
     ProfileEditComponent,
-    PlaylistCreateComponent],
+    PlaylistCreateComponent,
+    PlaylistEditComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

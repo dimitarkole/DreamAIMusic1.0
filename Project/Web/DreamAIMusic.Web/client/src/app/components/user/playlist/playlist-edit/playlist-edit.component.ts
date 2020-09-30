@@ -1,17 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl } from '@angular/forms';
-import { CategoryService } from '../../../../core/services/category.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
+import { Router, ActivatedRoute } from '@angular/router';
 import Playlist from '../../../shared/models/playlist';
 import { PlaylistService } from '../../../../core/services/playlist.service';
+import { NgbActiveModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
-  selector: 'app-playlist-create',
-  templateUrl: './playlist-create.component.html',
-  styleUrls: ['./playlist-create.component.css']
+  selector: 'app-playlist-edit',
+  templateUrl: './playlist-edit.component.html',
+  styleUrls: ['./playlist-edit.component.css']
 })
-export class PlaylistCreateComponent implements OnInit {
+export class PlaylistEditComponent implements OnInit {
+  playlist: Playlist;
   nameMinLength = 2;
   nameMaxLength = 30;
   playlistForm: FormGroup
@@ -28,21 +28,22 @@ export class PlaylistCreateComponent implements OnInit {
 
   ngOnInit() {
     this.playlistForm = this.formBuilder.group({
+      id: this.playlist.id,
       name: [
-        null,
+        this.playlist.name,
         [
           Validators.required,
           Validators.minLength(this.nameMinLength),
           Validators.maxLength(this.nameMaxLength)
         ]
-      ],    
+      ],
     })
   }
 
   OnSubmit() {
     let playlist: Playlist = this.playlistForm.value;
 
-    this.playlistService.create(playlist)
+    this.playlistService.edit(playlist)
       .subscribe(_ => {
         this.modal.close(); //It closes successfully
       })
@@ -51,4 +52,5 @@ export class PlaylistCreateComponent implements OnInit {
   get name(): AbstractControl {
     return this.playlistForm.get('name');
   }
+
 }

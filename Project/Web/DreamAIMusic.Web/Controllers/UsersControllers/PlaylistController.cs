@@ -66,7 +66,7 @@
                 return this.BadRequest();
             }
 
-            if (this.playlistService.IsOwn(id, userId))
+            if (!this.playlistService.IsOwn(id, userId))
             {
                 return this.StatusCode(StatusCodes.Status406NotAcceptable);
             }

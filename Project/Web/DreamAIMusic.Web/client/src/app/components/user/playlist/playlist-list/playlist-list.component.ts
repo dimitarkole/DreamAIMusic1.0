@@ -6,6 +6,7 @@ import { PlaylistService } from '../../../../core/services/playlist.service';
 import { Router } from '@angular/router';
 import getPage from '../../../../common/paginator';
 import { PlaylistCreateComponent } from '../playlist-create/playlist-create.component';
+import { PlaylistEditComponent } from '../playlist-edit/playlist-edit.component';
 
 @Component({
   selector: 'app-playlist-list',
@@ -40,6 +41,17 @@ export class PlaylistListComponent {
     }).catch(err => {
       console.log(err);
     })*/
+  }
+
+  openEdit(playlist: Playlist) {
+    let modal = this.modalService.open(PlaylistEditComponent);
+
+    modal.componentInstance.playlist = playlist;
+    modal.result.then(_ => {
+      this.router.navigate(['/playlist/own']);
+    }).catch(err => {
+      console.log(err);
+    })
   }
 
   openCreate() {
