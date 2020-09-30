@@ -1591,7 +1591,7 @@ section
 	left: 15px;
 	bottom: 0;
 	width: calc(100% - 30px);
-	height: 78px;
+	height: 40%;
 	display: -webkit-box;
 	display: -moz-box;
 	display: -ms-flexbox;
@@ -1602,8 +1602,26 @@ section
 	align-items: start;
 	background: rgba(0,0,0,0.66);
 	z-index: 1;
-	padding-left: 90px;
+	padding-left: 10px;
 }
+
+.featured_album_info {
+  position: absolute;
+  left: 63%;
+  bottom: 0;
+  width: 31.5%;
+  height: 60%;
+  top:0px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  background: rgba(0,0,0,0.66);
+  z-index: 1;
+  padding: 10%;
+  padding-top: 20%;
+  font-size:20px;
+}
+
 .featured_list .jp-artist
 {
 	display: none;

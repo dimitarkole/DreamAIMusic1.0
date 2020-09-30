@@ -11,6 +11,7 @@
         public Playlist()
         {
             this.Id = Guid.NewGuid().ToString();
+            this.PlaylistSongs = new List<PlaylistSong>();
         }
 
         //
@@ -35,5 +36,7 @@
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual ICollection<PlaylistSong> PlaylistSongs { get; set; }
     }
 }

@@ -66,7 +66,7 @@
                 return this.BadRequest();
             }
 
-            if (this.playlistService.IsOwn(id, userId))
+            if (!this.playlistService.IsOwn(id, userId))
             {
                 return this.StatusCode(StatusCodes.Status406NotAcceptable);
             }
@@ -80,10 +80,10 @@
         public async Task<IActionResult> Delete(string id)
         {
             var userId = this.userManager.GetUserId(this.User);
-            if (this.playlistService.IsOwn(id, userId))
+            /*if (!this.playlistService.IsOwn(id, userId))
             {
                 return this.StatusCode(StatusCodes.Status406NotAcceptable);
-            }
+            }*/
 
             await this.playlistService.Delete(id);
             return this.Ok();
