@@ -1,4 +1,4 @@
-﻿namespace DreamAIMusic.Web.ViewModels.Administration.CategoriesModels
+﻿namespace DreamAIMusic.Web.ViewModels.User.PlaylistModels
 {
     using System;
     using System.Collections.Generic;
@@ -7,7 +7,7 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Mapping;
 
-    public class CategoryInputModel : IMapTo<Category>
+    public class PlaylistEditModel : IMapTo<Playlist>
     {
         public string Name { get; set; }
     }

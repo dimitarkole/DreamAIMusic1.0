@@ -15,11 +15,15 @@
 
         public string Name { get; set; }
 
+        public string UserUserName { get; set; }
+
         public string UniqueSongFilesName { get; set; }
 
         public string ImageExtension { get; set; }
 
         public string Mp3Extension { get; set; }
+
+        public virtual string CategoryId { get; set; }
 
         public DateTime CreatedOn { get; set; }
     }

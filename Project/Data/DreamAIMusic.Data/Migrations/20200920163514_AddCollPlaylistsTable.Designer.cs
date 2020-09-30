@@ -4,14 +4,16 @@ using DreamAIMusic.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DreamAIMusic.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200920163514_AddCollPlaylistsTable")]
+    partial class AddCollPlaylistsTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -26,12 +28,6 @@ namespace DreamAIMusic.Data.Migrations
 
                     b.Property<int>("AccessFailedCount")
                         .HasColumnType("int");
-
-                    b.Property<int>("Age")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Birthday")
-                        .HasColumnType("datetime2");
 
                     b.Property<string>("ConcurrencyStamp")
                         .IsConcurrencyToken()
@@ -68,6 +64,9 @@ namespace DreamAIMusic.Data.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("MiddleName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
@@ -80,9 +79,6 @@ namespace DreamAIMusic.Data.Migrations
                         .HasMaxLength(256);
 
                     b.Property<string>("PasswordHash")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Phone")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PhoneNumber")
@@ -103,15 +99,6 @@ namespace DreamAIMusic.Data.Migrations
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(256)")
                         .HasMaxLength(256);
-
-                    b.Property<int>("VisabilityAge")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VisabilityBirtday")
-                        .HasColumnType("int");
-
-                    b.Property<int>("VisabilityPhone")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -398,10 +385,6 @@ namespace DreamAIMusic.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PlaylistId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("PlaylistId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SongId")
@@ -412,8 +395,6 @@ namespace DreamAIMusic.Data.Migrations
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("PlaylistId");
-
-                    b.HasIndex("PlaylistId1");
 
                     b.HasIndex("SongId");
 
@@ -765,15 +746,9 @@ namespace DreamAIMusic.Data.Migrations
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.PlaylistSong", b =>
                 {
-                    b.HasOne("DreamAIMusic.Data.Models.Playlist", null)
-                        .WithMany("PlaylistSongs")
-                        .HasForeignKey("PlaylistId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DreamAIMusic.Data.Models.Playlist", "Playlist")
                         .WithMany()
-                        .HasForeignKey("PlaylistId1");
+                        .HasForeignKey("PlaylistId");
 
                     b.HasOne("DreamAIMusic.Data.Models.Song", "Song")
                         .WithMany()
@@ -783,14 +758,8 @@ namespace DreamAIMusic.Data.Migrations
             modelBuilder.Entity("DreamAIMusic.Data.Models.Song", b =>
                 {
                     b.HasOne("DreamAIMusic.Data.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("DreamAIMusic.Data.Models.Category", null)
                         .WithMany("Songs")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")
                         .WithMany("Songs")
