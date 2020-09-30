@@ -33,6 +33,7 @@ import { ProfileEditComponent } from './components/profile/profile-edit/profile-
 import { PlaylistListComponent } from './components/user/playlist/playlist-list/playlist-list.component';
 import { PlaylistCreateComponent } from './components/user/playlist/playlist-create/playlist-create.component';
 import { PlaylistEditComponent } from './components/user/playlist/playlist-edit/playlist-edit.component';
+import { PlaylistDeleteComponent } from './components/user/playlist/playlist-delete/playlist-delete.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { PlaylistEditComponent } from './components/user/playlist/playlist-edit/
     PlaylistListComponent,
     PlaylistCreateComponent,
     PlaylistEditComponent,
+    PlaylistDeleteComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,
@@ -66,7 +68,8 @@ import { PlaylistEditComponent } from './components/user/playlist/playlist-edit/
     SongDeleteModalComponent,
     ProfileEditComponent,
     PlaylistCreateComponent,
-    PlaylistEditComponent],
+    PlaylistEditComponent,
+    PlaylistDeleteComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,

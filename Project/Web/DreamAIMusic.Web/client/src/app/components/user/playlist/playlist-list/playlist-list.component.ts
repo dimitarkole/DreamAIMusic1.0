@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import getPage from '../../../../common/paginator';
 import { PlaylistCreateComponent } from '../playlist-create/playlist-create.component';
 import { PlaylistEditComponent } from '../playlist-edit/playlist-edit.component';
+import { PlaylistDeleteComponent } from '../playlist-delete/playlist-delete.component';
 
 @Component({
   selector: 'app-playlist-list',
@@ -32,23 +33,24 @@ export class PlaylistListComponent {
     })
   }
 
-  openDelete(playlistId: string) {
-    /*let modal = this.modalService.open(PlaylistDeleteModalComponent);
-    modal.result.then(value => {
-      this.playlistService.delete(playlistId).subscribe(_ => {
-        this.router.navigate(['/song']);
-      })
-    }).catch(err => {
-      console.log(err);
-    })*/
-  }
-
   openEdit(playlist: Playlist) {
     let modal = this.modalService.open(PlaylistEditComponent);
 
     modal.componentInstance.playlist = playlist;
     modal.result.then(_ => {
       this.router.navigate(['/playlist/own']);
+    }).catch(err => {
+      console.log(err);
+    })
+  }
+
+  openDelete(playlistId: string) {
+    let modal = this.modalService.open(PlaylistDeleteComponent);
+
+    modal.result.then(value => {
+      this.playlistService.delete(playlistId).subscribe(_ => {
+        this.router.navigate(['/playlist/own']);
+      })
     }).catch(err => {
       console.log(err);
     })
