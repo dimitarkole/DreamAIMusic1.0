@@ -39,8 +39,8 @@
                .ForMember(
                    destination => destination.Rating,
                    opts => opts.MapFrom(origin =>
-                        origin.CountDisLikes + origin.CountLikes == 0 ? 0 :
-                            (int) ((origin.CountLikes * 1.0 / (origin.CountDisLikes + origin.CountLikes)) * 100)));
+                        origin.SongLikes.Count + origin.SongDislikes.Count == 0 ? 0 :
+                            (int)((origin.SongLikes.Count * 1.0 / (origin.SongLikes.Count + origin.SongDislikes.Count)) * 100)));
             /*
             configuration.CreateMap<Song, OwnSongViewModel>()
                             .ForMember(s => s.Rating, y => y.MapFrom(m => m.CountLikes + m.CountDisLikes != 0 ? m.CountLikes / (m.CountLikes + m.CountDisLikes) : 0));
