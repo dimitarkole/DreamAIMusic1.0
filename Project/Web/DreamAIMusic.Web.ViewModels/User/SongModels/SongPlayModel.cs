@@ -38,7 +38,7 @@
 
         public DateTime CreatedOn { get; set; }
 
-        public IEnumerable<CommentViewModel> Comments { get; set; }
+        public virtual List<CommentViewModel> Comments { get; set; }
 
         public SongUserViewModel User { get; set; }
     }
