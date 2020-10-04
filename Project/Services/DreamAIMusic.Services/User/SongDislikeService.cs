@@ -26,6 +26,8 @@
 
         public async Task Create(string songId, string userId)
         {
+            _ = this.DeleteOwnSongLike(songId, userId);
+
             var songDislike = new SongDislike();
             songDislike.SongId = songId;
             songDislike.UserId = userId;
@@ -46,5 +48,18 @@
                     .Where(sd => sd.Id == songId
                         && sd.UserId == userId)
                     .FirstOrDefault() == null ? false : true;
+
+        private async Task DeleteOwnSongLike(string songId, string userId)
+        {
+            var songLike = this.context.SongLikes
+                .Where(sd => sd.SongId == songId
+                    && sd.UserId == userId)
+                .FirstOrDefault();
+            if (songLike != null)
+            {
+                this.context.SongLikes.Remove(songLike);
+                await this.context.SaveChangesAsync();
+            }
+        }
     }
 }
