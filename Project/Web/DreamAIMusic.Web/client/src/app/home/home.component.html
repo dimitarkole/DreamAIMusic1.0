@@ -5,22 +5,32 @@
   </div>
 </div>
 
-
 <div class="row">
-  <div class="jp-playlist-current col-md-3" *ngFor="let song of song; index as i">
-    <div class="wrapper">
-      <div class="music music-cover">
-        <img src="{{'../../assets/resources/song/images/' + song.uniqueSongFilesName + song.imageExtension }}" alt="" class="cover-img" />
-      </div>
-      <div class="music album-controls">
-        <img src="{{'../../assets/resources/song/images/' + song.uniqueSongFilesName + song.imageExtension}}" alt="" class="album-img" />
-        <div class="album-info">
-          <span class="song-title">{{song.name}}</span>
-          <div class="song-utility">
-            <div class="row">
-              <button class="col-md-3 fa text-white glyphicon glyphicon-play-circle" aria-hidden="true" routerLink="/home/play/{{song.id}}">
-              </button>
-            </div>
+  <div class="col-md-12">
+    <div class="featured_list">
+      <div id="jp_container_2" class="jp-audio" role="application" aria-label="media player">
+        <div class="jp-type-playlist">
+          <div class="jp-playlist">
+            <ul class="d-flex flex-row align-items-start justify-content-start flex-wrap row" style="">
+              <li class="jp-playlist-current col-md-3" *ngFor="let song of songs; index as i">
+                <div>
+                  <div class="featured_song_info">
+                    {{song.name?.substring(0, 30)}}
+                  </div>
+                  <div class="featured_title">
+                    {{song.user?.username}}
+                  </div>
+                </div>
+                <div class="featured_song_image">
+                  <img src="../../../../../assets/images/playlist_logo.jpg" alt="logo">
+                  <!--
+                  <img src="../../assets/resources/song/images/{{song.uniqueSongFilesName + song.imageExtension}}" alt="logo">
+                    -->
+                </div>
+                <div class="album_play_button"  aria-hidden="true" routerLink="/home/play/{{song.id}}">
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
