@@ -24,7 +24,7 @@
 
         public string Text { get; set; }
 
-        public int Rating { get; set; }
+        // public int Rating { get; set; }
 
         public long CountLikes { get; set; }
 
@@ -34,14 +34,14 @@
 
         public void CreateMappings(IProfileExpression configuration)
         {
-            configuration
+           /* configuration
                .CreateMap<Song, OwnSongViewModel>()
                .ForMember(
                    destination => destination.Rating,
                    opts => opts.MapFrom(origin =>
                         origin.SongLikes.Count + origin.SongDislikes.Count == 0 ? 0 :
                             (int)((origin.SongLikes.Count * 1.0 / (origin.SongLikes.Count + origin.SongDislikes.Count)) * 100)));
-            /*
+            
             configuration.CreateMap<Song, OwnSongViewModel>()
                             .ForMember(s => s.Rating, y => y.MapFrom(m => m.CountLikes + m.CountDisLikes != 0 ? m.CountLikes / (m.CountLikes + m.CountDisLikes) : 0));
             */// / (s.CountLikes + s.CountDisLikes), y => y.MapFrom(m => m.Rating = ));

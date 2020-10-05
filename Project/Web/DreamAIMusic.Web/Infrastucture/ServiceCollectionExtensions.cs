@@ -96,8 +96,7 @@
                 .AddTransient<ICommentDislikeService, CommentDislikeService>()
                 .AddTransient<IProfileService, ProfileService>()
                 .AddTransient<IPlaylistService, PlaylistService>()
-                .AddTransient<ISongDislikeService, SongDislikeService>()
-                .AddTransient<ISongLikeService, SongLikeService>();
+                .AddTransient<ISongReactionService, SongReactionService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
            => services.AddSwaggerGen(c =>

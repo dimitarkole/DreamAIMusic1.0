@@ -3,12 +3,12 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-
+    using DreamAIMusic.Common;
     using DreamAIMusic.Data.Common.Models;
 
-    public class SongDislike : IAuditInfo, IDeletableEntity
+    public class SongReaction : IAuditInfo, IDeletableEntity
     {
-        public SongDislike()
+        public SongReaction()
         {
             this.CreatedOn = DateTime.UtcNow;
             this.Id = Guid.NewGuid().ToString();
@@ -24,6 +24,8 @@
         public virtual ApplicationUser User { get; set; }
 
         public virtual string SongId { get; set; }
+
+        public Reaction Reaction { get; set; }
 
         public virtual Song Song { get; set; }
 

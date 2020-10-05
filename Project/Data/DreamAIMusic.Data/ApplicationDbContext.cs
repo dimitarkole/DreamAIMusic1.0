@@ -47,11 +47,9 @@
         public DbSet<Playlist> Playlists { get; set; }
 
         public DbSet<PlaylistSong> PlaylistSongs { get; set; }
-        
-        public DbSet<SongDislike> SongDislikes { get; set; }
-        
-        public DbSet<SongLike> SongLikes { get; set; }
-        
+
+        public DbSet<SongReaction> SongReactions { get; set; }
+
         public DbSet<SongViewHistory> SongViewHistories { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
