@@ -19,9 +19,9 @@
 
         public CommentUserViewModel User { get; set; }
 
-        public int CommentDislikesCount { get; set; }
+        // public int CommentDislikesCount { get; set; }
 
-        public int CommentLikesCount { get; set; }
+        // public int CommentLikesCount { get; set; }
 
         public virtual ICollection<CommentViewModel> CommentsChildren { get; set; }
 

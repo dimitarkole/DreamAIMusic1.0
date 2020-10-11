@@ -9,17 +9,17 @@
     </p>
     <div>
       <button class="btn glyphicon glyphicon-thumbs-up text-black like" aria-hidden="true" (click)="likeComment(comment.id)"></button>
-      <span>{{comment.commentLikesCount}}</span>
+      <span>{{comment?.commentLikesCount}}</span>
       <button class="btn glyphicon glyphicon-thumbs-down text-black dislike" aria-hidden="true" (click)="dislikeComment(comment.id)"></button>
-      <span>{{comment.commentDislikesCount}}</span>
+      <span>{{comment?.commentDislikesCount}}</span>
       <span *ngIf="comment.commentsChildren?.length>0" (click)="isCollapsed = !isCollapsed"
             [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-        Replys({{comment.commentsChildren?.length}})
+        Replays({{comment?.commentsChildren?.length}})
       </span>
     </div>
     <div *ngIf="comment.commentsChildren?.length>0">
       <div id="collapseExample" [ngbCollapse]="!isCollapsed">
-        <app-comment-list [allComments]="comment.commentsChildren" class="col-md-12">
+        <app-comment-list [allComments]="comment?.commentsChildren" class="col-md-12">
           </app-comment-list>
       </div>
     </div>

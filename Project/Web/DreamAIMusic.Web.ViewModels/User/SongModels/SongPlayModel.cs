@@ -16,8 +16,6 @@
 
         public string Name { get; set; }
 
-        public string UserUserName { get; set; }
-
         public string UniqueSongFilesName { get; set; }
 
         public string ImageExtension { get; set; }
