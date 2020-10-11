@@ -10,13 +10,11 @@
     using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
     using DreamAIMusic.Web.ViewModels.User.SongModels;
 
-    public class SongPlayModel : IMapFrom<Song>
+    public class SongPlayModel : IMapFrom<Song>//, IHaveCustomMappings
     {
         public string Id { get; set; }
 
         public string Name { get; set; }
-
-        public string UserUserName { get; set; }
 
         public string UniqueSongFilesName { get; set; }
 
@@ -32,14 +30,20 @@
 
         // public string CountViews { get; set; }
 
-        // public long CountLikes { get; set; }
+        public long CountLikes { get; set; }
 
-        // public long CountDisLikes { get; set; }
+        public long CountDisLikes { get; set; }
 
         public DateTime CreatedOn { get; set; }
 
         public IEnumerable<CommentViewModel> Comments { get; set; }
 
         public SongUserViewModel User { get; set; }
+
+        /*public void CreateMappings(IProfileExpression configuration)
+        {
+            configuration.CreateMap<Song, SongPlayModel>()
+                .ForMember(m => m.CountLikes, y => y.MapFrom(u => u.re));
+        }*/
     }
 }

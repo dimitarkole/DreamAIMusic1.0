@@ -20,7 +20,6 @@
         </div>
         <div class="jp-audio jp_container_3" role="application" aria-label="media player">
           <div class="jp-gui jp-interface single_player_inner d-flex flex-row align-items-center justify-content-start">
-
             <!-- Player Controls -->
             <div class="player_controls_box">
               <div class="jp-controls-holder player_controls d-flex flex-row align-items-start justify-content-start">
@@ -74,7 +73,15 @@
         avatar
       </div>
       <div class=" col-md-10">
-        <h5>{{song.user.userName}}</h5>
+        <div class="row">
+          <h5 class=" col-md-10">{{song.user.userName}}</h5>
+          <div class=" col-md-1">
+            <button class="btn glyphicon glyphicon-thumbs-up text-black like" aria-hidden="true" (click)="likeComment(song.id)"></button>
+            <span></span>
+            <button class="btn glyphicon glyphicon-thumbs-down text-black dislike" aria-hidden="true" (click)="dislikeComment(song.id)"></button>
+          </div>
+        </div>
+        <br />
         <p>
           {{'../../../../assets/resources/song/аudio/'+ song.uniqueSongFilesName + song.mp3Extension }}
         </p>
@@ -91,7 +98,7 @@
     <div class="row">
       <div class="col-md-3">
         <p>
-          Comments ( {{song.comments.length}})
+          Comments ( {{song.comments?.length}})
         </p>
       </div>
       <div class=" col-md-10">

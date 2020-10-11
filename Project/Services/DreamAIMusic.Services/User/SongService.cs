@@ -48,7 +48,9 @@
         }
 
         public T GetById<T>(string id) => this.context.Songs
-            .Where(s => s.Id == id).To<T>().FirstOrDefault();
+            .Where(s => s.Id == id)
+            .To<T>()
+            .FirstOrDefault();
 
         public bool IsOwn(string songId, string userId)
             => this.context.Songs

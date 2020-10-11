@@ -7,6 +7,7 @@ import { Song } from '../../../components/shared/models/song';
 import { CategoryService } from '../../../core/services/category.service';
 import { SongService } from '../../../core/services/song.service';
 import { HttpEventType } from '@angular/common/http';
+import { Reaction } from '../../../components/shared/models/reaction';
 
 @Component({
   selector: 'app-song-play',
@@ -30,5 +31,21 @@ export class SongPlayComponent implements OnInit {
     this.song = this.route.snapshot.data.song;
     this.songId = this.song.id;
     console.log(this.song);
+  }
+
+  likeComment(songId: string) {
+    var song: Song;
+    song.reaction = Reaction.Like;
+
+    this.songService.reactionSong(songId, song)
+      .subscribe(_ => _);
+  }
+
+  dislikeComment(songId: string) {
+    var song: Song;
+    song.reaction = Reaction.Dislike;
+
+    this.songService.reactionSong(songId, song)
+      .subscribe(_ => _);
   }
 }
