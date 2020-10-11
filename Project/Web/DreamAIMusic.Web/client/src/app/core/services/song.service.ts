@@ -8,6 +8,7 @@ import { Song } from '../../components/shared/models/song';
 export class SongService {
   private routeSongController: string = 'Song';
   private routeHomeController: string = 'Home';
+  private routeSongReactionController: string = 'SongReaction';
 
   constructor(private http: HttpClient) { }
   
@@ -45,5 +46,12 @@ export class SongService {
      formData.append('songName', songName);
     return this.http
       .post(`${this.routeSongController}/uploadSongFile`, formData);
+  }
+
+  reactionSong(id: string, reaction: Song) {
+    // upload image
+    return this.http.post(this.routeSongController, reaction, { reportProgress: true, observe: 'events' });
+    // create song
+
   }
 }
