@@ -3,6 +3,8 @@
     public static class GlobalConstants
     {
         public const string SystemName = "DreamAIMusic";
+        public const string SystemEmail = "dim_kolev2002@abv.bg";
+        public const string SystemEmailPassword = "dim_kolev2002@abv.bg";
 
         public const string AdministratorRoleName = "Administrator";
         public const string UserRoleName = "User";

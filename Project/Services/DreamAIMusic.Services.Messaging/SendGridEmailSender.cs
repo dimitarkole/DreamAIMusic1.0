@@ -3,49 +3,52 @@
     using System;
     using System.Collections.Generic;
     using System.Linq;
+    using System.Net.Mail;
     using System.Threading.Tasks;
 
     using SendGrid;
     using SendGrid.Helpers.Mail;
 
+    using static DreamAIMusic.Common.GlobalConstants;
+
     public class SendGridEmailSender : IEmailSender
     {
-        private readonly SendGridClient client;
-
-        public SendGridEmailSender(string apiKey)
+        public async Task SendEmailAsync(string toMail, string subject, string messageBody, string token)
         {
-            this.client = new SendGridClient(apiKey);
+            // Create smtp connection.
+            SmtpClient client = new SmtpClient();
+
+            // outgoing port for the mail.
+            client.Port = 587;
+            client.Host = "smtp.gmail.com";
+            client.EnableSsl = true;
+            client.Timeout = 10000;
+            client.DeliveryMethod = SmtpDeliveryMethod.Network;
+            client.UseDefaultCredentials = false;
+            client.Credentials = new System.Net.NetworkCredential(SystemEmail, SystemEmailPassword);
+
+            // Fill the mail form.
+            var send_mail = new MailMessage();
+            send_mail.IsBodyHtml = true;
+
+            // address from where mail will be sent.
+            send_mail.From = new MailAddress(SystemEmail);
+
+            // address to which mail will be sent.
+            send_mail.To.Add(new MailAddress(toMail));
+
+            // subject and body of the mail.
+            send_mail.Subject = subject;
+            send_mail.Body = messageBody;
+
+            client.SendAsync(send_mail, token);
         }
 
-        public async Task SendEmailAsync(string from, string fromName, string to, string subject, string htmlContent, IEnumerable<EmailAttachment> attachments = null)
+        public async Task SendEmailAfterUserRegistration(string to, string username, string password, string token)
         {
-            if (string.IsNullOrWhiteSpace(subject) && string.IsNullOrWhiteSpace(htmlContent))
-            {
-                throw new ArgumentException("Subject and message should be provided.");
-            }
-
-            var fromAddress = new EmailAddress(from, fromName);
-            var toAddress = new EmailAddress(to);
-            var message = MailHelper.CreateSingleEmail(fromAddress, toAddress, subject, null, htmlContent);
-            if (attachments?.Any() == true)
-            {
-                foreach (var attachment in attachments)
-                {
-                    message.AddAttachment(attachment.FileName, Convert.ToBase64String(attachment.Content), attachment.MimeType);
-                }
-            }
-
-            try
-            {
-                var response = await this.client.SendEmailAsync(message);
-                Console.WriteLine(response.StatusCode);
-                Console.WriteLine(await response.Body.ReadAsStringAsync());
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                throw;
-            }
+            var subject = "Successful registration";
+            var htmlContent = "username: " + username + "\n" + "password: " + password;
+            await this.SendEmailAsync(to, subject, htmlContent, token);
         }
     }
 }
