@@ -24,20 +24,20 @@
               "src/assets"
             ],
             "styles": [
-              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              //"node_modules/bootstrap/dist/css/bootstrap.min.css",
               "src/styles.css",
-              "src/assets/styles/bootstrap-4.1.2/bootstrap.min.css",
-              "src/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css",
-              "src/assets/plugins/OwlCarousel2-2.3.4/owl.carousel.css",
+              //"src/assets/styles/bootstrap-4.1.2/bootstrap.min.css",
+             // "src/assets/plugins/font-awesome-4.7.0/css/font-awesome.min.css",
+              //"src/assets/plugins/OwlCarousel2-2.3.4/owl.carousel.css",
               "src/assets/plugins/OwlCarousel2-2.3.4/owl.theme.default.css",
-              "src/assets/plugins/OwlCarousel2-2.3.4/animate.css",
+              //"src/assets/plugins/OwlCarousel2-2.3.4/animate.css",
               "src/assets/styles/main_styles.css",
-              "src/assets/styles/responsive.css",
+              //"src/assets/styles/responsive.css",
               "src/assets/styles/form_styles.css",
-              "src/assets/styles/table_style.css",
-              "src/assets/styles/song_list_style.css",
-              "src/assets/styles/artists.css",
-              "src/assets/styles/artists_responsive.css"
+              //"src/assets/styles/table_style.css",
+              //"src/assets/styles/song_list_style.css",
+              //"src/assets/styles/artists.css",
+              //"src/assets/styles/artists_responsive.css"
 
             ],
             "scripts": [
