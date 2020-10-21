@@ -19,15 +19,8 @@
 
         public CommentUserViewModel User { get; set; }
 
-        // public int CommentDislikesCount { get; set; }
-
-        // public int CommentLikesCount { get; set; }
-
         public virtual ICollection<CommentViewModel> CommentsChildren { get; set; }
 
         public DateTime CreatedOn { get; set; }
-
-        // public bool IsUserDislikeComment { get; set; }
-        // public bool IsUserLikeComment { get; set; }
     }
 }
