@@ -3,8 +3,6 @@
     public static class GlobalConstants
     {
         public const string SystemName = "DreamAIMusic";
-        public const string SystemEmail = "dim_kolev2002@abv.bg";
-        public const string SystemEmailPassword = "dim_kolev2002@abv.bg";
 
         public const string AdministratorRoleName = "Administrator";
         public const string UserRoleName = "User";
@@ -20,6 +18,14 @@
 
         public const int PasswordMinLength = 8;
         public const int PasswordMaxLength = 20;
+
+        public static class Email
+        {
+            public const string SystemEmail = "info@dreamAIMusic.com";
+            public const string VerificationCodeCharacters = "abcdefghijklmnopqrstuvwxyABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+            public const string ApiKey = "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";
+            public const int VerificationCodeLength = 6;
+        }
 
         public static class Folder
         {

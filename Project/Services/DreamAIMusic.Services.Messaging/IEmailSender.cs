@@ -8,13 +8,11 @@
         Task SendEmailAsync(
             string toMail,
             string subject,
-            string messageBody,
-            string token);
+            string messageBody);
 
         Task SendEmailAfterUserRegistration(
             string to,
             string username,
-            string password,
-            string token);
+            string password);
     }
 }

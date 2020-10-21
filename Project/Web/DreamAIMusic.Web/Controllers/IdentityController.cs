@@ -50,10 +50,10 @@
             IdentityResult result = await this.userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
             {
-                await this.emailSender.SendEmailAfterUserRegistration(model.Email, model.Username, model.Password, "some token");
                 return this.BadRequest(result.Errors.Select(e => e.Description).ToList());
             }
 
+            await this.emailSender.SendEmailAfterUserRegistration(model.Email, model.Username, model.Password);
             return user;
         }
 
