@@ -3,20 +3,19 @@
     using System;
     using System.Collections.Generic;
     using System.Text;
-
+    using DreamAIMusic.Common;
     using DreamAIMusic.Data.Common.Models;
 
-    public class CommentDislike : IAuditInfo, IDeletableEntity
+    public class CommentReaction : IAuditInfo, IDeletableEntity
     {
-        public CommentDislike()
+        public CommentReaction()
         {
-            this.Id = Guid.NewGuid().ToString();
             this.CreatedOn = DateTime.UtcNow;
+            this.Id = Guid.NewGuid().ToString();
         }
 
-        //
         // Summary:
-        //     Gets or sets the primary key for this role.
+        //     Gets or sets the primary key.
         public virtual string Id { get; set; }
 
         public virtual string UserId { get; set; }
@@ -25,7 +24,9 @@
 
         public virtual string CommentId { get; set; }
 
-        public virtual Comment Comment { get; set; }
+        public Reaction Reaction { get; set; }
+
+        public virtual Comment Song { get; set; }
 
         public DateTime CreatedOn { get; set; }
 

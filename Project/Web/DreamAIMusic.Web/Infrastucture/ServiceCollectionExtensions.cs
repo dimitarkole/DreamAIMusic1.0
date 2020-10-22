@@ -86,18 +86,17 @@
                 .AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>))
                 .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
                 .AddScoped<IDbQueryRunner, DbQueryRunner>()
-                .AddTransient<IEmailSender, NullMessageSender>()
+                .AddTransient<IEmailSender, SendGridEmailSender>()
                 .AddTransient<ISettingsService, SettingsService>()
                 .AddTransient<ICategoryService, CategoryService>()
                 .AddTransient<ISongService, SongService>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<ICommentService, CommentService>()
-                .AddTransient<ICommentLikeService, CommentLikeService>()
-                .AddTransient<ICommentDislikeService, CommentDislikeService>()
                 .AddTransient<IProfileService, ProfileService>()
                 .AddTransient<IPlaylistService, PlaylistService>()
                 .AddTransient<ISongReactionService, SongReactionService>()
-                .AddTransient<ISongViewHistoryService, SongViewHistoryService>();
+                .AddTransient<ISongViewHistoryService, SongViewHistoryService>()
+                .AddTransient<ICommentReactionService, CommentReactionService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
            => services.AddSwaggerGen(c =>

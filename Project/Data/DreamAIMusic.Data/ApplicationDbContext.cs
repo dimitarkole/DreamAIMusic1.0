@@ -34,9 +34,7 @@
 
         public DbSet<Comment> Comments { get; set; }
 
-        public DbSet<CommentDislike> CommentDislikes { get; set; }
-
-        public DbSet<CommentLike> CommentLikes { get; set; }
+        public DbSet<CommentReaction> CommentReactions { get; set; }
 
         public DbSet<Plan> Plans { get; set; }
 
