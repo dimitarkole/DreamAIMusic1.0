@@ -2,9 +2,10 @@
 {
     using System;
     using System.Collections.Generic;
+    using System.Linq;
     using System.Text;
     using System.Threading.Tasks;
-
+    using DreamAIMusic.Common;
     using DreamAIMusic.Data;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
@@ -34,6 +35,25 @@
             var commentReaction = this.context.CommentReactions.Find(id);
             this.context.CommentReactions.Remove(commentReaction);
             await this.context.SaveChangesAsync();
+        }
+
+        public CommentReactionViewModel GetOwnReaction(string songId, string userId)
+        {
+            var result = this.context.CommentReactions
+               .Where(r => r.UserId == userId
+                   && r.CommentId == songId)
+               .To<CommentReactionViewModel>()
+               .FirstOrDefault();
+
+            if (result == null)
+            {
+                return new CommentReactionViewModel()
+                {
+                    Reaction = Reaction.None,
+                };
+            }
+
+            return result;
         }
 
         public async Task Update(CommentReactionCreateModel model, string id)
