@@ -12,10 +12,10 @@
     {
         public void Configure(EntityTypeBuilder<SongViewHistory> appSongViewHistory)
         {
-            appSongViewHistory
+            /*appSongViewHistory
                 .HasOne(e => e.Song)
                 .WithMany(c => c.SongViewHistories)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);*/
         }
     }
 }

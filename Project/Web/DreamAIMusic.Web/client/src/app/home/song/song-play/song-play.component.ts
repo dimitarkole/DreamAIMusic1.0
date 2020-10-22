@@ -17,35 +17,17 @@ import { Reaction } from '../../../components/shared/models/reaction';
 export class SongPlayComponent implements OnInit {
   songId: string;
   song: Song;
-  categories$: Observable<Category[]>;
+
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
     private songService: SongService) {
-    this.categories$ = categoryService.all();
   }
 
   ngOnInit() {
     this.song = this.route.snapshot.data.song;
     this.songId = this.song.id;
-    console.log(this.song);
-  }
-
-  likeComment(songId: string) {
-    var song: Song;
-    song.reaction = Reaction.Like;
-
-    this.songService.reactionSong(songId, song)
-      .subscribe(_ => _);
-  }
-
-  dislikeComment(songId: string) {
-    var song: Song;
-    song.reaction = Reaction.Dislike;
-
-    this.songService.reactionSong(songId, song)
-      .subscribe(_ => _);
   }
 }

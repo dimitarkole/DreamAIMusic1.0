@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Threading.Tasks;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Web.ViewModels;
@@ -37,17 +38,6 @@
 
         [HttpGet("{id}")]
         public ActionResult<SongPlayModel> Get(string id)
-        {
-            try
-            {
-                var userId = this.userManager.GetUserId(this.User);
-                this.songViewHistoryService.Create(id, userId);
-            }
-            catch (Exception)
-            {
-            }
-
-            return this.Ok(this.songService.GetById<SongPlayModel>(id));
-        }
+            => this.Ok(this.songService.GetById<SongPlayModel>(id));
     }
 }

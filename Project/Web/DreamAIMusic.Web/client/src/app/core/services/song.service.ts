@@ -47,11 +47,4 @@ export class SongService {
     return this.http
       .post(`${this.routeSongController}/uploadSongFile`, formData);
   }
-
-  reactionSong(id: string, reaction: Song) {
-    // upload image
-    return this.http.post(this.routeSongController, reaction, { reportProgress: true, observe: 'events' });
-    // create song
-
-  }
 }

@@ -14,6 +14,7 @@
     using DreamAIMusic.Services.Mapping;
     using DreamAIMusic.Web.ViewModels.CommonResurces.CategoryModels;
     using DreamAIMusic.Web.ViewModels.User.SongModels;
+    using Microsoft.EntityFrameworkCore;
 
     public class SongService : ISongService
     {
@@ -47,10 +48,15 @@
             await this.context.SaveChangesAsync();
         }
 
-        public T GetById<T>(string id) => this.context.Songs
-            .Where(s => s.Id == id)
-            .To<T>()
-            .FirstOrDefault();
+        public T GetById<T>(string id)
+        {
+            var song = this.context.Songs
+                .Where(s => s.Id == id)
+                .To<T>()
+                .FirstOrDefault();
+
+            return song;
+        }
 
         public bool IsOwn(string songId, string userId)
             => this.context.Songs

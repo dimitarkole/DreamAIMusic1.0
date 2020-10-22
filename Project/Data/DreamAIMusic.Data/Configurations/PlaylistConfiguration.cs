@@ -11,12 +11,12 @@ namespace DreamAIMusic.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<Playlist> appPlaylist)
         {
-            appPlaylist
+            /*appPlaylist
                 .HasMany(e => e.PlaylistSongs)
                 .WithOne()
                 .HasForeignKey(e => e.PlaylistId)
                 .IsRequired()
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.Restrict);*/
         }
     }
 }

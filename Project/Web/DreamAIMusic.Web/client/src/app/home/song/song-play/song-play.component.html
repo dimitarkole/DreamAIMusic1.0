@@ -74,17 +74,10 @@
       </div>
       <div class=" col-md-10">
         <div class="row">
-          <h5 class=" col-md-10">{{song.user.userName}}</h5>
-          <div class=" col-md-1">
-            <button class="btn glyphicon glyphicon-thumbs-up text-black like" aria-hidden="true" (click)="likeComment(song.id)"></button>
-            <span></span>
-            <button class="btn glyphicon glyphicon-thumbs-down text-black dislike" aria-hidden="true" (click)="dislikeComment(song.id)"></button>
-          </div>
+          <h5 class=" col-md-9">{{song.user.userName}}</h5>
+          <app-song-reaction [song]="song"  class="col-md-3"></app-song-reaction>
         </div>
         <br />
-        <p>
-          {{'../../../../assets/resources/song/аudio/'+ song.uniqueSongFilesName + song.mp3Extension }}
-        </p>
         <p>
           {{song.text}}
         </p>
