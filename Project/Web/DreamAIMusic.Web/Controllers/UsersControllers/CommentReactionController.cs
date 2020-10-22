@@ -58,5 +58,10 @@
             await this.commentReactionService.Delete(id);
             return this.Ok();
         }
+
+        [HttpGet("{id}")]
+        [Authorize]
+        public ActionResult<CommentReactionViewModel> Get(string id)
+            => this.Ok(this.commentReactionService.GetOwnReaction(id, this.userManager.GetUserId(this.User)));
     }
 }

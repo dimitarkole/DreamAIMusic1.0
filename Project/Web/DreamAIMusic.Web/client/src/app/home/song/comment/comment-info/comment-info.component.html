@@ -8,14 +8,7 @@
       {{comment.text}}
     </p>
     <div>
-      <button class="btn glyphicon glyphicon-thumbs-up text-black like" aria-hidden="true" (click)="likeComment(comment.id)"></button>
-      <span>{{comment?.commentLikesCount}}</span>
-      <button class="btn glyphicon glyphicon-thumbs-down text-black dislike" aria-hidden="true" (click)="dislikeComment(comment.id)"></button>
-      <span>{{comment?.commentDislikesCount}}</span>
-      <span *ngIf="comment.commentsChildren?.length>0" (click)="isCollapsed = !isCollapsed"
-            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-        Replays({{comment?.commentsChildren?.length}})
-      </span>
+      <app-comment-reaction [comment]="comment" class="col-md-3"></app-comment-reaction>
     </div>
     <div *ngIf="comment.commentsChildren?.length>0">
       <div id="collapseExample" [ngbCollapse]="!isCollapsed">

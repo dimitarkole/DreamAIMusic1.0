@@ -1,11 +1,7 @@
 ﻿namespace DreamAIMusic.Services.Contracts.User
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using System.Threading.Tasks;
     using DreamAIMusic.Web.ViewModels.CommonResurces.CommentModels;
-    using DreamAIMusic.Web.ViewModels.User.SongReactionModels;
+    using System.Threading.Tasks;
 
     public interface ICommentReactionService
     {
@@ -14,5 +10,7 @@
         Task Delete(string id);
 
         Task Update(CommentReactionCreateModel model, string id);
+
+        CommentReactionViewModel GetOwnReaction(string songId, string userId);
     }
 }
