@@ -27,6 +27,11 @@ namespace DreamAIMusic.Web.Controllers.UsersControllers
             this.songReactionService = songReactionService;
         }
 
+        [HttpGet("{id}")]
+        [Authorize]
+        public ActionResult<SongReactionViewModel> Get(string id)
+          => this.Ok(this.songReactionService.GetOwnReaction(id, this.userManager.GetUserId(this.User)));
+
         [HttpPost]
         [Authorize]
         public async Task<IActionResult> Post(SongReactionCreateModel model)
@@ -41,7 +46,6 @@ namespace DreamAIMusic.Web.Controllers.UsersControllers
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(string id, SongReactionCreateModel model)
         {
-            var userId = this.userManager.GetUserId(this.User);
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();

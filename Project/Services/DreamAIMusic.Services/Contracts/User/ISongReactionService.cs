@@ -14,5 +14,7 @@
         Task Delete(string id);
 
         Task Update(SongReactionCreateModel model, string id);
+
+        SongReactionViewModel GetOwnReaction(string songId, string userId);
     }
 }

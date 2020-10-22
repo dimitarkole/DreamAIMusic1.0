@@ -15,6 +15,7 @@
             {
                 throw new ArgumentNullException(nameof(source));
             }
+
             return source.ProjectTo(membersToExpand);
         }
 

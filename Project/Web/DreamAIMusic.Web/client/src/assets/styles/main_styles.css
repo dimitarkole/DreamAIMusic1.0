@@ -1957,6 +1957,8 @@ section
        url('https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 
+
+
 .glyphicon {
   position: relative;
   top: 1px;
@@ -2477,6 +2479,10 @@ section
 
 .glyphicon-thumbs-up:before {
   content: "\e125";
+}
+
+.reacted {
+  color: black;
 }
 
 .glyphicon-thumbs-down:before {
