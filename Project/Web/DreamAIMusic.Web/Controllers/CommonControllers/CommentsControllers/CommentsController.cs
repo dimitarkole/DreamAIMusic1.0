@@ -33,7 +33,7 @@
 
         [HttpPost]
         [Route("[action]")]
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         public async Task<IActionResult> Post(CommentInputModel model)
         {
             if (!this.ModelState.IsValid)
@@ -48,7 +48,7 @@
         }
 
         [HttpPost]
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [Route("[action]/$parentCommentId")]
         public async Task<IActionResult> PostChildrenCommentar(CommentEditModel model)
         {
@@ -63,7 +63,7 @@
             return this.Ok();
         }
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(string id, CommentEditModel model)
         {
@@ -76,7 +76,7 @@
             return this.Ok();
         }
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

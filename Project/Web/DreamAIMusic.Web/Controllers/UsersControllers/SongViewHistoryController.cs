@@ -31,19 +31,19 @@
         }
 
         [HttpGet]
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         public ActionResult<IEnumerable<SongViewModel>> Get()
             => this.Ok(this.songViewHistoryService
                 .All<SongViewModel>(this.userManager.GetUserId(this.User)));
 
         [HttpGet]
         [Route("[action]")]
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         public ActionResult<IEnumerable<SongViewModel>> Search(SongViewHistorySearchModels filter)
             => this.Ok(this.songViewHistoryService
                 .Search<SongViewModel>(filter, this.userManager.GetUserId(this.User)));
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {

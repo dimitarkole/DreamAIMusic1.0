@@ -16,7 +16,6 @@
     using DreamAIMusic.Services.Contracts.Administration;
     using DreamAIMusic.Services.Contracts.Common;
     using DreamAIMusic.Services.Contracts.User;
-    using DreamAIMusic.Services.Data;
     using DreamAIMusic.Services.Messaging;
     using DreamAIMusic.Services.User;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -87,7 +86,6 @@
                 .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
                 .AddScoped<IDbQueryRunner, DbQueryRunner>()
                 .AddTransient<IEmailSender, SendGridEmailSender>()
-                .AddTransient<ISettingsService, SettingsService>()
                 .AddTransient<ICategoryService, CategoryService>()
                 .AddTransient<ISongService, SongService>()
                 .AddTransient<IIdentityService, IdentityService>()

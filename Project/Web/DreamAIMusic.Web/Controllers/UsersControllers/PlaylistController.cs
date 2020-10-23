@@ -56,7 +56,7 @@
             return this.StatusCode(StatusCodes.Status201Created);
         }
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(string id, PlaylistEditModel model)
         {
@@ -75,7 +75,7 @@
             return this.Ok();
         }
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
@@ -113,7 +113,7 @@
         public ActionResult<IEnumerable<PlaylistViewModel>> GetAllSongAtPlaylist(string id)
          => this.Ok(this.playlistService.AllSongInPlaylist<SongPlayModel>(id));
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpDelete(nameof(DeletePlaylistSong) + "/{id}")]
         public async Task<IActionResult> DeletePlaylistSong(string id)
         {

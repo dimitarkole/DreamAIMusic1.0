@@ -4,8 +4,11 @@
     {
         public const string SystemName = "DreamAIMusic";
 
-        public const string AdministratorRoleName = "Administrator";
-        public const string UserRoleName = "User";
+        public static class Roles
+        {
+            public const string AdministratorRoleName = "Administrator";
+            public const string UserRoleName = "User";
+        }
 
         public const int UsernameMinLength = 5;
         public const int UsernameMaxLength = 30;
