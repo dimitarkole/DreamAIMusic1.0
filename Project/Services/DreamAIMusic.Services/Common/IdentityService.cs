@@ -49,7 +49,7 @@
         {
             this.GenerateRoles();
             var roleName = this.context.Users.Count() == 0 ?
-                GlobalConstants.AdministratorRoleName : GlobalConstants.UserRoleName;
+                GlobalConstants.Roles.AdministratorRoleName : GlobalConstants.Roles.UserRoleName;
             var currectRole = this.context.Roles
                 .Where(r => r.Name == roleName)
                 .FirstOrDefault();
@@ -64,8 +64,8 @@
 
         private void GenerateRoles()
         {
-            this.GenerateRole(GlobalConstants.AdministratorRoleName);
-            this.GenerateRole(GlobalConstants.UserRoleName);
+            this.GenerateRole(GlobalConstants.Roles.AdministratorRoleName);
+            this.GenerateRole(GlobalConstants.Roles.UserRoleName);
         }
 
         private async void GenerateRole(string roleName)

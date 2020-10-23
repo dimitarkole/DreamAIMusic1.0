@@ -1,10 +1,11 @@
-﻿using DreamAIMusic.Common;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace DreamAIMusic.Data.Models
+﻿namespace DreamAIMusic.Data.Models
 {
+    using System;
+    using System.Collections.Generic;
+    using System.Text;
+
+    using DreamAIMusic.Common;
+
     public class UserSetting : Entity<int>
     {
         public SettingType Type { get; set; }

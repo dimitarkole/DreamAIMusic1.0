@@ -7,7 +7,7 @@
     using Microsoft.AspNetCore.Identity.UI.V3.Pages.Account.Internal;
     using Microsoft.Extensions.Logging;
 
-    [Authorize(Roles = GlobalConstants.UserRoleName)]
+    [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
     public class UserController : ApiController
     {
         public UserController(
