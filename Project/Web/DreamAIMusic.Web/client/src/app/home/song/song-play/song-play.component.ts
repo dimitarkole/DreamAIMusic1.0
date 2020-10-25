@@ -8,6 +8,8 @@ import { CategoryService } from '../../../core/services/category.service';
 import { SongService } from '../../../core/services/song.service';
 import { HttpEventType } from '@angular/common/http';
 import { Reaction } from '../../../components/shared/models/reaction';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { PlaylistAddSongComponent } from '../../../components/user/playlist/playlist-add-song/playlist-add-song.component';
 
 @Component({
   selector: 'app-song-play',
@@ -19,6 +21,7 @@ export class SongPlayComponent implements OnInit {
   song: Song;
 
   constructor(
+    private modalService: NgbModal,
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
@@ -29,5 +32,14 @@ export class SongPlayComponent implements OnInit {
   ngOnInit() {
     this.song = this.route.snapshot.data.song;
     this.songId = this.song.id;
+  }
+
+  openAddToSong() {
+    let modal = this.modalService.open(PlaylistAddSongComponent);
+    modal.componentInstance.song = this.song;
+    modal.result.then(_ => {
+    }).catch(err => {
+      console.log(err);
+    })
   }
 }

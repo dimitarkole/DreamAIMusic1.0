@@ -7,4 +7,6 @@ export default interface Playlist {
   playlistSongsCount: number,
   songs: Array<Song>[],
   user: User,
+  playlistId: string,
+  songId: string,
 }

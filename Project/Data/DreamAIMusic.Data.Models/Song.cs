@@ -14,6 +14,7 @@
             this.Comments = new HashSet<Comment>();
             this.SongReactions = new HashSet<SongReaction>();
             this.SongViewHistories = new HashSet<SongViewHistory>();
+            this.PlaylistSongs = new HashSet<PlaylistSong>();
         }
 
         // Summary:
@@ -45,6 +46,9 @@
         public virtual ICollection<SongReaction> SongReactions { get; set; }
 
         public virtual ICollection<SongViewHistory> SongViewHistories { get; set; }
+
+        public virtual ICollection<PlaylistSong> PlaylistSongs { get; set; }
+
 
         public DateTime CreatedOn { get; set; }
 

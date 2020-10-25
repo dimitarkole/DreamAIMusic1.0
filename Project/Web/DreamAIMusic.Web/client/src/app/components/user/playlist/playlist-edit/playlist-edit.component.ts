@@ -17,7 +17,6 @@ export class PlaylistEditComponent implements OnInit {
   playlistForm: FormGroup
   public progress: number;
   public message: string;
-  private routeUpload: string = 'song/Upload';
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
