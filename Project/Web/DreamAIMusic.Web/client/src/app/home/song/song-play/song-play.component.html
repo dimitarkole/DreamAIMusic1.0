@@ -31,9 +31,9 @@
             <!-- Progress Bar -->
             <div class="player_bars d-flex flex-row align-items-start justify-content-start">
               <div class="player_progress_box">
-                <div class="jp-current-time" role="timer" aria-label="time">00:00</div>
+                <div class="jp-current-time text-dark" role="timer" aria-label="time">00:00</div>
                 <div class="song_info">
-                  <div class="jp-title" aria-label="title">{{song.name}}</div>
+                  <div class="jp-title text-dark" aria-label="title">{{song.name}}</div>
                 </div>
                 <div class="jp-progress">
                   <div class="jp-seek-bar" style="width: 100%;">
@@ -42,7 +42,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="jp-duration ml-auto" role="timer" aria-label="duration">02:20</div>
+                <div class="jp-duration ml-auto text-dark" role="timer" aria-label="duration">02:20</div>
               </div>
 
               <!-- Volume Controls -->
@@ -76,6 +76,13 @@
         <div class="row">
           <h5 class=" col-md-9">{{song.user.userName}}</h5>
           <app-song-reaction [song]="song"  class="col-md-3"></app-song-reaction>
+        </div>
+        <div class="row">
+          <div class="col-md-12">
+            <button class="btn text-black" (click)="openAddToSong()">
+              Add to playlist
+            </button>
+          </div>
         </div>
         <br />
         <p>

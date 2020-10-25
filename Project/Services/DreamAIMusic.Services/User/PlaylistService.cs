@@ -21,12 +21,10 @@
             this.context = context;
         }
 
-        public async Task AddSongToPlaylist(string id, string songId)
+        public async Task AddSongToPlaylist(SongToPlaylistCreateModel model)
         {
-            var newPlaylistSong = new PlaylistSong();
-            newPlaylistSong.PlaylistId = id;
-            newPlaylistSong.SongId = songId;
-            await this.context.PlaylistSongs.AddAsync(newPlaylistSong);
+            PlaylistSong playlistSong = model.To<PlaylistSong>();
+            await this.context.PlaylistSongs.AddAsync(playlistSong);
             await this.context.SaveChangesAsync();
         }
 
@@ -37,6 +35,14 @@
 
         public IList<T> AllOwn<T>(string userId) => this.context.Playlists
                .Where(p => p.DeletedOn == null && p.UserId == userId)
+               .To<T>()
+               .ToList();
+
+        public IList<T> GetOwnForAddingSong<T>(string songId, string userId)
+            => this.context.Playlists
+               .Where(p => p.DeletedOn == null
+                    && p.UserId == userId
+                    && p.PlaylistSongs.Any(ps => ps.SongId == songId) == false)
                .To<T>()
                .ToList();
 

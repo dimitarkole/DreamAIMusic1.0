@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import Playlist from '../../components/shared/models/playlist';
+import { Song } from '../../components/shared/models/song';
 
 @Injectable({
   providedIn: 'root'
@@ -19,6 +20,11 @@ export class PlaylistService {
     return this.http.get<Playlist[]>(`${this.route}/GetOwn`);
   }
 
+  GetOwnForAddingSong(songId: string) {
+    return this.http.get<Playlist[]>(`${this.route}/GetOwnForAddingSong/${songId}`);
+  }
+
+
   create(playlist: Playlist) {
     return this.http.post(this.route, playlist);
   }
@@ -33,5 +39,9 @@ export class PlaylistService {
 
   delete(id: string) {
     return this.http.delete(`${this.route}/${id}`);
+  }
+
+  addSong(playlist: Playlist) {
+    return this.http.post(`${this.route}/AddSongToPlaylist`, playlist);;
   }
 }

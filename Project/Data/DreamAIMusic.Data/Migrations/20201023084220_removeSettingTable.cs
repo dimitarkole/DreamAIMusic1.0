@@ -7,20 +7,8 @@ namespace DreamAIMusic.Data.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.DropForeignKey(
-                name: "FK_PlaylistSongs_Playlists_PlaylistId1",
-                table: "PlaylistSongs");
-
             migrationBuilder.DropTable(
                 name: "Settings");
-
-            migrationBuilder.DropIndex(
-                name: "IX_PlaylistSongs_PlaylistId1",
-                table: "PlaylistSongs");
-
-            migrationBuilder.DropColumn(
-                name: "PlaylistId1",
-                table: "PlaylistSongs");
 
             migrationBuilder.AlterColumn<string>(
                 name: "PlaylistId",
@@ -39,12 +27,6 @@ namespace DreamAIMusic.Data.Migrations
                 nullable: false,
                 oldClrType: typeof(string),
                 oldNullable: true);
-
-            migrationBuilder.AddColumn<string>(
-                name: "PlaylistId1",
-                table: "PlaylistSongs",
-                type: "nvarchar(450)",
-                nullable: true);
 
             migrationBuilder.CreateTable(
                 name: "Settings",
@@ -65,22 +47,9 @@ namespace DreamAIMusic.Data.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlaylistSongs_PlaylistId1",
-                table: "PlaylistSongs",
-                column: "PlaylistId1");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Settings_IsDeleted",
                 table: "Settings",
                 column: "IsDeleted");
-
-            migrationBuilder.AddForeignKey(
-                name: "FK_PlaylistSongs_Playlists_PlaylistId1",
-                table: "PlaylistSongs",
-                column: "PlaylistId1",
-                principalTable: "Playlists",
-                principalColumn: "Id",
-                onDelete: ReferentialAction.Restrict);
         }
     }
 }

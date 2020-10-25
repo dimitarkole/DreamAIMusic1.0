@@ -17,6 +17,8 @@
 
         IList<T> AllOwn<T>(string userId);
 
+        IList<T> GetOwnForAddingSong<T>(string songId, string userId);
+
         Task Create(PlaylistCreateModel model, string userId);
 
         Task Update(PlaylistEditModel model, string id);
@@ -27,7 +29,7 @@
 
         IList<T> AllSongInPlaylist<T>(string id);
 
-        Task AddSongToPlaylist(string id, string songId);
+        Task AddSongToPlaylist(SongToPlaylistCreateModel model);
 
         Task DeletePlaylistSong(string id);
 
