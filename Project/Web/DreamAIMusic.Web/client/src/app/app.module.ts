@@ -37,6 +37,7 @@ import { PlaylistDeleteComponent } from './components/user/playlist/playlist-del
 import { SongReactionComponent } from './home/song/song-reaction/song-reaction.component';
 import { CommentReactionComponent } from './home/song/comment/comment-reaction/comment-reaction.component';
 import { PlaylistAddSongComponent } from './components/user/playlist/playlist-add-song/playlist-add-song.component';
+import { PlaylistPlayComponent } from './components/user/playlist/playlist-play/playlist-play.component';
 
 @NgModule({
   declarations: [
@@ -67,6 +68,7 @@ import { PlaylistAddSongComponent } from './components/user/playlist/playlist-ad
     SongReactionComponent,
     CommentReactionComponent,
     PlaylistAddSongComponent,
+    PlaylistPlayComponent,
   ],
   entryComponents: [
     CategoryDeleteModalComponent,

@@ -17,6 +17,7 @@
     using DreamAIMusic.Services.User;
     using DreamAIMusic.Web.Configuration;
     using DreamAIMusic.Web.Infrastucture;
+    using DreamAIMusic.Web.Infrastucture.Configuration;
     using DreamAIMusic.Web.ViewModels;
 
     using Microsoft.AspNetCore.Builder;
@@ -24,6 +25,7 @@
     using Microsoft.AspNetCore.Http;
     using Microsoft.AspNetCore.Http.Features;
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.SpaServices.AngularCli;
     using Microsoft.EntityFrameworkCore;
     using Microsoft.Extensions.Configuration;
     using Microsoft.Extensions.DependencyInjection;
@@ -96,6 +98,19 @@
                     endpoints.MapControllers();
                 })
                 .ApplyMigrations();
+
+            // Uncomment the line below if you want to seed data in your database
+            // app.SeedData();
+
+            app.UseSpa(spa =>
+            {
+                spa.Options.SourcePath = "client";
+
+                if (env.IsDevelopment())
+                {
+                    spa.UseAngularCliServer(npmScript: "start");
+                }
+            });
         }
     }
 }

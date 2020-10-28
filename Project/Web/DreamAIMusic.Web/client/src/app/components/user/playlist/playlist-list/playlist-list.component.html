@@ -18,8 +18,8 @@
                   <div class="container">
                     <div class="row">
                       <div class="col-sm-9">
-                        <div class="featured_album">
-                          {{playlist.name.substring(0, 30)}}
+                        <div class="featured_album" routerLink="/playlist/play/{{playlist.id}}">
+                            {{playlist.name.substring(0, 30)}}
                         </div>
                         <div class="featured_title">
                           {{playlist.user?.username}}

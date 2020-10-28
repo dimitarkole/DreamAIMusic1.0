@@ -13,6 +13,8 @@ import { SongPlayComponent } from './home/song/song-play/song-play.component';
 import { MyProfileComponent } from './components/profile/my-profile/my-profile.component';
 import { UserResolver } from './core/resolvers/user.resolver';
 import { PlaylistListComponent } from './components/user/playlist/playlist-list/playlist-list.component';
+import { PlaylistPlayComponent } from './components/user/playlist/playlist-play/playlist-play.component';
+import { PlaylistResolver } from './core/resolvers/playlist.resolver';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', component: HomeComponent },
@@ -61,6 +63,14 @@ const routes: Routes = [
   {
     path: 'playlist', children: [
       { path: 'own', component: PlaylistListComponent },
+      {
+        path: 'play/:id',
+        component: PlaylistPlayComponent,
+        resolve:
+        {
+          playlist: PlaylistResolver
+        }
+      },
     ]
   },
 ];
