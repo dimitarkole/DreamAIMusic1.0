@@ -19,12 +19,8 @@ export class CommentService {
   }
 
   getBySongId(id: string) {
-    return this.http.get<Comment>(`${this.routeCommentController}/${id}`);
+    return this.http.get<Comment[]>(`${this.routeCommentController}/${id}`);
   }
-
-  /* all() {
-     return this.http.get<Comment[]>(this.routeCommentController);
-   }*/
 
   create(comment: Comment) {
     return this.http.post(this.routeCommentController+'/post', comment);

@@ -27,9 +27,9 @@
             this.commentService = commentService;
         }
 
-        [HttpGet]
-        public ActionResult<IEnumerable<CommentViewModel>> Get(string musicId)
-           => this.Ok(this.commentService.All<CommentViewModel>(musicId));
+        [HttpGet("{id}")]
+        public ActionResult<IEnumerable<CommentViewModel>> Get(string id)
+           => this.Ok(this.commentService.All<CommentViewModel>(id));
 
         [HttpPost]
         [Route("[action]")]
