@@ -13,8 +13,7 @@
             this.Id = Guid.NewGuid().ToString();
             this.CreatedOn = DateTime.UtcNow;
             this.CommentsChildren = new HashSet<Comment>();
-            this.CommentLikes = new HashSet<CommentLike>();
-            this.CommentDislikes = new HashSet<CommentDislike>();
+            this.CommentReactions = new HashSet<CommentReaction>();
         }
 
         // Summary:
@@ -45,8 +44,6 @@
 
         public virtual ICollection<Comment> CommentsChildren { get; set; }
 
-        public virtual ICollection<CommentDislike> CommentDislikes { get; set; }
-
-        public virtual ICollection<CommentLike> CommentLikes { get; set; }
+        public virtual ICollection<CommentReaction> CommentReactions { get; set; }
     }
 }

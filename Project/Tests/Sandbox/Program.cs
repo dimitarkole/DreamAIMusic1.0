@@ -11,7 +11,6 @@
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Data.Repositories;
     using DreamAIMusic.Data.Seeding;
-    using DreamAIMusic.Services.Data;
     using DreamAIMusic.Services.Messaging;
 
     using CommandLine;
@@ -43,22 +42,10 @@
             {
                 serviceProvider = serviceScope.ServiceProvider;
 
-                return Parser.Default.ParseArguments<SandboxOptions>(args).MapResult(
-                    opts => SandboxCode(opts, serviceProvider).GetAwaiter().GetResult(),
-                    _ => 255);
+                return 1;
             }
         }
 
-        private static async Task<int> SandboxCode(SandboxOptions options, IServiceProvider serviceProvider)
-        {
-            var sw = Stopwatch.StartNew();
-
-            var settingsService = serviceProvider.GetService<ISettingsService>();
-            Console.WriteLine($"Count of settings: {settingsService.GetCount()}");
-
-            Console.WriteLine(sw.Elapsed);
-            return await Task.FromResult(0);
-        }
 
         private static void ConfigureServices(ServiceCollection services)
         {
@@ -79,10 +66,6 @@
             services.AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>));
             services.AddScoped(typeof(IRepository<>), typeof(EfRepository<>));
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
-
-            // Application services
-            services.AddTransient<IEmailSender, NullMessageSender>();
-            services.AddTransient<ISettingsService, SettingsService>();
         }
     }
 }

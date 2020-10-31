@@ -1,5 +1,6 @@
 import Comment from './comment';
 import User from './user';
+import { Reaction } from './reaction';
 
 export interface Song {
   id: string,
@@ -9,11 +10,12 @@ export interface Song {
   songCategoryName: string,
   text: string,
   countViews: string,
-  countLikes: 0,
-  countDisLikes: 0,
+  countLikes: number,
+  countDislikes: number,
   createdOn: Date,
   comments: Array<Comment>,
   user: User,
   imageExtension: string,
   mp3Extension: string,
+  reaction : Reaction,
 }

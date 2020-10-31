@@ -11,7 +11,7 @@
         public Playlist()
         {
             this.Id = Guid.NewGuid().ToString();
-            this.PlaylistSongs = new List<PlaylistSong>();
+            this.PlaylistSongs = new HashSet<PlaylistSong>();
         }
 
         //

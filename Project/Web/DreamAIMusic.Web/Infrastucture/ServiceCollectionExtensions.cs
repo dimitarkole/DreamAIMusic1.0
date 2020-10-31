@@ -16,7 +16,6 @@
     using DreamAIMusic.Services.Contracts.Administration;
     using DreamAIMusic.Services.Contracts.Common;
     using DreamAIMusic.Services.Contracts.User;
-    using DreamAIMusic.Services.Data;
     using DreamAIMusic.Services.Messaging;
     using DreamAIMusic.Services.User;
     using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -86,17 +85,16 @@
                 .AddScoped(typeof(IDeletableEntityRepository<>), typeof(EfDeletableEntityRepository<>))
                 .AddScoped(typeof(IRepository<>), typeof(EfRepository<>))
                 .AddScoped<IDbQueryRunner, DbQueryRunner>()
-                .AddTransient<IEmailSender, NullMessageSender>()
-                .AddTransient<ISettingsService, SettingsService>()
+                .AddTransient<IEmailSender, SendGridEmailSender>()
                 .AddTransient<ICategoryService, CategoryService>()
                 .AddTransient<ISongService, SongService>()
                 .AddTransient<IIdentityService, IdentityService>()
                 .AddTransient<ICommentService, CommentService>()
-                .AddTransient<ICommentLikeService, CommentLikeService>()
-                .AddTransient<ICommentDislikeService, CommentDislikeService>()
                 .AddTransient<IProfileService, ProfileService>()
-                .AddTransient<IPlaylistService, PlaylistService>();
-
+                .AddTransient<IPlaylistService, PlaylistService>()
+                .AddTransient<ISongReactionService, SongReactionService>()
+                .AddTransient<ISongViewHistoryService, SongViewHistoryService>()
+                .AddTransient<ICommentReactionService, CommentReactionService>();
 
         public static IServiceCollection AddSwagger(this IServiceCollection services)
            => services.AddSwaggerGen(c =>

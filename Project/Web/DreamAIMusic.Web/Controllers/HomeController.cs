@@ -3,6 +3,7 @@
     using System;
     using System.Collections.Generic;
     using System.Diagnostics;
+    using System.Threading.Tasks;
     using DreamAIMusic.Data.Models;
     using DreamAIMusic.Services.Contracts.User;
     using DreamAIMusic.Web.ViewModels;
@@ -17,15 +18,18 @@
     public class HomeController : ApiController
     {
         private readonly ISongService songService;
+        private readonly ISongViewHistoryService songViewHistoryService;
 
         public HomeController(
             ISongService songService,
             UserManager<ApplicationUser> userManager,
             SignInManager<ApplicationUser> signInManager,
+            ISongViewHistoryService songViewHistoryService,
             ILogger<LogoutModel> logger)
             : base(userManager, signInManager, logger)
         {
             this.songService = songService;
+            this.songViewHistoryService = songViewHistoryService;
         }
 
         [HttpGet]
@@ -33,7 +37,7 @@
           => this.Ok(this.songService.All<SongViewModel>());
 
         [HttpGet("{id}")]
-        public ActionResult<SongPlayModel> Get(string id) =>
-           this.Ok(this.songService.GetById<SongPlayModel>(id));
+        public ActionResult<SongPlayModel> Get(string id)
+            => this.Ok(this.songService.GetById<SongPlayModel>(id));
     }
 }

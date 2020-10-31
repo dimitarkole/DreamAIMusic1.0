@@ -8,6 +8,7 @@ import { Song } from '../../components/shared/models/song';
 export class SongService {
   private routeSongController: string = 'Song';
   private routeHomeController: string = 'Home';
+  private routeSongReactionController: string = 'SongReaction';
 
   constructor(private http: HttpClient) { }
   

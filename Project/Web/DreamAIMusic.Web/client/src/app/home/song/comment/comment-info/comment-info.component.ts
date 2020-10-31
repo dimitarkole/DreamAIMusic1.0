@@ -6,35 +6,28 @@ import { CommentService } from '../../../../core/services/comment.service';
 import CommentLike from '../../../../components/shared/models/commentLike';
 import CommentDislike from '../../../../components/shared/models/commentDislike';
 import { AbstractControl } from '@angular/forms';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-comment-info',
   templateUrl: './comment-info.component.html',
   styleUrls: ['./comment-info.component.css']
 })
-export class CommentInfoComponent {
+export class CommentInfoComponent implements OnInit {
   @Input() comment: Comment
+  isAuth: boolean = false;
+
   constructor(private modalService: NgbModal,
     private router: Router,
-    private commentService: CommentService) { }
-
-  likeComment(commentId: string) {
-    let commentLike: CommentLike = {
-      commentId : commentId,
-    }
-    this.commentService.likeComment(commentLike)
-      .subscribe(_ => {
-      this.router.navigate(['']);
+    private commentService: CommentService,
+    public authService: AuthService) {
+    this.isAuth = authService.isAuth;
+    this.authService.isAuthChanged.subscribe(() => {
+      this.isAuth = this.authService.isAuth;
     })
   }
 
-  dislikeComment(commentId: string) {
-    let commentDislike: CommentDislike = {
-      commentId: commentId,
-    }
-    this.commentService.dislikeComment(commentDislike)
-      .subscribe(_ => {
-        this.router.navigate(['']);
-      })
+  ngOnInit(): void {
+    console.log(this.comment);
   }
 }

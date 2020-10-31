@@ -6,15 +6,15 @@
 
     using DreamAIMusic.Data.Common.Models;
 
-    public class Song : IAuditInfo, IDeletableEntity, ILikeInfo
+    public class Song : IAuditInfo, IDeletableEntity
     {
         public Song()
         {
             this.Id = Guid.NewGuid().ToString();
             this.Comments = new HashSet<Comment>();
-            this.CountDisLikes = 0;
-            this.CountLikes = 0;
-            this.CountViews = 0;
+            this.SongReactions = new HashSet<SongReaction>();
+            this.SongViewHistories = new HashSet<SongViewHistory>();
+            this.PlaylistSongs = new HashSet<PlaylistSong>();
         }
 
         // Summary:
@@ -43,9 +43,12 @@
 
         public virtual ICollection<Comment> Comments { get; set; }
 
-        public long CountLikes { get; set; }
+        public virtual ICollection<SongReaction> SongReactions { get; set; }
 
-        public long CountDisLikes { get; set; }
+        public virtual ICollection<SongViewHistory> SongViewHistories { get; set; }
+
+        public virtual ICollection<PlaylistSong> PlaylistSongs { get; set; }
+
 
         public DateTime CreatedOn { get; set; }
 

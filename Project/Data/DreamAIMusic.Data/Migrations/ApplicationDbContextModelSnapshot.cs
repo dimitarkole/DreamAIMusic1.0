@@ -197,7 +197,7 @@ namespace DreamAIMusic.Data.Migrations
                     b.ToTable("Comments");
                 });
 
-            modelBuilder.Entity("DreamAIMusic.Data.Models.CommentDislike", b =>
+            modelBuilder.Entity("DreamAIMusic.Data.Models.CommentReaction", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -217,39 +217,8 @@ namespace DreamAIMusic.Data.Migrations
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("CommentId");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("CommentDislikes");
-                });
-
-            modelBuilder.Entity("DreamAIMusic.Data.Models.CommentLike", b =>
-                {
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("CommentId")
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
+                    b.Property<int>("Reaction")
+                        .HasColumnType("int");
 
                     b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
@@ -262,7 +231,7 @@ namespace DreamAIMusic.Data.Migrations
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("CommentLikes");
+                    b.ToTable("CommentReactions");
                 });
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.Order", b =>
@@ -398,10 +367,6 @@ namespace DreamAIMusic.Data.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<string>("PlaylistId")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<string>("PlaylistId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("SongId")
@@ -413,43 +378,9 @@ namespace DreamAIMusic.Data.Migrations
 
                     b.HasIndex("PlaylistId");
 
-                    b.HasIndex("PlaylistId1");
-
                     b.HasIndex("SongId");
 
                     b.ToTable("PlaylistSongs");
-                });
-
-            modelBuilder.Entity("DreamAIMusic.Data.Models.Setting", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("CreatedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime?>("DeletedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<bool>("IsDeleted")
-                        .HasColumnType("bit");
-
-                    b.Property<DateTime?>("ModifiedOn")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("Name")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("Value")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("IsDeleted");
-
-                    b.ToTable("Settings");
                 });
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.Song", b =>
@@ -459,12 +390,6 @@ namespace DreamAIMusic.Data.Migrations
 
                     b.Property<string>("CategoryId")
                         .HasColumnType("nvarchar(450)");
-
-                    b.Property<long>("CountDisLikes")
-                        .HasColumnType("bigint");
-
-                    b.Property<long>("CountLikes")
-                        .HasColumnType("bigint");
 
                     b.Property<long>("CountViews")
                         .HasColumnType("bigint");
@@ -508,6 +433,77 @@ namespace DreamAIMusic.Data.Migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Songs");
+                });
+
+            modelBuilder.Entity("DreamAIMusic.Data.Models.SongReaction", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Reaction")
+                        .HasColumnType("int");
+
+                    b.Property<string>("SongId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SongId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SongReactions");
+                });
+
+            modelBuilder.Entity("DreamAIMusic.Data.Models.SongViewHistory", b =>
+                {
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("SongId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<string>("UserId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("SongId");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("SongViewHistories");
                 });
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.UserSetting", b =>
@@ -711,25 +707,14 @@ namespace DreamAIMusic.Data.Migrations
                         .HasForeignKey("SongId");
 
                     b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")
-                        .WithMany()
+                        .WithMany("Comments")
                         .HasForeignKey("UserId");
                 });
 
-            modelBuilder.Entity("DreamAIMusic.Data.Models.CommentDislike", b =>
+            modelBuilder.Entity("DreamAIMusic.Data.Models.CommentReaction", b =>
                 {
-                    b.HasOne("DreamAIMusic.Data.Models.Comment", "Comment")
-                        .WithMany("CommentDislikes")
-                        .HasForeignKey("CommentId");
-
-                    b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-                });
-
-            modelBuilder.Entity("DreamAIMusic.Data.Models.CommentLike", b =>
-                {
-                    b.HasOne("DreamAIMusic.Data.Models.Comment", "Comment")
-                        .WithMany("CommentLikes")
+                    b.HasOne("DreamAIMusic.Data.Models.Comment", "Song")
+                        .WithMany("CommentReactions")
                         .HasForeignKey("CommentId");
 
                     b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")
@@ -765,35 +750,45 @@ namespace DreamAIMusic.Data.Migrations
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.PlaylistSong", b =>
                 {
-                    b.HasOne("DreamAIMusic.Data.Models.Playlist", null)
-                        .WithMany("PlaylistSongs")
-                        .HasForeignKey("PlaylistId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("DreamAIMusic.Data.Models.Playlist", "Playlist")
-                        .WithMany()
-                        .HasForeignKey("PlaylistId1");
+                        .WithMany("PlaylistSongs")
+                        .HasForeignKey("PlaylistId");
 
                     b.HasOne("DreamAIMusic.Data.Models.Song", "Song")
-                        .WithMany()
+                        .WithMany("PlaylistSongs")
                         .HasForeignKey("SongId");
                 });
 
             modelBuilder.Entity("DreamAIMusic.Data.Models.Song", b =>
                 {
                     b.HasOne("DreamAIMusic.Data.Models.Category", "Category")
-                        .WithMany()
-                        .HasForeignKey("CategoryId");
-
-                    b.HasOne("DreamAIMusic.Data.Models.Category", null)
                         .WithMany("Songs")
-                        .HasForeignKey("Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .HasForeignKey("CategoryId");
 
                     b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")
                         .WithMany("Songs")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("DreamAIMusic.Data.Models.SongReaction", b =>
+                {
+                    b.HasOne("DreamAIMusic.Data.Models.Song", "Song")
+                        .WithMany("SongReactions")
+                        .HasForeignKey("SongId");
+
+                    b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")
+                        .WithMany("SongReactions")
+                        .HasForeignKey("UserId");
+                });
+
+            modelBuilder.Entity("DreamAIMusic.Data.Models.SongViewHistory", b =>
+                {
+                    b.HasOne("DreamAIMusic.Data.Models.Song", "Song")
+                        .WithMany("SongViewHistories")
+                        .HasForeignKey("SongId");
+
+                    b.HasOne("DreamAIMusic.Data.Models.ApplicationUser", "User")
+                        .WithMany("SongViewHistories")
                         .HasForeignKey("UserId");
                 });
 

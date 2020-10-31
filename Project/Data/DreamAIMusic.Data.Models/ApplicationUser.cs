@@ -20,6 +20,9 @@ namespace DreamAIMusic.Data.Models
             this.Playlists = new HashSet<Playlist>();
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Settings = new List<UserSetting>();
+            this.Comments = new HashSet<Comment>();
+            this.SongReactions = new HashSet<SongReaction>();
+            this.SongViewHistories = new HashSet<SongViewHistory>();
         }
 
         public virtual string ImageUrl { get; set; }
@@ -55,6 +58,12 @@ namespace DreamAIMusic.Data.Models
         public virtual ICollection<IdentityUserLogin<string>> Logins { get; set; }
 
         public virtual ICollection<Song> Songs { get; set; }
+
+        public virtual ICollection<Comment> Comments { get; set; }
+
+        public virtual ICollection<SongReaction> SongReactions { get; set; }
+
+        public virtual ICollection<SongViewHistory> SongViewHistories { get; set; }
 
         public virtual ICollection<Order> Orders { get; set; }
 

@@ -17,7 +17,7 @@ export class SongListComponent{
   page: number = globalConstants.pagination.defaultPage;
   collectionSize: number;
   private itemsPerPage: number;
-  song: Song[] = [];
+  songs: Song[] = [];
   allSongs: Song[] = [];
 
   constructor(private modalService: NgbModal,
@@ -46,6 +46,6 @@ export class SongListComponent{
   }
 
   public getSongsPerPage(page: number): void {
-    this.song = getPage<Song>(this.allSongs, page, this.itemsPerPage);
+    this.songs = getPage<Song>(this.allSongs, page, this.itemsPerPage);
   }
 }

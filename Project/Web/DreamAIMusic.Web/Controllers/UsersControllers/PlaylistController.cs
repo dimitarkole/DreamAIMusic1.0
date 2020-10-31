@@ -35,6 +35,10 @@
         public ActionResult<IEnumerable<PlaylistViewModel>> GetOwn()
            => this.Ok(this.playlistService.AllOwn<PlaylistViewModel>(this.userManager.GetUserId(this.User)));
 
+        [HttpGet(nameof(GetOwnForAddingSong) + "/{id}")]
+        public ActionResult<IEnumerable<PlaylistViewModel>> GetOwnForAddingSong(string id)
+           => this.Ok(this.playlistService.GetOwnForAddingSong<PlaylistViewModel>(id, this.userManager.GetUserId(this.User)));
+
         [HttpGet]
         public ActionResult<IEnumerable<PlaylistViewModel>> Get()
          => this.Ok(this.playlistService.All<PlaylistViewModel>());
@@ -56,7 +60,7 @@
             return this.StatusCode(StatusCodes.Status201Created);
         }
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpPut("{id}")]
         public async Task<IActionResult> Put(string id, PlaylistEditModel model)
         {
@@ -75,7 +79,7 @@
             return this.Ok();
         }
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(string id)
         {
@@ -97,15 +101,15 @@
         public ActionResult<IEnumerable<PlaylistViewModel>> SearchOwn(PlaylistSearchModel model)
          => this.Ok(this.playlistService.SearchOwn<PlaylistViewModel>(model, this.userManager.GetUserId(this.User)));
 
-        [HttpPost(nameof(PostAddSongToPlaylist) + "/{id}")]
-        public async Task<IActionResult> PostAddSongToPlaylist(string id, string songId)
+        [HttpPost(nameof(AddSongToPlaylist))]
+        public async Task<IActionResult> AddSongToPlaylist(SongToPlaylistCreateModel model)
         {
             if (!this.ModelState.IsValid)
             {
                 return this.BadRequest();
             }
 
-            await this.playlistService.AddSongToPlaylist(id, songId);
+            await this.playlistService.AddSongToPlaylist(model);
             return this.StatusCode(StatusCodes.Status201Created);
         }
 
@@ -113,7 +117,7 @@
         public ActionResult<IEnumerable<PlaylistViewModel>> GetAllSongAtPlaylist(string id)
          => this.Ok(this.playlistService.AllSongInPlaylist<SongPlayModel>(id));
 
-        [Authorize(Roles = GlobalConstants.UserRoleName)]
+        [Authorize(Roles = GlobalConstants.Roles.UserRoleName)]
         [HttpDelete(nameof(DeletePlaylistSong) + "/{id}")]
         public async Task<IActionResult> DeletePlaylistSong(string id)
         {

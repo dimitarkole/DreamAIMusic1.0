@@ -1,32 +1,33 @@
-<div class="row">
-  <div class="col-md-1">
-    avatar
-  </div>
-  <div class="col-md-11">
-    <small class="text-dark font-weight-bold">{{comment.user.userName}}</small>
-    <p>
-      {{comment.text}}
-    </p>
-    <div>
-      <button class="btn glyphicon glyphicon-thumbs-up text-black like" aria-hidden="true" (click)="likeComment(comment.id)"></button>
-      <span>{{comment.commentLikesCount}}</span>
-      <button class="btn glyphicon glyphicon-thumbs-down text-black dislike" aria-hidden="true" (click)="dislikeComment(comment.id)"></button>
-      <span>{{comment.commentDislikesCount}}</span>
-      <span *ngIf="comment.commentsChildren?.length>0" (click)="isCollapsed = !isCollapsed"
-            [attr.aria-expanded]="!isCollapsed" aria-controls="collapseExample">
-        Replys({{comment.commentsChildren?.length}})
-      </span>
-    </div>
-    <div *ngIf="comment.commentsChildren?.length>0">
-      <div id="collapseExample" [ngbCollapse]="!isCollapsed">
-        <app-comment-list [allComments]="comment.commentsChildren" class="col-md-12">
-          </app-comment-list>
+<div class="blog-comment">
+  <ul class="comments">
+    <li class="clearfix">
+      <img src="..\..\..\assets\resources\users\{{comment.user.avatar == null ? 'defaultMenAvatar.png'  : comment.user.avatar }}" class="avatar" alt="">
+      <div class="post-comments">
+        <div class="meta row">
+          <div class="col-8">
+            {{comment.createdOn | date : 'MMMM d, yyyy'}} {{comment.user.userName}} says:
+          </div>
+          <div class="col-4 text-right">
+            <app-comment-reaction [comment]="comment"></app-comment-reaction>
+            <!-- <div class="row">
+          <app-comment-reaction [comment]="comment" class="col-md-9" *ngIf="isAuth"></app-comment-reaction>
+          <a href="#" class="col-md-3">
+            Reply
+          </a>
+        </div>-->
+          </div>
+        </div>
+        <p>
+          {{comment.text}}
+        </p>
       </div>
-    </div>
-  </div>
+
+      <ul class="comments">
+        <!-- <app-comment-list *ngIf="comment.commentsChildren?.length>0" id="collapseExample"
+                         [ngbCollapse]="!isCollapsed" [allComments]="comment?.commentsChildren"
+                         class="col-md-12">
+       </app-comment-list>-->
+      </ul>
+    </li>
+  </ul>
 </div>
-
-<p>
-
-</p>
-
