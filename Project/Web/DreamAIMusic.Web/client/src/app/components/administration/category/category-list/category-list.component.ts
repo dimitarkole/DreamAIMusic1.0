@@ -59,26 +59,3 @@ export class CategoryListComponent {
     this.categories = getPage<Category>(this.allCategories, page, this.itemsPerPage);
   }
 }
-
-/*
-
-
-import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-
-@Component({
-  selector: 'app-category-list',
-  templateUrl: './category-list.component.html',
-  styleUrls: ['./category-list.component.css']
-})
-export class CategoryListComponent {
- 
-
-  
-
- 
-
-
-
- 
-}
-*/

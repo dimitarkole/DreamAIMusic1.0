@@ -1,8 +1,37 @@
-<ng-container *ngFor="let comment of allComments" class="row">
-  <app-comment-info [comment]="comment" class="col-md-12"></app-comment-info>
-</ng-container>
+<h3 class="text-dark">Comments ({{song.comments.length}})</h3>
+<form (ngSubmit)="formHandler()" [formGroup]="commentForm" class="row">
+  <div class="form-group col-md-12">
+    <div class="row">
+      <div class=" col-md-12">
+        <textarea class="form-control" formControlName="text" type="text" rows="5"
+                  placeholder="White your commment here"></textarea>
+        <span class="text-danger" *ngIf="text.touched && text.hasError('required')">The comment is required!</span>
+        <span class="text-danger" *ngIf="text.hasError('minlength')">The comment must contain minimum {{commentMinLength}} characters!</span>
+        <span class="text-danger" *ngIf="text.hasError('maxlength')">The comment must contain maximum {{commentMaxLength}} characters!</span>
+      </div>
+    </div>
+    <div class="row">
+      <div class=" col-md-9">
+      </div>
 
-<div class="d-flex justify-content-center">
-  <ngb-pagination class="text-center" [collectionSize]="allComment?.length" (pageChange)="getSongsPerPage($event)" [(page)]="page" [maxSize]="10" [rotate]="true" [boundaryLinks]="true">
+      <div class="col-md-3">
+        <br>
+        <button [disabled]="commentForm.invalid" type="submit" class="login100-form-btn">Comment</button>
+      </div>
+    </div>
+  </div>
+</form>
+<hr />
+
+<div class="row">
+  <div class="col-md-12">
+    <div class="blog-comment">
+      <app-comment-info [comment]="comment" class="col-md-12" *ngFor="let comment of comments"></app-comment-info>
+    </div>
+  </div>
+</div>
+
+<div class="d-flex justify-content-center" *ngIf="allComments.length>0">
+  <ngb-pagination class="text-center" [collectionSize]="allComments.length" (pageChange)="getCommentsPerPage($event)" [(page)]="page" [maxSize]="10" [rotate]="true" [boundaryLinks]="true">
   </ngb-pagination>
 </div>

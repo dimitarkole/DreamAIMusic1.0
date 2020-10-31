@@ -26,6 +26,7 @@
                     .Where(c =>
                         c.SongId == songId
                         && c.ParentComment == null)
+                    .OrderByDescending(c => c.CreatedOn)
                     .To<T>();
 
         public async Task Create(CommentInputModel model, string userId)

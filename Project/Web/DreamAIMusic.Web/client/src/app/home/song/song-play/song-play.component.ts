@@ -10,6 +10,7 @@ import { HttpEventType } from '@angular/common/http';
 import { Reaction } from '../../../components/shared/models/reaction';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { PlaylistAddSongComponent } from '../../../components/user/playlist/playlist-add-song/playlist-add-song.component';
+import { AuthService } from '../../../core/services/auth.service';
 
 @Component({
   selector: 'app-song-play',
@@ -17,6 +18,8 @@ import { PlaylistAddSongComponent } from '../../../components/user/playlist/play
   styleUrls: ['./song-play.component.css']
 })
 export class SongPlayComponent implements OnInit {
+  isAuth: boolean = false;
+
   songId: string;
   song: Song;
 
@@ -26,7 +29,12 @@ export class SongPlayComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private categoryService: CategoryService,
-    private songService: SongService) {
+    private songService: SongService,
+    public authService: AuthService) {
+    this.isAuth = authService.isAuth;
+    this.authService.isAuthChanged.subscribe(() => {
+      this.isAuth = this.authService.isAuth;
+    })
   }
 
   ngOnInit() {

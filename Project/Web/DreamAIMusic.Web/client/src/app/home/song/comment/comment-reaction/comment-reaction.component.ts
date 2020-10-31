@@ -5,6 +5,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CommentReactionService } from '../../../../core/services/comment-reaction.service';
 import Comment from '../../../../components/shared/models/comment';
 import { Reaction } from '../../../../components/shared/models/reaction';
+import { AuthService } from '../../../../core/services/auth.service';
 
 @Component({
   selector: 'app-comment-reaction',
@@ -16,20 +17,27 @@ export class CommentReactionComponent implements OnInit {
   @Input() comment: Comment
   reactionForm: FormGroup;
   reaction: ReactionInfo;
-
+  isAuth: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
     private route: ActivatedRoute,
-    private commentReactionService: CommentReactionService) {
+    private commentReactionService: CommentReactionService,
+    public authService: AuthService) {
+    this.isAuth = authService.isAuth;
+    this.authService.isAuthChanged.subscribe(() => {
+      this.isAuth = this.authService.isAuth;
+    })
   }
 
   ngOnInit(): void {
-    this.setReaction();
-    this.reactionForm = this.formBuilder.group({
-      commentId: this.comment.id,
-      reaction: null,
-    });
+    if (this.isAuth) {
+      this.setReaction();
+      this.reactionForm = this.formBuilder.group({
+        commentId: this.comment.id,
+        reaction: null,
+      });
+    }   
   }
 
   likeComment() {
